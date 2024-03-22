@@ -3,6 +3,8 @@
 using namespace std;
 #include "CArc.h"
 #include <list>
+#include<iterator> // for iterators 
+
 
 
 /************************************************************
@@ -28,10 +30,19 @@ using namespace std;
 */
 class CSommet
 {
+	//ATTRIBUTS
 	private :
 		string sSOMNom;
 		list<CArc*> lSOMListArcEntrant;
 		list<CArc*> lSOMListArcSortant;
+	//CONSTRUCTEUR / DESTRUCTEUR
+	public:
+	//METHODES
+		CArc& operator[](unsigned i);
+		const string SOMLireNom() const { return sSOMNom; };
+		void SOMModifierNom(string& sParam) { sSOMNom = sParam; };
+
+
 
 };
 
