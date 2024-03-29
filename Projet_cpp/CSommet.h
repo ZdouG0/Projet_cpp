@@ -3,7 +3,8 @@
 using namespace std;
 #include "CArc.h"
 #include <list>
-#include<iterator> // for iterators 
+#include<iterator> // for iterators
+#include <vector>
 
 
 
@@ -26,61 +27,75 @@ using namespace std;
 */
 
 /* VARIABLES :
-*
+* 
+* 
 */
+
+#define INDICE_HORS_TABLEAU 866
+
 class CSommet
 {
 	//ATTRIBUTS
 	private :
 		string sSOMNom;
-		list<CArc*> lSOMListArcEntrant;
-		list<CArc*> lSOMListArcSortant;
+		list<CArc&> lSOMListArcEntrant;
+		list<CArc&> lSOMListArcSortant;
 	//CONSTRUCTEUR / DESTRUCTEUR
 	public:
 	//METHODES
 		/******************************************************
-		* SOMLireListArcEntrant
+		* SOMLireElemListArcEntrant
 		* *****************************************************
 		* Entrée : un entier non signé l'indice de l'element 
+		* souhaité dans la liste
+		* Nécessite : Rien
+		* Sortie : un Arc qui arrive dans ce sommet
+		* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
+		* ****************************************************/
+		CArc& SOMLireElemListArcEntrant(unsigned int uiIndice);
+
+		/******************************************************
+		* SOMLireListSomEntrant
+		* *****************************************************
+		* Entrée : Rien
+		* Nécessite : Rien
+		* Sortie : la liste des sommets liés a ce sommet 
+		* Entraîne : la liste des sommets liés a ce sommet est retourne
+		* ****************************************************/
+		vector<string> SOMLireListSom();
+
+		/******************************************************
+		* SOMLireElemListArcSortant
+		* *****************************************************
+		* Entrée : une entier non signé l'indice de l'element
 		* souhaité dans la liste
 		* Nécessite : Rien
 		* Sortie : un Arc qui part de ce sommet
 		* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 		* ****************************************************/
-		CArc& SOMLireListArcEntrant(unsigned int uiIndice);
-
-		/******************************************************
-		* SOMLireListArcSortant
-		* *****************************************************
-		* Entrée : une entier non signé l'indice de l'element
-		* souhaité dans la liste
-		* Nécessite : Rien
-		* Sortie : un Arc qui entre dans ce sommet
-		* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
-		* ****************************************************/
-		CArc& SOMLireListArcSortant(unsigned int uiIndice);
+		CArc& SOMLireElemListArcSortant(unsigned int uiIndice);
 
 		/******************************************************
 		* SOMAjoutArcSortant
 		* *****************************************************
 		* Entrée : un CArc; l'arc que l'on veut ajouter
-		* Nécessite : Rien
+		* Nécessite : Le sommet de depart de l'arc doit etre le sommet actuel
 		* Sortie : Rien
 		* Entraîne : L'arc entre en parametre est ajouté a la liste
-		* des arc sortant
+		* des arc sortant 
 		* ****************************************************/
-		void SOMAjoutArcSortant(CArc& ARCParam);
+		inline void SOMAjoutArcSortant(CArc& ARCParam) { lSOMListArcSortant.push_back(ARCParam); };
 
 		/******************************************************
 		* SOMAjoutArcEntrant
 		* *****************************************************
 		* Entrée : un CArc; l'arc que l'on veut ajouter
-		* Nécessite : Rien
+		* Nécessite : Le sommet d'arrivé de l'arc doit etre le sommet actuel
 		* Sortie : Rien
 		* Entraîne : L'arc entre en parametre est ajouté a la liste
 		* des arc entrant
 		* ****************************************************/
-		void SOMAjoutArcEntrant(CArc& ARCParam);
+		inline void SOMAjoutArcEntrant(CArc& ARCParam) { lSOMListArcEntrant.push_back(ARCParam); } ;
 
 		/******************************************************
 		* SOMLireNom
@@ -95,6 +110,17 @@ class CSommet
 
 		/******************************************************
 		* SOMModifierNom
+		* *****************************************************
+		* Entrée : Rien
+		* Nécessite : Rien
+		* Sortie : Rien
+		* Entraîne : le nom du sommet est modifié
+		* ****************************************************/
+		void SOMModifierNom(string& sParam) { sSOMNom = sParam; };
+
+
+		/******************************************************
+		* SOMModifierEntrant
 		* *****************************************************
 		* Entrée : Rien
 		* Nécessite : Rien
