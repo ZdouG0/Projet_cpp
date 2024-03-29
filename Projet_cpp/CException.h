@@ -1,3 +1,7 @@
+#ifndef CEXCEPTION
+#define CEXCEPTION 999
+
+
 
 /************************************************************
 * CLASSE : Classe pour la gestion des exceptions
@@ -63,3 +67,4 @@ public:
 
 };
 
+#endif // !CEXCEPTION
