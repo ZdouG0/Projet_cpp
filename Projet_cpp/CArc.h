@@ -59,21 +59,21 @@ class CArc
 		* ARCModifierSommetDepart
 		* *****************************************************
 		* Entrée : un string
-		* Nécessite : Rien
+		* Nécessite : Le sommet en parametre existe
 		* Sortie : Rien
-		* Entraîne : (le nom du sommet de depart est modifier) OU (Exception le sommet en parametre n'existe pas)
+		* Entraîne : le nom du sommet de depart est modifié
 		* ****************************************************/
-		void ARCModifierSommetDepart(string& sParam) { sARCSommetDepart = sParam; };  //exception sommet existe pas !!
+		void ARCModifierSommetDepart(string& sParam) { sARCSommetDepart = sParam; };  
 
 		/******************************************************
 		* ARCModifierSommetArrive
 		* *****************************************************
 		* Entrée : un string
-		* Nécessite : Rien
+		* Nécessite : le sommet en parametre doit exister
 		* Sortie : Rien
-		* Entraîne : (le nom du sommet d'arrivé est modifier) OU (Exception le sommet en parametre n'existe pas)
+		* Entraîne : le nom du sommet d'arrivé est modifié
 		* ****************************************************/
-		void ARCModifierSommetArrive(string& sParam) { sARCSommetArrive = sParam; }; //meme exception
+		void ARCModifierSommetArrive(string& sParam) { sARCSommetArrive = sParam; }; 
 
 
 };
