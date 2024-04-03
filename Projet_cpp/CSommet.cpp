@@ -11,13 +11,13 @@
 * Sortie : un Arc qui part de ce sommet
 * Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 * ****************************************************/
-CArc& CSommet :: SOMLireElemListArcEntrant(unsigned int uiIndice) {
+CArc* CSommet :: SOMLireElemListArcEntrant(unsigned int uiIndice) {
 	if (uiIndice > lSOMListArcEntrant.size() - 1) {
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
 		throw(EXCErreur);
 	}
-	list<CArc&>::iterator iter;
+	list<CArc*>::iterator iter;
 	iter = lSOMListArcEntrant.begin();
 	for (unsigned int uiBoucle = 0; uiBoucle <= uiIndice; uiBoucle++) {
 		iter++;
@@ -34,13 +34,13 @@ CArc& CSommet :: SOMLireElemListArcEntrant(unsigned int uiIndice) {
 * Sortie : un Arc qui entre dans ce sommet
 * Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 * ****************************************************/
-CArc& CSommet ::SOMLireElemListArcSortant(unsigned int uiIndice) {
+CArc* CSommet ::SOMLireElemListArcSortant(unsigned int uiIndice) {
 	if (uiIndice > lSOMListArcSortant.size() - 1) {
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
 		throw(EXCErreur);
 	}
-	list<CArc&>::iterator iter;
+	list<CArc*>::iterator iter;
 	iter = lSOMListArcSortant.begin();
 	for (unsigned int uiBoucle = 0; uiBoucle <= uiIndice; uiBoucle++) {
 		iter++;
@@ -59,10 +59,10 @@ CArc& CSommet ::SOMLireElemListArcSortant(unsigned int uiIndice) {
 vector<string> CSommet :: SOMLireListSom() {
 	vector<string> vListSom;
 	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcEntrant.size() ; uiBoucle++) {
-		vListSom.push_back(SOMLireElemListArcEntrant(uiBoucle).ARCLireArrive());
+		vListSom.push_back(SOMLireElemListArcEntrant(uiBoucle)->ARCLireArrive());
 	}
 	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcSortant.size() ; uiBoucle++) {
-		vListSom.push_back(SOMLireElemListArcSortant(uiBoucle).ARCLireDepart());
+		vListSom.push_back(SOMLireElemListArcSortant(uiBoucle)->ARCLireDepart());
 	}
 	return vListSom;
 }

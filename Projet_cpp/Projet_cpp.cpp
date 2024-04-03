@@ -1,6 +1,5 @@
 #include <iostream>
-#include "CArc.h"
-#include "CSommet.h"
+#include "CGrapheOriente.h"
 using namespace std;
 
 int main()
@@ -16,9 +15,11 @@ int main()
     ARCVar.ARCModifierSommetDepart(somB);
 
     cout << "L'arc relie le sommet " + ARCVar.ARCLireDepart() + " au sommet " + ARCVar.ARCLireArrive();
+    
 
-    //routine de test des methodes de la classe CSommet
-
+    //routine de test des methodes de la classe CGrapheOrientee
+    CGrapheOriente GROVar;
+    GROVar.GROCreerSommet(somA);
 
         
 

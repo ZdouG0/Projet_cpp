@@ -24,8 +24,9 @@ using namespace std;
 */
 
 /* VARIABLES :
-*
+	
 */
+#define Element_inconnu 404
 
 class CGrapheOriente {
 	//ATTRIBUTS
@@ -33,12 +34,77 @@ private:
 	list<CArc*> pARCGROListArc;
 	list<CSommet*> pSOMGROListSom;
 
-	//METHODES
-	//On le met en private pour ne creer qu'une seule instance de Graphe Orienté
-	CGrapheOriente();
-	CGrapheOriente(const CGrapheOriente& rGROParam) = delete;
-	CGrapheOriente(const CGrapheOriente&& rGROMove) = delete;
+	
 public :
-	//void GROCreerSommet(string chParam){}
+	/*****************************************************
+	* GROCreerArc
+	* ****************************************************
+	* Entrée : une chaine de caractere ( nom du sommet de depart) et une deuxième chaine de caractère (nom du sommet d'arrivée)
+	* Nécessite : La liste de CSommet contienne au moins deux elements et que les deux chaines de caractères se réfèrent bien à des sommets existants
+	* Sortie : Aucune
+	* Entraîne : Il y a un arc de plus dans la liste des arc si les sommets sont bien dans la liste
+	* De plus les deux sommets sont maintenant lié par un arc
+	* ****************************************************/
+	void GROCreerArc(string chParamDepart, string chParamArrive);
+
+
+
+	/*****************************************************
+	* GROCreerSommet
+	* ****************************************************
+	* Entrée : une chaine de caractere ( nom du sommet à creer)
+	* Nécessite : Rien
+	* Sortie : Aucune
+	* Entraîne : Il y a un sommet de plus dans la liste des sommets si le sommet est bien dans la liste
+	* ****************************************************/
+	void GROCreerSommet(string chParam);
+
+	/*****************************************************
+	* GROTrouverSommet
+	* ****************************************************
+	* Entrée : une chaine de caractere (nom du sommet à ajouter)
+	* Nécessite : Rien
+	* Sortie : size_t
+	* Entraîne : (la position du sommet avec le nom chParam est retournée) OU (Exception Element_inconnu)
+	* ****************************************************/
+	size_t GROTrouverSommetPosition(string chParam);
+
+
+
+	
+
+	/*****************************************************
+	* GROSupprimerSommet
+	* ****************************************************
+	* Entrée : une chaine de caractere ( nom du sommer à supprimer)
+	* Nécessite : Rien
+	* Sortie : Aucune
+	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
+	* ****************************************************/
+	void GROSupprimerSommet(string chParam);
+
+
+	/*****************************************************
+	* GROLireSommet
+	* ****************************************************
+	* Entrée : un size_t (qui correspond à la position du sommet à lire)
+	* Nécessite : Rien
+	* Sortie : string
+	* Entraîne : (lenom du sommet avec la position sPos est retournée) OU (Exception Element_inconnu)
+	* ****************************************************/
+	string GROLireSommet(size_t stPos) const;
+	//ICI tu va devoir utiliser iterator
+
+
+
+	/*****************************************************
+	* GROLireArc
+	* ****************************************************
+	* Entrée : un size_t (qui correspond à la position de l'arc à lire)
+	* Nécessite : Rien
+	* Sortie : string
+	* Entraîne : (le nom des sommets de depart et d'arrive de notre arc avec la position stPos est retournée) OU (Exception Element_inconnu)
+	* ****************************************************/
+	CArc& GROLireArc(size_t stPos) const;
 	
 };

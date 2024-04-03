@@ -39,8 +39,8 @@ class CSommet
 	//ATTRIBUTS
 	private :
 		string sSOMNom;
-		list<CArc&> lSOMListArcEntrant;
-		list<CArc&> lSOMListArcSortant;
+		list<CArc*> lSOMListArcEntrant;
+		list<CArc*> lSOMListArcSortant;
 	//CONSTRUCTEUR / DESTRUCTEUR
 	public:
 	//METHODES
@@ -53,7 +53,7 @@ class CSommet
 		* Sortie : un Arc qui arrive dans ce sommet
 		* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 		* ****************************************************/
-		CArc& SOMLireElemListArcEntrant(unsigned int uiIndice);
+		CArc* SOMLireElemListArcEntrant(unsigned int uiIndice);
 
 		/******************************************************
 		* SOMLireListSomEntrant
@@ -74,7 +74,7 @@ class CSommet
 		* Sortie : un Arc qui part de ce sommet
 		* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 		* ****************************************************/
-		CArc& SOMLireElemListArcSortant(unsigned int uiIndice);
+		CArc* SOMLireElemListArcSortant(unsigned int uiIndice);
 
 		/******************************************************
 		* SOMAjoutArcSortant
@@ -85,7 +85,7 @@ class CSommet
 		* Entraîne : L'arc entre en parametre est ajouté a la liste
 		* des arc sortant 
 		* ****************************************************/
-		inline void SOMAjoutArcSortant(CArc& ARCParam) { lSOMListArcSortant.push_back(ARCParam); };
+		inline void SOMAjoutArcSortant(CArc* ARCParam) { lSOMListArcSortant.push_back(ARCParam); };
 
 		/******************************************************
 		* SOMAjoutArcEntrant
@@ -96,7 +96,7 @@ class CSommet
 		* Entraîne : L'arc entre en parametre est ajouté a la liste
 		* des arc entrant
 		* ****************************************************/
-		inline void SOMAjoutArcEntrant(CArc& ARCParam) { lSOMListArcEntrant.push_back(ARCParam); } ;
+		inline void SOMAjoutArcEntrant(CArc* ARCParam) { lSOMListArcEntrant.push_back(ARCParam); } ;
 
 		/******************************************************
 		* SOMLireNom
@@ -118,18 +118,6 @@ class CSommet
 		* Entraîne : le nom du sommet est modifié
 		* ****************************************************/
 		void SOMModifierNom(string& sParam) { sSOMNom = sParam; };
-
-
-		/******************************************************
-		* SOMModifierEntrant
-		* *****************************************************
-		* Entrée : Rien
-		* Nécessite : Rien
-		* Sortie : Rien
-		* Entraîne : le nom du sommet est modifié
-		* ****************************************************/
-		void SOMModifierNom(string& sParam) { sSOMNom = sParam; };
-
 
 
 };
