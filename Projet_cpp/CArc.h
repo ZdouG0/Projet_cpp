@@ -43,7 +43,7 @@ class CArc
 		* Sortie : une chaine de caractere le nom d'un sommet
 		* Entraîne : Le nom du sommet de depart est retourné
 		* ****************************************************/
-		const string ARCLireDepart() const { return sARCSommetDepart; };
+		inline const string ARCLireDepart() const { return sARCSommetDepart; };
 
 		/******************************************************
 		* ARCLireArrive
@@ -53,7 +53,7 @@ class CArc
 		* Sortie : une chaine de caractere le nom d'un sommet
 		* Entraîne : Le nom du sommet d'arrive est retourné
 		* ****************************************************/
-		const string ARCLireArrive() const { return sARCSommetArrive; };
+		inline const string ARCLireArrive() const { return sARCSommetArrive; };
 
 		/******************************************************
 		* ARCModifierSommetDepart
@@ -63,7 +63,7 @@ class CArc
 		* Sortie : Rien
 		* Entraîne : le nom du sommet de depart est modifié
 		* ****************************************************/
-		void ARCModifierSommetDepart(string& sParam) { sARCSommetDepart = sParam; };  
+		inline void ARCModifierSommetDepart(string& sParam) { sARCSommetDepart = sParam; };  
 
 		/******************************************************
 		* ARCModifierSommetArrive
@@ -73,7 +73,7 @@ class CArc
 		* Sortie : Rien
 		* Entraîne : le nom du sommet d'arrivé est modifié
 		* ****************************************************/
-		void ARCModifierSommetArrive(string& sParam) { sARCSommetArrive = sParam; }; 
+		inline void ARCModifierSommetArrive(string& sParam) { sARCSommetArrive = sParam; }; 
 
 
 };
