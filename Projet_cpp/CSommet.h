@@ -5,6 +5,7 @@ using namespace std;
 #include <list>
 #include<iterator> // for iterators
 #include <vector>
+#include "CException.h"
 
 
 
