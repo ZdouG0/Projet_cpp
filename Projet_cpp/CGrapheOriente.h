@@ -36,6 +36,11 @@ private:
 
 	
 public :
+
+	/*****************************************************
+	* Methodes de gestion des Arcs
+	******************************************************/
+
 	/*****************************************************
 	* GROCreerArc
 	* ****************************************************
@@ -48,6 +53,32 @@ public :
 	void GROCreerArc(string chParamDepart, string chParamArrive);
 
 
+
+	/*****************************************************
+	* GROLireArc
+	* ****************************************************
+	* Entrée : un size_t (qui correspond à la position de l'arc à lire)
+	* Nécessite : Rien
+	* Sortie : string
+	* Entraîne : (le nom des sommets de depart et d'arrive de notre arc avec la position stPos est retournée) OU (Exception Element_inconnu)
+	* ****************************************************/
+	CArc& GROLireArc(size_t stPos) const;
+
+
+
+	/*****************************************************
+	* GROSupprimerArc
+	* ****************************************************
+	* Entrée : une chaine de caractere ( nom du sommet de départ) et une chaine de caractere ( nom du sommet d'arrivé de l'arc)
+	* Nécessite : Rien
+	* Sortie : Aucune
+	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
+	* ****************************************************/
+	void GROSupprimerArc(string chParamDepart, string chParamArrive);
+
+	/*****************************************************
+	* Methodes de gestion des Sommets
+	******************************************************/
 
 	/*****************************************************
 	* GROCreerSommet
@@ -71,7 +102,17 @@ public :
 
 
 
-	
+	/*****************************************************
+	* GROLireSommet
+	* ****************************************************
+	* Entrée : un size_t (qui correspond à la position du sommet à lire)
+	* Nécessite : Rien
+	* Sortie : string
+	* Entraîne : (lenom du sommet avec la position sPos est retournée) OU (Exception Element_inconnu)
+	* ****************************************************/
+	string GROLireSommet(size_t stPos) const;
+	//ICI tu va devoir utiliser iterator car la surcharge de loperator [] nous parait pas petinante
+
 
 	/*****************************************************
 	* GROSupprimerSommet
@@ -82,29 +123,8 @@ public :
 	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 	* ****************************************************/
 	void GROSupprimerSommet(string chParam);
+	
 
 
-	/*****************************************************
-	* GROLireSommet
-	* ****************************************************
-	* Entrée : un size_t (qui correspond à la position du sommet à lire)
-	* Nécessite : Rien
-	* Sortie : string
-	* Entraîne : (lenom du sommet avec la position sPos est retournée) OU (Exception Element_inconnu)
-	* ****************************************************/
-	string GROLireSommet(size_t stPos) const;
-	//ICI tu va devoir utiliser iterator
-
-
-
-	/*****************************************************
-	* GROLireArc
-	* ****************************************************
-	* Entrée : un size_t (qui correspond à la position de l'arc à lire)
-	* Nécessite : Rien
-	* Sortie : string
-	* Entraîne : (le nom des sommets de depart et d'arrive de notre arc avec la position stPos est retournée) OU (Exception Element_inconnu)
-	* ****************************************************/
-	CArc& GROLireArc(size_t stPos) const;
 	
 };
