@@ -120,5 +120,6 @@ class CSommet
 		void SOMModifierNom(string& sParam) { sSOMNom = sParam; };
 
 
+
 };
 
