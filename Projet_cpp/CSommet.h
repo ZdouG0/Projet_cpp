@@ -5,6 +5,7 @@ using namespace std;
 #include <list>
 #include<iterator> // for iterators
 #include <vector>
+#include "CException.h"
 
 
 
@@ -117,7 +118,6 @@ class CSommet
 		* Entraîne : le nom du sommet est modifié
 		* ****************************************************/
 		void SOMModifierNom(string& sParam) { sSOMNom = sParam; };
-
 
 
 
