@@ -12,14 +12,14 @@
 * Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 * ****************************************************/
 CArc* CSommet :: SOMLireElemListArcEntrant(unsigned int uiIndice) {
-	if (uiIndice > lSOMListArcEntrant.size() - 1) {
+	if (uiIndice >= lSOMListArcEntrant.size()) {
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
 		throw(EXCErreur);
 	}
 	list<CArc*>::iterator iter;
 	iter = lSOMListArcEntrant.begin();
-	for (unsigned int uiBoucle = 0; uiBoucle <= uiIndice; uiBoucle++) {
+	for (unsigned int uiBoucle = 0; uiBoucle < uiIndice; uiBoucle++) {
 		iter++;
 	}
 	return *iter;
@@ -35,14 +35,14 @@ CArc* CSommet :: SOMLireElemListArcEntrant(unsigned int uiIndice) {
 * Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 * ****************************************************/
 CArc* CSommet ::SOMLireElemListArcSortant(unsigned int uiIndice) {
-	if (uiIndice > lSOMListArcSortant.size() - 1) {
+	if (uiIndice >= lSOMListArcSortant.size()) {
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
 		throw(EXCErreur);
 	}
 	list<CArc*>::iterator iter;
 	iter = lSOMListArcSortant.begin();
-	for (unsigned int uiBoucle = 0; uiBoucle <= uiIndice; uiBoucle++) {
+	for (unsigned int uiBoucle = 0; uiBoucle < uiIndice; uiBoucle++) {
 		iter++;
 	}
 	return *iter;

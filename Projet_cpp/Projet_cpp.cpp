@@ -12,7 +12,7 @@ int main()
     cout << "Hello World!\n";
 
     //routine de test des methodes de la classe CArc
-    
+    cout << "test des methodes de CARC\n";
     CArc ARCVar;   // création d'un objet de la classe Carc
     string somA = "sommet A"; 
     string somB = "sommet B";
@@ -22,8 +22,9 @@ int main()
     cout << "L'arc relie le sommet " + ARCVar.ARCLireDepart() + " au sommet " + ARCVar.ARCLireArrive();
 
     //routine de test des methodes de la classe CSommet
+    cout << "\ntest des methodes de CARC\n";
     CSommet SOMVar;
-
+    cout << "\ntest des modifiernom et lirenom\n";
     string nomSOM = "sommet A";
     SOMVar.SOMModifierNom(nomSOM);
     cout << "Le nom de notre sommet est " + SOMVar.SOMLireNom() << endl;
@@ -45,7 +46,7 @@ int main()
     ARCVar4.ARCModifierSommetArrive(somE); //ajout d'un sommet d'arrivée
     ARCVar4.ARCModifierSommetDepart(somA); //ajout d'un sommet de depart
     //____________________________________________________________________________________
-
+    cout << "\ntest des AjoutArcentrant et AjoutArcSortant\n";
     //on ajoute nos arc a notre sommet 
     //les arc entrant (les sommets de X a A)
     SOMVar.SOMAjoutArcEntrant(&ARCVar3);
@@ -55,18 +56,30 @@ int main()
     SOMVar.SOMAjoutArcSortant(&ARCVar);
     SOMVar.SOMAjoutArcSortant(&ARCVar2);
 
-    //on lit les sommet lie au notre
+    //on lit les sommets lie au notre
+    cout << "\ntest de LireListSom\n";
     unsigned int uiTaille;
-    vector<string>::iterator iter;
     vector<string> s = SOMVar.SOMLireListSom();
-    iter = s.begin();
     uiTaille = SOMVar.SOMLireListSom().size();
 
     for (unsigned int uiBoucle = 0; uiBoucle <= uiTaille-1; uiBoucle++) {
-        cout << *iter;
-        iter++;
+        cout << s[uiBoucle] <<endl;
     }
 
+    //on test maintenant les fonctions SOMLireElemListArcEntrant SOMLireElemListArcSortant
+    cout << "\ntest de SOMLireElemListArcEntrant SOMLireElemListArcSortant\n";
+    //pour cela comme un arc n'a pas de nom on va afficher les sommets auquel il est lié
+    CArc* ARCVar5 = SOMVar.SOMLireElemListArcEntrant(1); //on doit obtenir ARCVar5 = ARCVar4
+    CArc* ARCVar6 = SOMVar.SOMLireElemListArcSortant(1); //on doit obtenir ARCVar6 = ARCVar2
+
+    
+    cout << "les deux arc doivent etres les meme\n";
+    cout << "ARCVar5 : sommet de d'arrive " + ARCVar5->ARCLireArrive() + " sommet de depart " + ARCVar5->ARCLireDepart() << endl;
+    cout << "ARCVar4 : sommet de d'arrive " + ARCVar4.ARCLireArrive() + " sommet de depart " + ARCVar4.ARCLireDepart() << endl;
+    cout << "\n";
+    cout << "les deux arc doivent etres les meme\n";
+    cout << "ARCVar6 : sommet de d'arrive " + ARCVar6->ARCLireArrive() + " sommet de depart " + ARCVar6->ARCLireDepart() << endl;
+    cout << "ARCVar2 : sommet de d'arrive " + ARCVar2.ARCLireArrive() + " sommet de depart " + ARCVar2.ARCLireDepart() << endl;
 
 
 
