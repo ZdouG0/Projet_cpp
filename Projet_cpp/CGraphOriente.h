@@ -76,6 +76,23 @@ public:
 	* ****************************************************/
 	void GROSupprimerArc(string chParamDepart, string chParamArrive);
 
+
+
+
+	/*****************************************************
+	* GROSupprimerArc
+	* ****************************************************
+	* Entrée : Un sommet pour lequel on va supprimer tout les arcs qui pointent vers lui
+	* Nécessite : Rien
+	* Sortie : Aucune
+	* Entraîne : Un sommet pour lequel aucun arcs ne pointent vers lui
+	* ****************************************************/
+
+
+
+
+	void GROSupprimerArc(CSommet& SOMParam);
+
 	/*****************************************************
 	* Methodes de gestion des Sommets
 	******************************************************/
