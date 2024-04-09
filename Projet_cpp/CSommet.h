@@ -3,7 +3,7 @@
 using namespace std;
 #include "CArc.h"
 #include <list>
-#include<iterator> // for iterators
+#include<iterator> 
 #include <vector>
 #include "CException.h"
 

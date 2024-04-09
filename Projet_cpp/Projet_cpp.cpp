@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void main()
+int main()
 {
     cout << "Hello World!\n";
 
@@ -85,6 +85,6 @@ void main()
 
        
 
-
+    return 0;
 }
 
