@@ -14,6 +14,8 @@ void main()
     //routine de test des methodes de la classe CArc
     cout << "test des methodes de CARC\n";
     CArc ARCVar;   // création d'un objet de la classe Carc
+    cout << ARCVar.ARCLireArrive()<<endl;
+    cout << ARCVar.ARCLireDepart()<<endl;
     string somA = "sommet A"; 
     string somB = "sommet B";
     ARCVar.ARCModifierSommetArrive(somA); //ajout d'un sommet d'arrivée

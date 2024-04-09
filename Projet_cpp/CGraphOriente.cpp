@@ -1,3 +1,4 @@
+
 #include "CGrapheOriente.h"
 
 
@@ -17,7 +18,10 @@ void CGrapheOriente::GROCreerArc(string chParamDepart, string chParamArrive) {
 	size_t stPosD = GROTrouverSommetPosition(chParamDepart); size_t stPosA = GROTrouverSommetPosition(chParamArrive);
 
 	//Perplexe
-	CArc ARCParam = CArc(chParamDepart, chParamArrive);
+	CArc ARCParam = CArc();
+	ARCParam.ARCModifierSommetArrive(chParamArrive);
+	ARCParam.ARCModifierSommetDepart(chParamDepart);
+	//ajouetr liste des arcs + ajouter dans les ommets
 }
 
 
@@ -41,7 +45,7 @@ CArc& CGrapheOriente::GROLireArc(size_t stPos) const {
 	for (unsigned int uiBoucle = 0; uiBoucle <= stPos; uiBoucle++) {
 		iter++;
 	}
-	return *iter.sSOMNom;
+	return *iter;
 }
 
 
@@ -54,12 +58,13 @@ CArc& CGrapheOriente::GROLireArc(size_t stPos) const {
 	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 	* ****************************************************/
 void GROSupprimerArc(string chParamDepart, string chParamArrive) {
-	CArc ARCParam = CArc(chParamDepart, chParamArrive);
+	size_t stPos;
+	CArc ARCParam = CArc(chParamDepart,chParamArrive); 
 	//il va me falloir une surchrge de loperateur == pour les arcs
-	for (size_t stPos = 0; stPos < pARCGROListArc.size(); stPos++) {
+	for (stPos = 0; stPos < pARCGROListArc.size(); stPos++) {
 		if (pARCGROListArc[stPos] == ARCParam) {
 			pARCGROListArc.erase(stPos);
-			
+
 		}
 	}
 }
@@ -74,9 +79,9 @@ void GROSupprimerArc(string chParamDepart, string chParamArrive) {
 * Entraîne : Il y a un sommet de plus dans la liste des sommets si le sommet est bien dans la liste
 * ****************************************************/
 void CGrapheOriente::GROCreerSommet(string chParam) {
-	CSommet SOMParam = CSommet(chParam);
+	CSommet SOMParam;  SOMParam.SOMModifierNom(chParam);
 	pSOMGROListSom.push_back(SOMParam);
-	
+
 }
 
 
@@ -147,8 +152,3 @@ void CGrapheOriente::GROSupprimerSommet(string chParam) {
 	size_t stPos = GROTrouverSommetPosition(chParam);
 	pSOMGROListSom.erase(pSOMGROListSom.begin() + stPos);
 }
-
-
-
-
-
