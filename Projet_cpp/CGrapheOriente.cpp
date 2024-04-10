@@ -15,11 +15,27 @@
 void CGrapheOriente::GROCreerArc(string sParamDepart, string sParamArrive) {
 	//Je vais appeler ces deux fonctions pour etre sur que les sommet de depart et d'arrive existent
 	//Dans cette fonction je lève une CException si le sommet n'est pas dans le tableau des sommets
-	size_t stPosD = GROTrouverSommetPosition(sParamDepart); size_t stPosA = GROTrouverSommetPosition(sParamArrive);
+	size_t stPosD = GROTrouverSommetPosition(sParamDepart); size_t stPosA = GROTrouverSommetPosition(sParamArrive); size_t stCompteur = 0;
 
 
-	CArc(sParamDepart, sParamArrive);
-	//ajouter liste des arcs + ajouter dans les sommets
+	///Depart -----> Arrive ///////////// Dans depart jai donc un arc sortant allant vers arrive et dans arrive un arc entrant allant dans depart
+
+	//ajouter liste des arcs
+	CArc* ARCParam = new CArc(sParamDepart, sParamArrive);
+	pARCGROListArc.push_back(ARCParam);
+	// ajouter dans les sommets
+	CSommet* sommetDepart = nullptr;
+	CSommet* sommetArrive = nullptr;
+	for (auto iter = pSOMGROListSom.begin(); iter != pSOMGROListSom.end(); ++iter, ++stCompteur) {
+		if (stCompteur == stPosD) {
+			sommetDepart = *iter;
+		}
+		if (stCompteur == stPosA) {
+			sommetArrive = *iter;
+		}
+	}
+	sommetDepart->SOMAjoutArcSortant(ARCParam);
+	sommetArrive->SOMAjoutArcEntrant(ARCParam);
 }
 
 
@@ -33,6 +49,7 @@ void CGrapheOriente::GROCreerArc(string sParamDepart, string sParamArrive) {
 	* Entraîne : (le nom des sommets de depart et d'arrive de notre arc avec la position stPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
 CArc& CGrapheOriente::GROLireArc(size_t stPos) const {
+	unsigned int uiBoucle;
 	if (stPos >= pARCGROListArc.size()) {
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(Element_inconnu);
@@ -40,7 +57,7 @@ CArc& CGrapheOriente::GROLireArc(size_t stPos) const {
 	}
 
 	auto iter = pARCGROListArc.begin();
-	for (size_t i = 0; i < stPos; ++i) {
+	for (uiBoucle = 0; uiBoucle < stPos; ++uiBoucle) {
 		++iter;
 	}
 
@@ -57,11 +74,13 @@ CArc& CGrapheOriente::GROLireArc(size_t stPos) const {
 	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 	* ****************************************************/
 void CGrapheOriente::GROSupprimerArc(string chParamDepart, string chParamArrive) {
-	size_t stPos;
-	CArc ARCParam = CArc(chParamDepart, chParamArrive);
-	auto iter = pARCGROListArc.begin();
-	advance(iter, stPos);
-	pARCGROListArc.erase(iter);
+	
+	
+	for (auto iter = pARCGROListArc.begin(); iter != pARCGROListArc.end(); ++iter) {
+		if ((*iter)->ARCLireDepart() == chParamDepart && (*iter)->ARCLireArrive() == chParamArrive) {
+			pARCGROListArc.erase(iter);
+		}
+	}
 }
 
 
@@ -74,14 +93,14 @@ void CGrapheOriente::GROSupprimerArc(string chParamDepart, string chParamArrive)
 	* Entraîne : Un sommet isolé qui ne pointent vers personne et avec personne qui pointent sur lui
 	* ****************************************************/
 void CGrapheOriente::GROSupprimerArcs(CSommet& SOMParam) {
-	size_t stBoucle;
+	unsigned int  stBoucle;
 
 	for (stBoucle = 0; stBoucle < SOMParam.SOMTaileListArcEntrant(); stBoucle++) {
 		CArc* ARCParam = SOMParam.SOMLireElemListArcEntrant(stBoucle);
 		GROSupprimerArc(ARCParam->ARCLireDepart(), ARCParam->ARCLireArrive());
 	}
 	for (stBoucle = 0; stBoucle < SOMParam.SOMTaileListArcSortant(); stBoucle++) {
-		CArc* ARCParam = SOMParam.SOMLireElemListArcEntrant(stBoucle);
+		CArc* ARCParam = SOMParam.SOMLireElemListArcSortant(stBoucle);
 		GROSupprimerArc(ARCParam->ARCLireDepart(), ARCParam->ARCLireArrive());
 	}
 }
@@ -97,9 +116,9 @@ void CGrapheOriente::GROSupprimerArcs(CSommet& SOMParam) {
 * Entraîne : Il y a un sommet de plus dans la liste des sommets si le sommet est bien dans la liste
 * ****************************************************/
 void CGrapheOriente::GROCreerSommet(string chParam) {
-	CSommet SOMParam;  SOMParam.SOMModifierNom(chParam);
-	//pSOMGROListSom.push_back(SOMParam);
-
+	CSommet* SOMParam = new CSommet();
+	SOMParam->SOMModifierNom(chParam);
+	pSOMGROListSom.push_back(SOMParam);
 }
 
 
@@ -120,6 +139,7 @@ size_t CGrapheOriente::GROTrouverSommetPosition(string chParam) {
 		if ((*iter)->SOMLireNom() == chParam) {
 			bEstDansLaListe = true;
 		}
+		stboucle++;
 	}
 	if (bEstDansLaListe == false) {
 		CException EXCErreur;
@@ -166,10 +186,14 @@ string CGrapheOriente::GROLireSommet(size_t stPos) const {
 * Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 * ****************************************************/
 void CGrapheOriente::GROSupprimerSommet(string chParam) {
-	//Bien faire attention que la suppression du sommet supprime bien les arcs
-	string sSommetDepart; string sSommetArrive;
 	size_t stPos = GROTrouverSommetPosition(chParam);
 	auto iter = pSOMGROListSom.begin();
 	advance(iter, stPos);
+
+	// Supprimer les arcs associe au sommet
+	GROSupprimerArcs(**iter);
+
+	// Supprimer le sommet de la liste
+	delete* iter;
 	pSOMGROListSom.erase(iter);
 }
