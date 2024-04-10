@@ -24,7 +24,7 @@ using namespace std;
 */
 
 /* VARIABLES :
-	
+
 */
 #define Element_inconnu 404
 
@@ -34,8 +34,8 @@ private:
 	list<CArc*> pARCGROListArc;
 	list<CSommet*> pSOMGROListSom;
 
-	
-public :
+
+public:
 
 	/*****************************************************
 	* Methodes de gestion des Arcs
@@ -75,6 +75,19 @@ public :
 	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 	* ****************************************************/
 	void GROSupprimerArc(string chParamDepart, string chParamArrive);
+
+
+
+
+	/*****************************************************
+	* GROSupprimerArc
+	* ****************************************************
+	* Entrée : Un sommet pour lequel on va supprimer tout les arcs qui pointent vers lui
+	* Nécessite : Rien
+	* Sortie : Aucune
+	* Entraîne : Un sommet isolé qui ne pointent vers personne et avec personne qui pointent sur lui
+	* ****************************************************/
+	void GROSupprimerArcs(CSommet& SOMParam);
 
 	/*****************************************************
 	* Methodes de gestion des Sommets
@@ -123,8 +136,8 @@ public :
 	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 	* ****************************************************/
 	void GROSupprimerSommet(string chParam);
-	
 
 
-	
+
+
 };
