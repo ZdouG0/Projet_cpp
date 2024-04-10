@@ -121,5 +121,32 @@ class CSommet
 
 
 
+
+		/******************************************************
+		* SOMTaileListArcEntrant
+		* *****************************************************
+		* Entrée : Rien
+		* Nécessite : Rien
+		* Sortie : size_t
+		* Entraîne : la taille de la liste d'arc entrant est retourné
+		* ****************************************************/
+		size_t SOMTaileListArcEntrant() { return lSOMListArcEntrant.size(); }
+
+
+
+
+
+		/******************************************************
+		* SOMTaileListArcSortant
+		* *****************************************************
+		* Entrée : Rien
+		* Nécessite : Rien
+		* Sortie : size_t
+		* Entraîne : la taille de la liste d'arc sortant est retourné
+		* ****************************************************/
+		size_t SOMTaileListArcSortant() { return lSOMListArcSortant.size(); }
+
+
+
 };
 

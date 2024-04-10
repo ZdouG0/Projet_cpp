@@ -28,7 +28,7 @@ using namespace std;
 */
 #define Element_inconnu 404
 
-class CGrapheOriente {
+class CGraphOriente {
 	//ATTRIBUTS
 private:
 	list<CArc*> pARCGROListArc;
@@ -85,13 +85,9 @@ public:
 	* Entrée : Un sommet pour lequel on va supprimer tout les arcs qui pointent vers lui
 	* Nécessite : Rien
 	* Sortie : Aucune
-	* Entraîne : Un sommet pour lequel aucun arcs ne pointent vers lui
+	* Entraîne : Un sommet isolé qui ne pointent vers personne et avec personne qui pointent sur lui
 	* ****************************************************/
-
-
-
-
-	void GROSupprimerArc(CSommet& SOMParam);
+	void GROSupprimerArcs(CSommet& SOMParam);
 
 	/*****************************************************
 	* Methodes de gestion des Sommets

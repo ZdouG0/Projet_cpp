@@ -1,4 +1,5 @@
 #include "CGrapheOriente.h"
+#include "CGraphOriente.h"
 
 
 /*****************************************************
@@ -70,16 +71,16 @@ void CGrapheOriente::GROSupprimerArc(string chParamDepart, string chParamArrive)
 	* Entrée : Un sommet pour lequel on va supprimer tout les arcs qui pointent vers lui
 	* Nécessite : Rien
 	* Sortie : Aucune
-	* Entraîne : Un sommet pour lequel aucun arcs ne pointent vers lui
+	* Entraîne : Un sommet isolé qui ne pointent vers personne et avec personne qui pointent sur lui
 	* ****************************************************/
-void CGrapheOriente::GROSupprimerArc(CSommet& SOMParam){
+void CGrapheOriente::GROSupprimerArcs(CSommet& SOMParam){
 	size_t stBoucle;
 	
-	for (stBoucle = 0; stBoucle < SOMParam.lSOMListArcEntrant.size(); stBoucle++) {
+	for (stBoucle = 0; stBoucle < SOMParam.SOMTaileListArcEntrant(); stBoucle++) {
 		CArc* ARCParam = SOMParam.SOMLireElemListArcEntrant(stBoucle);
 		GROSupprimerArc(ARCParam->ARCLireDepart(),ARCParam->ARCLireArrive());
 	}
-	for (stBoucle = 0; stBoucle < SOMParam.lSOMListArcSortant.size(); stBoucle++) {
+	for (stBoucle = 0; stBoucle < SOMParam.SOMTaileListArcSortant(); stBoucle++) {
 		CArc* ARCParam = SOMParam.SOMLireElemListArcEntrant(stBoucle);
 		GROSupprimerArc(ARCParam->ARCLireDepart(), ARCParam->ARCLireArrive());
 	}
@@ -166,10 +167,9 @@ string CGrapheOriente::GROLireSommet(size_t stPos) const {
 * ****************************************************/
 void CGrapheOriente::GROSupprimerSommet(string chParam) {
 	//Bien faire attention que la suppression du sommet supprime bien les arcs
-
+	string sSommetDepart; string sSommetArrive;
 	size_t stPos = GROTrouverSommetPosition(chParam);
 	auto iter = pSOMGROListSom.begin();
 	advance(iter, stPos);
-	GROSupprimerArc(iter);
 	pSOMGROListSom.erase(iter);
 }
