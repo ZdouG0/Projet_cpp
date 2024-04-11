@@ -98,6 +98,7 @@ int main()
     cout<<"Voici le premier arc de ma list d'arc " << GROParam.GROLireArc(0).ARCLireArrive()<< " - "<< GROParam.GROLireArc(0).ARCLireDepart();
     cout<<"Voici la position du Sommet Courcouronnes "<<GROParam.GROTrouverSommetPosition("Courcouronnes");
     GROParam.GROLireSommet(2);
+    GROParam.GROSupprimerArc("Paris", "Evry");
 
        
 
