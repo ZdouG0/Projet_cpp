@@ -83,7 +83,7 @@ int main()
     cout << "ARCVar6 : sommet de d'arrive " + ARCVar6->ARCLireArrive() + " sommet de depart " + ARCVar6->ARCLireDepart() << endl;
     cout << "ARCVar2 : sommet de d'arrive " + ARCVar2.ARCLireArrive() + " sommet de depart " + ARCVar2.ARCLireDepart() << endl;
 
-    */
+    
     //routine de test pour CGraphOriente
     cout << "\n\nTest des methodes de CGrapheOriente"<<endl;
 
@@ -99,8 +99,10 @@ int main()
     cout<<"Voici la position du Sommet Courcouronnes "<<GROParam.GROTrouverSommetPosition("Courcouronnes");
     GROParam.GROLireSommet(2);
     GROParam.GROSupprimerArc("Paris", "Evry");
+    */
+    
 
-       
+    //routine de test pour CFichier
 
     return 0;
 }
