@@ -129,12 +129,14 @@
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />
     <ClCompile Include="CException.cpp" />
+    <ClCompile Include="CGrapheOriente.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="Projet_cpp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CArc.h" />
     <ClInclude Include="CException.h" />
+    <ClInclude Include="CGrapheOriente.h" />
     <ClInclude Include="CSommet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
