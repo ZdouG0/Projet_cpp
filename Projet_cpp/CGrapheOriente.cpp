@@ -139,7 +139,10 @@ size_t CGrapheOriente::GROTrouverSommetPosition(string chParam) {
 		if ((*iter)->SOMLireNom() == chParam) {
 			bEstDansLaListe = true;
 		}
-		stboucle++;
+		else {
+			iter++;
+			stboucle++;
+		}
 	}
 	if (bEstDansLaListe == false) {
 		CException EXCErreur;

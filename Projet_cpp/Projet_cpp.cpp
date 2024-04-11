@@ -90,11 +90,14 @@ int main()
     CGrapheOriente GROParam; //Creaction 'un objet de la classe graphe oriente
     GROParam.GROCreerSommet("Paris");
     GROParam.GROCreerSommet("Evry");
+    GROParam.GROLireSommet(1);
     GROParam.GROCreerSommet("Courcouronnes");
+    
     GROParam.GROCreerArc("Paris", "Evry");
     GROParam.GROCreerArc("Evry", "Courcouronnes");
-    cout<<"Voici le premier arc de ma list d'arc" << GROParam.GROLireArc(0).ARCLireArrive();
-
+    cout<<"Voici le premier arc de ma list d'arc " << GROParam.GROLireArc(0).ARCLireArrive()<< " - "<< GROParam.GROLireArc(0).ARCLireDepart();
+    cout<<"Voici la position du Sommet Courcouronnes "<<GROParam.GROTrouverSommetPosition("Courcouronnes");
+    GROParam.GROLireSommet(2);
 
        
 
