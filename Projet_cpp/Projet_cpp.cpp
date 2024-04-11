@@ -85,20 +85,35 @@ int main()
 
     */
     //routine de test pour CGraphOriente
-    cout << "\n\nTest des methodes de CGrapheOriente"<<endl;
+    cout << "\nTest des methodes de CGrapheOriente"<<endl;
 
     CGrapheOriente GROParam; //Creaction 'un objet de la classe graphe oriente
     GROParam.GROCreerSommet("Paris");
     GROParam.GROCreerSommet("Evry");
     GROParam.GROLireSommet(1);
     GROParam.GROCreerSommet("Courcouronnes");
-    
+    GROParam.GROCreerSommet("Lisses");
+    GROParam.GROCreerSommet("Mennecy");
+    GROParam.GROCreerSommet("Ris-Orangis");
+    GROParam.GROCreerSommet("Grigny");
     GROParam.GROCreerArc("Paris", "Evry");
     GROParam.GROCreerArc("Evry", "Courcouronnes");
-    cout<<"Voici le premier arc de ma list d'arc " << GROParam.GROLireArc(0).ARCLireArrive()<< " - "<< GROParam.GROLireArc(0).ARCLireDepart();
-    cout<<"Voici la position du Sommet Courcouronnes "<<GROParam.GROTrouverSommetPosition("Courcouronnes");
+    GROParam.GROCreerArc("Evry", "Lisses");
+    GROParam.GROCreerArc("Evry", "Ris-Orangis");
+    GROParam.GROCreerArc("Grigny", "Ris-Orangis");
+    cout<<"Voici le premier arc de ma list d'arc " << GROParam.GROLireArc(0).ARCLireArrive()<< " - "<< GROParam.GROLireArc(0).ARCLireDepart()<<endl;
+    cout<<"Voici la position du Sommet Courcouronnes "<<GROParam.GROTrouverSommetPosition("Courcouronnes")<<endl;
     GROParam.GROLireSommet(2);
-    GROParam.GROSupprimerArc("Paris", "Evry");
+  
+    cout << GROParam.GROLireArc(0).ARCLireArrive()<<endl;
+    GROParam.GROSupprimerSommet("Paris");
+    for(int i = 0; i < GROParam.GROLireTailleListArc(); i++) {
+        string s = GROParam.GROLireArc(i).ARCLireArrive();
+        string s2 = GROParam.GROLireArc(i).ARCLireDepart();
+        cout << s2 << " - " << s<<endl;
+    }
+    cout << endl << endl << endl;
+
 
        
 

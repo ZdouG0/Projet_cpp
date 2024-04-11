@@ -53,7 +53,7 @@ public:
 		* Sortie : un Arc qui arrive dans ce sommet
 		* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 		* ****************************************************/
-	CArc* SOMLireElemListArcEntrant(unsigned int uiIndice);
+	CArc* SOMLireElemListArcEntrant(unsigned int uiIndice); 
 
 	/******************************************************
 	* SOMLireListSomEntrant
@@ -63,7 +63,19 @@ public:
 	* Sortie : la liste des sommets liés a ce sommet
 	* Entraîne : la liste des sommets liés a ce sommet est retourne
 	* ****************************************************/
-	vector<string> SOMLireListSom();
+	vector<string> SOMLireListSomEntrant(); 
+
+
+	/******************************************************
+	* SOMLireListSomSortant
+	* *****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : la liste des sommets liés a ce sommet
+	* Entraîne : la liste des sommets liés a ce sommet est retourne
+	* ****************************************************/
+	vector<string> SOMLireListSomSortant(); 
+
 
 	/******************************************************
 	* SOMLireElemListArcSortant
@@ -117,7 +129,7 @@ public:
 	* Sortie : Rien
 	* Entraîne : le nom du sommet est modifié
 	* ****************************************************/
-	void SOMModifierNom(string& sParam) { sSOMNom = sParam; };
+	void SOMModifierNom(string& sParam) { sSOMNom = sParam; }
 
 
 

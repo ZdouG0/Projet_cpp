@@ -66,6 +66,19 @@ public:
 
 
 
+
+	/*****************************************************
+	* GROLireTailleListArc
+	* ****************************************************
+	* Entrée : Aucune
+	* Nécessite : Rien
+	* Sortie : un size_t
+	* Entraîne : la taille de ma liste des arcs
+	* ****************************************************/
+	size_t GROLireTailleListArc() const { return pARCGROListArc.size(); }
+
+
+
 	/*****************************************************
 	* GROSupprimerArc
 	* ****************************************************
@@ -116,6 +129,27 @@ public:
 
 
 	/*****************************************************
+	* GROCreerSommet
+	* ****************************************************
+	* Entrée : une chaine de caractere ( nom du sommet à creer)
+	* Nécessite : Rien
+	* Sortie : Aucune
+	* Entraîne : Il y a un sommet de plus dans la liste des sommets si le sommet est bien dans la liste
+	* ****************************************************/
+
+
+	/*****************************************************
+	* GROLireTailleListSommet
+	* ****************************************************
+	* Entrée : Aucune
+	* Nécessite : Rien
+	* Sortie : un size_t
+	* Entraîne : la taille de ma liste des sommets
+	* ****************************************************/
+	size_t GROLireTailleListSommet() const { return pSOMGROListSom.size(); }
+
+
+	/*****************************************************
 	* GROLireSommet
 	* ****************************************************
 	* Entrée : un size_t (qui correspond à la position du sommet à lire)
@@ -126,6 +160,29 @@ public:
 	string GROLireSommet(size_t stPos) const;
 	//ICI tu va devoir utiliser iterator car la surcharge de loperator [] nous parait pas petinante
 
+
+
+
+/*****************************************************
+	* GROLireSommetSortantLie
+	* ****************************************************
+	* Entrée : un string (qui correspond au nom du sommet à lire)
+	* Nécessite : Rien
+	* Sortie : vector<string>
+	* Entraîne : (le nom des sommet qui sont lié avec des arcs à notre sommet d'entré) OU (Exception Element_inconnu)
+	* ****************************************************/
+	vector<string> GROLireSommetSortantLie(string chParam);
+
+
+	/*****************************************************
+	* GROLireSommetEntrantLie
+	* ****************************************************
+	* Entrée : un string (qui correspond au nom du sommet à lire)
+	* Nécessite : Rien
+	* Sortie : vector<string>
+	* Entraîne : (le nom des sommet qui sont lié avec des arcs à notre sommet d'entré) OU (Exception Element_inconnu)
+	* ****************************************************/
+	vector<string> GROLireSommetEntrantLie(string chParam);
 
 	/*****************************************************
 	* GROSupprimerSommet

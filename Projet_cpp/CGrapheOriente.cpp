@@ -79,8 +79,12 @@ void CGrapheOriente::GROSupprimerArc(string chParamDepart, string chParamArrive)
 	for (auto iter = pARCGROListArc.begin(); iter != pARCGROListArc.end(); ++iter) {
 		if ((*iter)->ARCLireDepart() == chParamDepart && (*iter)->ARCLireArrive() == chParamArrive) {
 			pARCGROListArc.erase(iter);
+			return;
 		}
 	}
+	CException EXCErreur;
+	EXCErreur.EXCModifierValeur(Element_inconnu);
+	throw(EXCErreur);
 }
 
 
@@ -98,6 +102,7 @@ void CGrapheOriente::GROSupprimerArcs(CSommet& SOMParam) {
 	for (stBoucle = 0; stBoucle < SOMParam.SOMTaileListArcEntrant(); stBoucle++) {
 		CArc* ARCParam = SOMParam.SOMLireElemListArcEntrant(stBoucle);
 		GROSupprimerArc(ARCParam->ARCLireDepart(), ARCParam->ARCLireArrive());
+
 	}
 	for (stBoucle = 0; stBoucle < SOMParam.SOMTaileListArcSortant(); stBoucle++) {
 		CArc* ARCParam = SOMParam.SOMLireElemListArcSortant(stBoucle);
@@ -178,6 +183,39 @@ string CGrapheOriente::GROLireSommet(size_t stPos) const {
 	return (*iter)->SOMLireNom();
 }
 
+
+
+
+/*****************************************************
+	* GROLireSommetSortantLie
+	* ****************************************************
+	* Entrée : un string (qui correspond au nom du sommet à lire)
+	* Nécessite : Rien
+	* Sortie : vector<string>
+	* Entraîne : (le nom des sommet qui sont lié avec des arcs à notre sommet d'entré) OU (Exception Element_inconnu)
+	* ****************************************************/
+vector<string> CGrapheOriente::GROLireSommetSortantLie(string chParam) {
+	size_t stPos = GROTrouverSommetPosition(chParam);
+	auto iter = pSOMGROListSom.begin();
+	advance(iter, stPos);
+	return (*iter)->SOMLireListSomSortant();
+}
+
+
+/*****************************************************
+	* GROLireSommetEntrantLie
+	* ****************************************************
+	* Entrée : un string (qui correspond au nom du sommet à lire)
+	* Nécessite : Rien
+	* Sortie : vector<string>
+	* Entraîne : (le nom des sommet qui sont lié avec des arcs à notre sommet d'entré) OU (Exception Element_inconnu)
+	* ****************************************************/
+vector<string> CGrapheOriente::GROLireSommetEntrantLie(string chParam) {
+	size_t stPos = GROTrouverSommetPosition(chParam);
+	auto iter = pSOMGROListSom.begin();
+	advance(iter, stPos);
+	return (*iter)->SOMLireListSomEntrant();
+}
 
 
 /*****************************************************
