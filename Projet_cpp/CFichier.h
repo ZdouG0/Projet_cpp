@@ -5,6 +5,16 @@ using namespace std;
 #include <fstream>
 #include <iostream>
 #include "CException.h"
+#include "CGrapheOriente.h"
+
+
+//on definnit des variables pour les differnte balise 
+#define BALISE_NBARC "NBARC="
+#define BALISE_NBSOMMET "NBSommets="
+#define BALISE_NUMERO "Numero="
+#define BALISE_DEBUT "Debut="
+#define BALISE_FIN "Fin="
+
 
 /************************************************************
 * CLASSE : Classe pour la lecture et la gestion de fichier
@@ -30,17 +40,16 @@ using namespace std;
 *
 */
 
-#define ECHEC_LECTURE 984
-#define POSITION_EGALE_NBARC 6
-#define POSITION_EGALE_NBSOM 9
-#define POSITION_EGALE_ARC_DEB 5
-#define POSITION_EGALE_SOM 6
-
 class CFichier
 {	
 	//Attributs
 	private :
 		string  sFICNomFichier; // le chemin d'acces du fichier
+		CGrapheOriente* GROFICGraphe;
+		unsigned int FICNbSommet;
+		unsigned int FICNbArc;
+
+
 	//Methodes
 	public :
 		/*****************************************************
@@ -75,6 +84,17 @@ class CFichier
 		ifstream FICLireFichier();
 
 		/*****************************************************
+		* FICParser
+		* ****************************************************
+		* Entrée : une variables istream
+		* Nécessite : la variable est valide
+		* Sortie : Rien
+		* Entraîne : determine le contenu d'un ligne et quelles
+		* methode appele en consequence
+		* ****************************************************/
+		void FICParser(ifstream MonFichier);
+
+		/*****************************************************
 		* FILRecupNombre
 		* ****************************************************
 		* Entrée : unsigned int la position de debut, unsigned
@@ -86,28 +106,16 @@ class CFichier
 		* ****************************************************/
 		const unsigned int FILRecupNombre(unsigned int uiDebut, unsigned int uiFin, string sLigne);
 
-
 		/*****************************************************
-		* FICLireNbSommet
+		* FILRecupNom
 		* ****************************************************
-		* Entrée : une variables istream
-		* Nécessite : la variable est valide
-		* Sortie : un entier
-		* Entraîne : Le nombre de sommet du fichier est retourne
+		* Entrée : unsigned int la position de debut, unsigned
+		* int la position de fin et sLigne la ligne sur laquelle
+		* le traitement est fait
+		* Nécessite : les position sont bien dans les ligne FAIRE EXCEPTIONN ???????
+		* Sortie : un entier non signé
+		* Entraîne : On recupere le nombre apres le egale
 		* ****************************************************/
-		const int FICLireNbSommet(ifstream MonFichier);
-
-		/*****************************************************
-		* FICLireNbArc
-		* ****************************************************
-		* Entrée : une variables istream
-		* Nécessite : la variable est valide
-		* Sortie : un entier
-		* Entraîne : Le nombre d'arc du fichier est retourne
-		* ****************************************************/
-		const int FICLireNbArc(ifstream MonFichier);
-
-		
-
+		const string FILRecupNom(unsigned int uiDebut, unsigned int uiFin, string sLigne);
 };
 
