@@ -7,6 +7,9 @@ using namespace std;
 #include "CException.h"
 #include "CGrapheOriente.h"
 
+//variable exception
+#define ECHEC_LECTURE 984
+
 
 //on definnit des variables pour les differnte balise 
 #define BALISE_NBARC "NBARC="
