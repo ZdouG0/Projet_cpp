@@ -13,7 +13,7 @@ using namespace std;
 * CLASSE : Classe pour la gestion des Sommets
 * ************************************************************
 * ROLE : Interface de la classe CSommet,
-* cette classe fournit un ensemble de service pour la gestion 
+* cette classe fournit un ensemble de service pour la gestion
 * de sommets
 * ************************************************************
 * VERSION :
@@ -28,8 +28,8 @@ using namespace std;
 */
 
 /* VARIABLES :
-* 
-* 
+*
+*
 */
 
 #define INDICE_HORS_TABLEAU 866
@@ -37,89 +37,115 @@ using namespace std;
 class CSommet
 {
 	//ATTRIBUTS
-	private :
-		string sSOMNom;
-		list<CArc*> lSOMListArcEntrant;
-		list<CArc*> lSOMListArcSortant;
+private:
+	string sSOMNom;
+	list<CArc*> lSOMListArcEntrant;
+	list<CArc*> lSOMListArcSortant;
 	//CONSTRUCTEUR / DESTRUCTEUR
-	public:
+public:
 	//METHODES
 		/******************************************************
 		* SOMLireElemListArcEntrant
 		* *****************************************************
-		* Entrée : un entier non signé l'indice de l'element 
+		* Entrée : un entier non signé l'indice de l'element
 		* souhaité dans la liste
 		* Nécessite : Rien
 		* Sortie : un Arc qui arrive dans ce sommet
 		* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 		* ****************************************************/
-		CArc* SOMLireElemListArcEntrant(unsigned int uiIndice);
+	CArc* SOMLireElemListArcEntrant(unsigned int uiIndice);
 
-		/******************************************************
-		* SOMLireListSomEntrant
-		* *****************************************************
-		* Entrée : Rien
-		* Nécessite : Rien
-		* Sortie : la liste des sommets liés a ce sommet 
-		* Entraîne : la liste des sommets liés a ce sommet est retourne
-		* ****************************************************/
-		vector<string> SOMLireListSom();
+	/******************************************************
+	* SOMLireListSomEntrant
+	* *****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : la liste des sommets liés a ce sommet
+	* Entraîne : la liste des sommets liés a ce sommet est retourne
+	* ****************************************************/
+	vector<string> SOMLireListSom();
 
-		/******************************************************
-		* SOMLireElemListArcSortant
-		* *****************************************************
-		* Entrée : une entier non signé l'indice de l'element
-		* souhaité dans la liste
-		* Nécessite : Rien
-		* Sortie : un Arc qui part de ce sommet
-		* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
-		* ****************************************************/
-		CArc* SOMLireElemListArcSortant(unsigned int uiIndice);
+	/******************************************************
+	* SOMLireElemListArcSortant
+	* *****************************************************
+	* Entrée : une entier non signé l'indice de l'element
+	* souhaité dans la liste
+	* Nécessite : Rien
+	* Sortie : un Arc qui part de ce sommet
+	* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
+	* ****************************************************/
+	CArc* SOMLireElemListArcSortant(unsigned int uiIndice);
 
-		/******************************************************
-		* SOMAjoutArcSortant
-		* *****************************************************
-		* Entrée : un CArc; l'arc que l'on veut ajouter
-		* Nécessite : Le sommet de depart de l'arc doit etre le sommet actuel
-		* Sortie : Rien
-		* Entraîne : L'arc entre en parametre est ajouté a la liste
-		* des arc sortant 
-		* ****************************************************/
-		inline void SOMAjoutArcSortant(CArc* ARCParam) { lSOMListArcSortant.push_back(ARCParam); };
+	/******************************************************
+	* SOMAjoutArcSortant
+	* *****************************************************
+	* Entrée : un CArc; l'arc que l'on veut ajouter
+	* Nécessite : Le sommet de depart de l'arc doit etre le sommet actuel
+	* Sortie : Rien
+	* Entraîne : L'arc entre en parametre est ajouté a la liste
+	* des arc sortant
+	* ****************************************************/
+	inline void SOMAjoutArcSortant(CArc* ARCParam) { lSOMListArcSortant.push_back(ARCParam); };
 
-		/******************************************************
-		* SOMAjoutArcEntrant
-		* *****************************************************
-		* Entrée : un CArc; l'arc que l'on veut ajouter
-		* Nécessite : Le sommet d'arrivé de l'arc doit etre le sommet actuel
-		* Sortie : Rien
-		* Entraîne : L'arc entre en parametre est ajouté a la liste
-		* des arc entrant
-		* ****************************************************/
-		inline void SOMAjoutArcEntrant(CArc* ARCParam) { lSOMListArcEntrant.push_back(ARCParam); } ;
+	/******************************************************
+	* SOMAjoutArcEntrant
+	* *****************************************************
+	* Entrée : un CArc; l'arc que l'on veut ajouter
+	* Nécessite : Le sommet d'arrivé de l'arc doit etre le sommet actuel
+	* Sortie : Rien
+	* Entraîne : L'arc entre en parametre est ajouté a la liste
+	* des arc entrant
+	* ****************************************************/
+	inline void SOMAjoutArcEntrant(CArc* ARCParam) { lSOMListArcEntrant.push_back(ARCParam); };
 
-		/******************************************************
-		* SOMLireNom
-		* *****************************************************
-		* Entrée : Rien
-		* Nécessite : Rien
-		* Sortie : Rien
-		* Entraîne : le nom du sommet est retourné
-		* ****************************************************/
-		const string SOMLireNom() const { return sSOMNom; };
+	/******************************************************
+	* SOMLireNom
+	* *****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : Rien
+	* Entraîne : le nom du sommet est retourné
+	* ****************************************************/
+	const string SOMLireNom() const { return sSOMNom; };
 
 
-		/******************************************************
-		* SOMModifierNom
-		* *****************************************************
-		* Entrée : Rien
-		* Nécessite : Rien
-		* Sortie : Rien
-		* Entraîne : le nom du sommet est modifié
-		* ****************************************************/
-		void SOMModifierNom(string& sParam) { sSOMNom = sParam; };
+	/******************************************************
+	* SOMModifierNom
+	* *****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : Rien
+	* Entraîne : le nom du sommet est modifié
+	* ****************************************************/
+	void SOMModifierNom(string& sParam) { sSOMNom = sParam; };
+
+
+
+
+	/******************************************************
+	* SOMTaileListArcEntrant
+	* *****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : size_t
+	* Entraîne : la taille de la liste d'arc entrant est retourné
+	* ****************************************************/
+	size_t SOMTaileListArcEntrant() { return lSOMListArcEntrant.size(); }
+
+
+
+
+
+	/******************************************************
+	* SOMTaileListArcSortant
+	* *****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : size_t
+	* Entraîne : la taille de la liste d'arc sortant est retourné
+	* ****************************************************/
+	size_t SOMTaileListArcSortant() { return lSOMListArcSortant.size(); }
 
 
 
 };
-

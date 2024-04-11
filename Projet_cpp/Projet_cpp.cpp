@@ -4,13 +4,15 @@
 #include <iterator>;
 #include <string>;
 #include <vector>;
+#include "CGrapheOriente.h"
+
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!\n";
-
+    cout << "Hello World!"<<endl<<endl;
+    /*
     //routine de test des methodes de la classe CArc
     cout << "test des methodes de CARC\n";
     CArc ARCVar;   // création d'un objet de la classe Carc
@@ -58,11 +60,11 @@ int main()
 
     //on lit les sommets lie au notre
     cout << "\ntest de LireListSom\n";
-    unsigned int uiTaille;
+    size_t stTaille;
     vector<string> s = SOMVar.SOMLireListSom();
-    uiTaille = SOMVar.SOMLireListSom().size();
+    stTaille = SOMVar.SOMLireListSom().size();
 
-    for (unsigned int uiBoucle = 0; uiBoucle <= uiTaille-1; uiBoucle++) {
+    for (unsigned int uiBoucle = 0; uiBoucle <= stTaille-1; uiBoucle++) {
         cout << s[uiBoucle] <<endl;
     }
 
@@ -81,7 +83,22 @@ int main()
     cout << "ARCVar6 : sommet de d'arrive " + ARCVar6->ARCLireArrive() + " sommet de depart " + ARCVar6->ARCLireDepart() << endl;
     cout << "ARCVar2 : sommet de d'arrive " + ARCVar2.ARCLireArrive() + " sommet de depart " + ARCVar2.ARCLireDepart() << endl;
 
+    */
+    //routine de test pour CGraphOriente
+    cout << "\n\nTest des methodes de CGrapheOriente"<<endl;
 
+    CGrapheOriente GROParam; //Creaction 'un objet de la classe graphe oriente
+    GROParam.GROCreerSommet("Paris");
+    GROParam.GROCreerSommet("Evry");
+    GROParam.GROLireSommet(1);
+    GROParam.GROCreerSommet("Courcouronnes");
+    
+    GROParam.GROCreerArc("Paris", "Evry");
+    GROParam.GROCreerArc("Evry", "Courcouronnes");
+    cout<<"Voici le premier arc de ma list d'arc " << GROParam.GROLireArc(0).ARCLireArrive()<< " - "<< GROParam.GROLireArc(0).ARCLireDepart();
+    cout<<"Voici la position du Sommet Courcouronnes "<<GROParam.GROTrouverSommetPosition("Courcouronnes");
+    GROParam.GROLireSommet(2);
+    GROParam.GROSupprimerArc("Paris", "Evry");
 
        
 

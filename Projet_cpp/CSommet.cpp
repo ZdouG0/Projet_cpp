@@ -11,7 +11,7 @@
 * Sortie : un Arc qui part de ce sommet
 * Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 * ****************************************************/
-CArc* CSommet :: SOMLireElemListArcEntrant(unsigned int uiIndice) {
+CArc* CSommet::SOMLireElemListArcEntrant(unsigned int uiIndice) {
 	if (uiIndice >= lSOMListArcEntrant.size()) {
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
@@ -34,7 +34,7 @@ CArc* CSommet :: SOMLireElemListArcEntrant(unsigned int uiIndice) {
 * Sortie : un Arc qui entre dans ce sommet
 * Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 * ****************************************************/
-CArc* CSommet ::SOMLireElemListArcSortant(unsigned int uiIndice) {
+CArc* CSommet::SOMLireElemListArcSortant(unsigned int uiIndice) {
 	if (uiIndice >= lSOMListArcSortant.size()) {
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
@@ -56,12 +56,12 @@ CArc* CSommet ::SOMLireElemListArcSortant(unsigned int uiIndice) {
 	* Sortie : la liste des sommets liés a ce sommet
 	* Entraîne : la liste des sommets liés a ce sommet est retourne
 	* ****************************************************/
-vector<string> CSommet :: SOMLireListSom() {
+vector<string> CSommet::SOMLireListSom() {
 	vector<string> vListSom;
-	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcEntrant.size() ; uiBoucle++) {
+	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcEntrant.size(); uiBoucle++) {
 		vListSom.push_back(SOMLireElemListArcEntrant(uiBoucle)->ARCLireArrive());
 	}
-	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcSortant.size() ; uiBoucle++) {
+	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcSortant.size(); uiBoucle++) {
 		vListSom.push_back(SOMLireElemListArcSortant(uiBoucle)->ARCLireDepart());
 	}
 	return vListSom;

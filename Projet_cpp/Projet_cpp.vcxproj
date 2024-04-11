@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -130,6 +130,7 @@
     <ClCompile Include="CArc.cpp" />
     <ClCompile Include="CFichier.cpp" />
     <ClCompile Include="CException.cpp" />
+    <ClCompile Include="CGrapheOriente.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="Projet_cpp.cpp" />
   </ItemGroup>
@@ -137,6 +138,7 @@
     <ClInclude Include="CArc.h" />
     <ClInclude Include="CFichier.h" />
     <ClInclude Include="CException.h" />
+    <ClInclude Include="CGrapheOriente.h" />
     <ClInclude Include="CSommet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
