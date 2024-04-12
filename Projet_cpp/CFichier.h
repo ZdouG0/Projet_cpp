@@ -12,7 +12,7 @@ using namespace std;
 
 
 //on definnit des variables pour les differnte balise 
-#define BALISE_NBARC "NBARC="
+#define BALISE_NBARC "NBArcs="
 #define BALISE_NBSOMMET "NBSommets="
 #define BALISE_NUMERO "Numero="
 #define BALISE_DEBUT "Debut="
@@ -107,7 +107,7 @@ class CFichier
 		* Sortie : un entier non signé
 		* Entraîne : On recupere le nombre apres le egale
 		* ****************************************************/
-		const unsigned int FILRecupNombre(unsigned int uiDebut, unsigned int uiFin, string sLigne);
+		const int FILRecupNombre(size_t uiDebut, size_t uiFin, string sLigne);
 
 		/*****************************************************
 		* FILRecupNom
@@ -119,6 +119,6 @@ class CFichier
 		* Sortie : un entier non signé
 		* Entraîne : On recupere le nombre apres le egale
 		* ****************************************************/
-		const string FILRecupNom(unsigned int uiDebut, unsigned int uiFin, string sLigne);
+		const string FILRecupNom(size_t uiDebut, size_t uiFin, string sLigne);
 };
 

@@ -39,13 +39,12 @@ ifstream CFichier :: FICLireFichier() {
 * Sortie : un entier non signé
 * Entraîne : On recupere le nombre apres le egale
 * ****************************************************/
-const unsigned int CFichier::FILRecupNombre(unsigned int uiDebut, unsigned int uiFin, string sLigne) {
-	unsigned int uiNombre = 0;
-	unsigned int uicpt = 0;
+const int CFichier::FILRecupNombre(size_t uiDebut, size_t uiFin, string sLigne) {
+	int uiNombre = 0;
+	string sResultat;
 
-	for (uicpt = uiDebut + 1; uicpt < uiFin; uicpt++) { // on se place juste apres le egale de la ligne
-		uiNombre += sLigne[uicpt] * pow(10, sLigne.size() - uicpt); // la valeur que l'on souhaite est ajoute caractere par caractere en respectant dizaine centaine etc
-	}
+	sResultat = sLigne.substr(uiDebut, uiFin-uiDebut);  // on copie dans cResulat les caractere compris entre la pos uiDebut et la uiFin
+	uiNombre = stoi(sResultat, nullptr, 0);
 
 	return uiNombre;
 
@@ -61,12 +60,13 @@ const unsigned int CFichier::FILRecupNombre(unsigned int uiDebut, unsigned int u
 * Sortie : un entier non signé
 * Entraîne : On recupere le nombre apres le egale
 * ****************************************************/
-const string CFichier::FILRecupNom(unsigned int uiDebut, unsigned int uiFin, string sLigne) {
+const string CFichier::FILRecupNom(size_t uiDebut, size_t uiFin, string sLigne) {
 	size_t stTaille;
 	char cResultat[20];
 	
 	stTaille = sLigne.size();
-	sLigne.copy(cResultat, uiFin);  // on copie dans cResulat les caractere compris entre la pos uiDebut et la uiFin
+	sLigne.copy(cResultat, uiFin-uiDebut, uiDebut);  // on copie dans cResulat les caractere compris entre la pos uiDebut et la uiFin
+	cResultat[uiFin - uiDebut] = '\0';
 
 	string sResultat = cResultat; // on change le type de char* a string
 
@@ -85,24 +85,36 @@ const string CFichier::FILRecupNom(unsigned int uiDebut, unsigned int uiFin, str
 * methode appele en consequence
 * ****************************************************/
 void CFichier :: FICParser(ifstream MonFichier) {
+	size_t stTaille;
+	string sBalise;
 	string sLigne;
 	string sNomSom;
 	string sNomSomFin;
-	while (getline(MonFichier, sLigne)) {
+	while (getline(MonFichier, sLigne)) { //permet qu'a chaque iteration de la boucle on travaille sur une nouvelle ligne
 		if (sLigne.find(BALISE_NBSOMMET) != string::npos) {
-			FICNbSommet = FILRecupNombre(sLigne.find(BALISE_NBSOMMET)+1, sLigne.size(), sLigne);
+			sBalise = BALISE_NBSOMMET; //on place la variable gloobale dans une variable local afin d'avoir acces a toute les methodes de String
+			stTaille = sBalise.size(); //on recupere la taille car la methode .find retourne la position du debut de la balise et non la fin
+			FICNbSommet = FILRecupNombre(sLigne.find(sBalise) + stTaille, sLigne.size(), sLigne); // on met dans la variable le nombre de Sommet 
 		}
 		if (sLigne.find(BALISE_NBARC) != string::npos) {
-			FICNbArc = FILRecupNombre(sLigne.find(BALISE_NBARC)+1, sLigne.size(), sLigne);
+			sBalise = BALISE_NBARC; //--
+			stTaille = sBalise.size();//--
+			FICNbArc = FILRecupNombre(sLigne.find(sBalise) + stTaille, sLigne.size(), sLigne);
 		}
 		if (sLigne.find(BALISE_NUMERO) != string::npos) {
-			sNomSom = FILRecupNom(sLigne.find(BALISE_NUMERO)+1, sLigne.size(), sLigne);
-			GROFICGraphe->GROCreerSommet(sNomSom); //RESTE A CORRIGER POUR RECUP UN NOM ET PAS UN CHIFFRE UTILISER str.copy(buffer,6,5)
+			sBalise = BALISE_NUMERO;
+			stTaille = sBalise.size();
+			sNomSom = FILRecupNom(sLigne.find(sBalise)+stTaille, sLigne.size(), sLigne);
+			GROFICGraphe->GROCreerSommet(sNomSom); //On appele la methode creer sommet de notre Classe CGrapheOrient
 		}
 		if (sLigne.find(BALISE_DEBUT) != string::npos) {
-			sNomSom = FILRecupNombre(sLigne.find(BALISE_DEBUT)+1, sLigne.size(), sLigne);
-			sNomSom = FILRecupNom(sLigne.find(BALISE_FIN) + 1, sLigne.find(',') - 1, sLigne);
-			GROFICGraphe->GROCreerArc(sNomSom, sNomSom);
+			sBalise = BALISE_DEBUT;
+			stTaille = sBalise.size();
+			sNomSom = FILRecupNombre(sLigne.find(sBalise) + stTaille, sLigne.size(), sLigne);
+			sBalise = BALISE_FIN;
+			stTaille = sBalise.size();
+			sNomSomFin = FILRecupNom(sLigne.find(sBalise) + stTaille, sLigne.find(',') - 1, sLigne);
+			GROFICGraphe->GROCreerArc(sNomSom, sNomSomFin);
 		}
 		
 	}

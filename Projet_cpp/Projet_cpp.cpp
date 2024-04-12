@@ -1,10 +1,11 @@
 #include <iostream>
 #include "CArc.h"
 #include "CSommet.h"
-#include <iterator>;
-#include <string>;
-#include <vector>;
+#include <iterator>
+#include <string>
+#include <vector>
 #include "CGrapheOriente.h"
+#include "CFichier.h"
 
 
 using namespace std;
@@ -103,6 +104,27 @@ int main()
     
 
     //routine de test pour CFichier
+    CFichier FICMonFichier;
+
+    // test de FICModifierNomFichier
+    FICMonFichier.FICModifierNomFichier("fichiertest.txt");
+
+    //test de FICLireNomFichier
+    cout << "Le nom du fichier est " + FICMonFichier.FICLireNomFichier() << endl;
+
+    //test de FILRecupNombre
+    string sTest = "On veut recuperer le nombre 821 qui se trouve apres nombre";
+    //le 7 represente la taille de notre balise
+    cout << "le nombre cherche est " << FICMonFichier.FILRecupNombre(sTest.find("nombre")+7, sTest.find("qui")-1, sTest) << endl ;
+
+    //test de FILRecupNombre
+    sTest = " On veut recuperer le nom de sommet numero=Tours, au milieu de ce string";
+    // la taille de notre balise est de 7
+    cout << "le nom du sommet est " << FICMonFichier.FILRecupNom(sTest.find("numero=") + 7, sTest.find(','), sTest) << endl;
+
+    ifstream ifsMonfichier = FICMonFichier.FICLireFichier();
+    FICMonFichier.FICParser(FICMonFichier.FICLireFichier());
+
 
     return 0;
 }
