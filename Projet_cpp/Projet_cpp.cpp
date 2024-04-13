@@ -88,7 +88,8 @@ int main()
     cout << "\n\nTest des methodes de CGrapheOriente"<<endl;
 
     CGrapheOriente GROParam; //Creaction 'un objet de la classe graphe oriente
-    GROParam.GROCreerSommet("Paris");
+    string Capitale = "Paris";
+    GROParam.GROCreerSommet(Capitale);
     GROParam.GROCreerSommet("Evry");
     GROParam.GROLireSommet(1);
     GROParam.GROCreerSommet("Courcouronnes");
