@@ -1,10 +1,10 @@
 #include <iostream>
-#include "CArc.h"
-#include "CSommet.h"
 #include <iterator>;
 #include <string>;
 #include <vector>;
 #include "CGrapheOriente.h"
+#include "assert.h"
+
 
 
 using namespace std;
@@ -12,7 +12,7 @@ using namespace std;
 int main()
 {
     cout << "Hello World!"<<endl<<endl;
-    /*
+    
     //routine de test des methodes de la classe CArc
     cout << "test des methodes de CARC\n";
     CArc ARCVar;   // création d'un objet de la classe Carc
@@ -58,15 +58,8 @@ int main()
     SOMVar.SOMAjoutArcSortant(&ARCVar);
     SOMVar.SOMAjoutArcSortant(&ARCVar2);
 
-    //on lit les sommets lie au notre
-    cout << "\ntest de LireListSom\n";
-    size_t stTaille;
-    vector<string> s = SOMVar.SOMLireListSom();
-    stTaille = SOMVar.SOMLireListSom().size();
 
-    for (unsigned int uiBoucle = 0; uiBoucle <= stTaille-1; uiBoucle++) {
-        cout << s[uiBoucle] <<endl;
-    }
+
 
     //on test maintenant les fonctions SOMLireElemListArcEntrant SOMLireElemListArcSortant
     cout << "\ntest de SOMLireElemListArcEntrant SOMLireElemListArcSortant\n";
@@ -83,14 +76,16 @@ int main()
     cout << "ARCVar6 : sommet de d'arrive " + ARCVar6->ARCLireArrive() + " sommet de depart " + ARCVar6->ARCLireDepart() << endl;
     cout << "ARCVar2 : sommet de d'arrive " + ARCVar2.ARCLireArrive() + " sommet de depart " + ARCVar2.ARCLireDepart() << endl;
 
-    */
+    
     //routine de test pour CGraphOriente
     cout << "\nTest des methodes de CGrapheOriente"<<endl;
 
     CGrapheOriente GROParam; //Creaction 'un objet de la classe graphe oriente
+    //Creation de deux sommets
     GROParam.GROCreerSommet("Paris");
     GROParam.GROCreerSommet("Evry");
-    GROParam.GROLireSommet(1);
+    //Test de la methode GROLireSommet
+    assert(GROParam.GROLireSommet(1) == "Evry");
     GROParam.GROCreerSommet("Courcouronnes");
     GROParam.GROCreerSommet("Lisses");
     GROParam.GROCreerSommet("Mennecy");
