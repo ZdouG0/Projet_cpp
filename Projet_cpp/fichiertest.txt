@@ -2,7 +2,7 @@ NBSommets=3
 NBArcs=3
 Sommets=[
 Numero=1
-Numero=2
+Numero=22
 Numero=3
 ]
 Arcs=[

@@ -165,7 +165,7 @@ size_t CGrapheOriente::GROTrouverSommetPosition(string chParam) {
 	* Sortie : string
 	* Entraîne : (lenom du sommet avec la position sPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
-string CGrapheOriente::GROLireSommet(size_t stPos) const {
+CSommet* CGrapheOriente::GROLireSommet(size_t stPos) const {
 	if (stPos >= pSOMGROListSom.size()) {
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(Element_inconnu);
@@ -175,7 +175,7 @@ string CGrapheOriente::GROLireSommet(size_t stPos) const {
 	auto iter = pSOMGROListSom.begin();
 	advance(iter, stPos);
 
-	return (*iter)->SOMLireNom();
+	return (*iter);
 }
 
 

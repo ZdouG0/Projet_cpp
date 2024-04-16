@@ -6,6 +6,7 @@
 #include <vector>
 #include "CGrapheOriente.h"
 #include "CFichier.h"
+#include "CSortie.h"
 
 
 using namespace std;
@@ -124,6 +125,11 @@ int main()
 
     ifstream ifsMonfichier = FICMonFichier.FICLireFichier();
     FICMonFichier.FICParser(FICMonFichier.FICLireFichier());
+
+
+    CSortie* SORSortie = new CSortie;
+    SORSortie->SORModifierGraphe(*FICMonFichier.FICLireGraphe());
+    SORSortie->SORAfficher_Graphe();
 
 
     return 0;

@@ -63,7 +63,19 @@ public:
 	* Sortie : la liste des sommets liés a ce sommet
 	* Entraîne : la liste des sommets liés a ce sommet est retourne
 	* ****************************************************/
-	vector<string> SOMLireListSom();
+	vector<string> SOMLireListSomEntrant();
+
+
+	/******************************************************
+	* SOMLireListSomSortant
+	* *****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : la liste des sommets liés a ce sommet
+	* Entraîne : la liste des sommets liés a ce sommet est retourne
+	* ****************************************************/
+	vector<string> SOMLireListSomSortant();
+
 
 	/******************************************************
 	* SOMLireElemListArcSortant

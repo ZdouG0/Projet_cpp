@@ -22,7 +22,7 @@ using namespace std;
 /************************************************************
 * CLASSE : Classe pour la lecture et la gestion de fichier
 * ************************************************************
-* ROLE : Interface de la classe CEntree,
+* ROLE : Interface de la classe CFichier,
 * cette classe fournit un ensemble de service pour la lecture
 * des donnees d'un fichier et la creation d'un graphe a partir
 * de ce fichier
@@ -64,6 +64,16 @@ class CFichier
 		* Entraîne : Le nom/chemin du fichier est retourné
 		* ****************************************************/
 		CFichier();
+
+		/*****************************************************
+		* CFichier
+		* ****************************************************
+		* Entrée : Rien
+		* Nécessite : Rien
+		* Sortie : un pointeur vers GROFICGraphe
+		* Entraîne : un pointeur vers GROFICGraphe est retourné
+		* ****************************************************/
+		inline CGrapheOriente* FICLireGraphe() { return GROFICGraphe; }
 
 
 		/*****************************************************

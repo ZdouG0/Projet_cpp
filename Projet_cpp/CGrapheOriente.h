@@ -120,10 +120,10 @@ public:
 	* ****************************************************
 	* Entrée : un size_t (qui correspond à la position du sommet à lire)
 	* Nécessite : Rien
-	* Sortie : string
+	* Sortie : un pointeur vers un sommet
 	* Entraîne : (lenom du sommet avec la position sPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
-	string GROLireSommet(size_t stPos) const;
+	CSommet* GROLireSommet(size_t stPos) const;
 	//ICI tu va devoir utiliser iterator car la surcharge de loperator [] nous parait pas petinante
 
 
@@ -136,6 +136,28 @@ public:
 	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 	* ****************************************************/
 	void GROSupprimerSommet(string chParam);
+
+	/*****************************************************
+	* GRONombreSommet
+	* ****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : le nombre de sommet
+	* Entraîne : le nombre de sommet est retourné
+	* ****************************************************/
+	inline size_t GRONombreSommet() const { return pSOMGROListSom.size(); };
+
+
+	/*****************************************************
+	* GRONombreArc
+	* ****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : le nombre de arc
+	* Entraîne : le nombre de arc est retourné
+	* ****************************************************/
+	inline size_t GRONombreArc() const { return pARCGROListArc.size(); };
+
 
 
 
