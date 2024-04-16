@@ -110,7 +110,7 @@ void CGrapheOriente::GROSupprimerArcs(CSommet& SOMParam) {
 /*****************************************************
 * GROCreerSommet
 * ****************************************************
-* Entrée : une chaine de caractere ( nom du sommer à creer)
+* Entrée : une chaine de caractere ( nom du sommet à creer)
 * Nécessite : Rien
 * Sortie : Aucune
 * Entraîne : Il y a un sommet de plus dans la liste des sommets si le sommet est bien dans la liste

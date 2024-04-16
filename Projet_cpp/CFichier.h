@@ -56,6 +56,17 @@ class CFichier
 	//Methodes
 	public :
 		/*****************************************************
+		* CFichier
+		* ****************************************************
+		* Entrée : Rien
+		* Nécessite : Rien
+		* Sortie : un string constant
+		* Entraîne : Le nom/chemin du fichier est retourné
+		* ****************************************************/
+		CFichier();
+
+
+		/*****************************************************
 		* FICLireNomFichier
 		* ****************************************************
 		* Entrée : Rien

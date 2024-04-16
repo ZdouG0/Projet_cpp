@@ -120,7 +120,7 @@ int main()
     //test de FILRecupNombre
     sTest = " On veut recuperer le nom de sommet numero=Tours, au milieu de ce string";
     // la taille de notre balise est de 7
-    cout << "le nom du sommet est " << FICMonFichier.FILRecupNom(sTest.find("numero=") + 7, sTest.find(','), sTest) << endl;
+    cout << "le nom du sommet est " << FICMonFichier.FILRecupNom(sTest.find("numero=") + 7, sTest.find(',') , sTest) << endl;
 
     ifstream ifsMonfichier = FICMonFichier.FICLireFichier();
     FICMonFichier.FICParser(FICMonFichier.FICLireFichier());

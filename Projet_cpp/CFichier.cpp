@@ -2,7 +2,20 @@
 #include <cmath>
 
 
-
+/*****************************************************
+* CFichier
+* ****************************************************
+* Entrée : Rien
+* Nécessite : Rien
+* Sortie : Rien
+* Entraîne : Constructeur pardefaut
+* ****************************************************/
+CFichier :: CFichier() {
+	GROFICGraphe = new CGrapheOriente;
+	FICNbSommet=0;
+	FICNbArc=0;
+	sFICNomFichier= "Rien";
+}
 
 /*****************************************************
 * FICLireFichier
@@ -110,10 +123,12 @@ void CFichier :: FICParser(ifstream MonFichier) {
 		if (sLigne.find(BALISE_DEBUT) != string::npos) {
 			sBalise = BALISE_DEBUT;
 			stTaille = sBalise.size();
-			sNomSom = FILRecupNombre(sLigne.find(sBalise) + stTaille, sLigne.size(), sLigne);
+			int temp = sLigne.find(sBalise) + stTaille;
+			int temp2 = sLigne.find(',');
+			sNomSom = FILRecupNom(sLigne.find(sBalise) + stTaille, sLigne.find(','), sLigne);
 			sBalise = BALISE_FIN;
 			stTaille = sBalise.size();
-			sNomSomFin = FILRecupNom(sLigne.find(sBalise) + stTaille, sLigne.find(',') - 1, sLigne);
+			sNomSomFin = FILRecupNom(sLigne.find(sBalise) + stTaille, sLigne.size(), sLigne);
 			GROFICGraphe->GROCreerArc(sNomSom, sNomSomFin);
 		}
 		
