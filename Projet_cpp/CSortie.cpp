@@ -40,11 +40,19 @@ void CSortie :: SORAfficher_Graphe() {
 	CSommet* SOMTemp;
 	vector<string> vListeNomSommet;
 	size_t uiNombreSommet = pGROSORGraphe->GRONombreSommet();
-	for (unsigned int uiBoucle = 0; uiBoucle < uiNombreSommet-1; uiBoucle++) {
+	for (unsigned int uiBoucle = 0; uiBoucle < uiNombreSommet; uiBoucle++) {
 		SOMTemp = pGROSORGraphe->GROLireSommet(uiBoucle);
+		cout << "****************************" << " Information sur le sommet " << SOMTemp->SOMLireNom() << " *****************************" << endl;
+		cout << "Sommet sortant : " << endl;
 		vListeNomSommet = SOMTemp->SOMLireListSomSortant();
-		for (unsigned int uiBoucle2 = 0; uiBoucle < vListeNomSommet.size()-1; uiBoucle2++) {
-			cout << SOMTemp->SOMLireNom() << "->" << vListeNomSommet[uiBoucle2] << endl;
+		for (unsigned int uiBoucle2 = 0; uiBoucle2 < vListeNomSommet.size(); uiBoucle2++) {
+			cout << SOMTemp->SOMLireNom() << "-->" << vListeNomSommet[uiBoucle2] << endl;
+		}
+		cout << "___________________________________________________" << endl;
+		cout << "Sommet entrant : " << endl;
+		vListeNomSommet = SOMTemp->SOMLireListSomEntrant();
+		for (unsigned int uiBoucle2 = 0; uiBoucle2 < vListeNomSommet.size(); uiBoucle2++) {
+			cout << SOMTemp->SOMLireNom() << "<--" << vListeNomSommet[uiBoucle2] << endl;
 		}
 	}
 
