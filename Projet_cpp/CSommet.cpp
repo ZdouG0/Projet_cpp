@@ -59,7 +59,7 @@ CArc* CSommet::SOMLireElemListArcSortant(unsigned int uiIndice) {
 vector<string> CSommet::SOMLireListSomEntrant() {
 	vector<string> vListSom;
 	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcEntrant.size(); uiBoucle++) {
-		vListSom.push_back(SOMLireElemListArcEntrant(uiBoucle)->ARCLireArrive());
+		vListSom.push_back(SOMLireElemListArcEntrant(uiBoucle)->ARCLireDepart());
 	}
 	return vListSom;
 }
@@ -67,7 +67,7 @@ vector<string> CSommet::SOMLireListSomEntrant() {
 vector<string> CSommet::SOMLireListSomSortant() {
 	vector<string> vListSom;
 	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcSortant.size(); uiBoucle++) {
-			vListSom.push_back(SOMLireElemListArcSortant(uiBoucle)->ARCLireDepart());
+			vListSom.push_back(SOMLireElemListArcSortant(uiBoucle)->ARCLireArrive());
 	}
 	return vListSom;
 }

@@ -36,6 +36,30 @@ private:
 
 
 public:
+	//Constructeurs
+	/*****************************************************
+	* CGrapheOriente
+	* ****************************************************
+	* Entrée : Aucune
+	* Nécessite : RIen
+	* Sortie : Aucune
+	* Entraîne : Creation d'un objet CGrapheOriente
+	* ****************************************************/
+	CGrapheOriente();
+
+	/*****************************************************
+	* CGrapheOriente
+	* ****************************************************
+	* Entrée : Aucune
+	* Nécessite : RIen
+	* Sortie : Aucune
+	* Entraîne : Creation d'un objet CGrapheOriente
+	* ****************************************************/
+	CGrapheOriente(CGrapheOriente& GROTocopie);
+
+
+
+
 
 	/*****************************************************
 	* Methodes de gestion des Arcs
@@ -62,7 +86,7 @@ public:
 	* Sortie : string
 	* Entraîne : (le nom des sommets de depart et d'arrive de notre arc avec la position stPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
-	CArc& GROLireArc(size_t stPos) const;
+	CArc* GROLireArc(size_t stPos) const;
 
 
 
@@ -129,16 +153,6 @@ public:
 
 
 	/*****************************************************
-	* GROCreerSommet
-	* ****************************************************
-	* Entrée : une chaine de caractere ( nom du sommet à creer)
-	* Nécessite : Rien
-	* Sortie : Aucune
-	* Entraîne : Il y a un sommet de plus dans la liste des sommets si le sommet est bien dans la liste
-	* ****************************************************/
-
-
-	/*****************************************************
 	* GROLireTailleListSommet
 	* ****************************************************
 	* Entrée : Aucune
@@ -154,10 +168,11 @@ public:
 	* ****************************************************
 	* Entrée : un size_t (qui correspond à la position du sommet à lire)
 	* Nécessite : Rien
-	* Sortie : string
+	* Sortie : un pointeur vers un sommet
 	* Entraîne : (lenom du sommet avec la position sPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
-	string GROLireSommet(size_t stPos) const;
+	CSommet* GROLireSommet(size_t stPos) const;
+
 	//ICI tu va devoir utiliser iterator car la surcharge de loperator [] nous parait pas petinante
 
 

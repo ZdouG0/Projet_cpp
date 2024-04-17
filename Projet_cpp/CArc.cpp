@@ -2,8 +2,8 @@
 
 
 CArc::CArc() {
-	sARCSommetDepart = "Le sommet de départ n'a pas encore été parametré";
-	sARCSommetArrive = "Le sommet d'arrivé n'a pas encore été parametré";
+	sARCSommetDepart = "Le sommet de depart n'a pas encore été parametre";
+	sARCSommetArrive = "Le sommet d'arrive n'a pas encore été parametre";
 }
 
 CArc::CArc(string sParamDepart, string sParamArrive) {
