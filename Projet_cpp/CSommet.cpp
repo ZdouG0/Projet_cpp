@@ -2,6 +2,46 @@
 #include "CException.h"
 #include<iterator>
 
+
+
+/******************************************************
+* CSommet
+* *****************************************************
+* Entrée : Rien
+* Nécessite : Rien
+* Sortie : Rien
+* Entraîne : l'initialisation d'un CSommet
+* ****************************************************/
+CSommet::CSommet() {
+	list<CArc*>listeArcsEntrant;
+	list<CArc*>listeArcsSortant;
+	sSOMNom = "Le sommet n'a pas encore de nom";
+	lSOMListArcEntrant = listeArcsEntrant;
+	lSOMListArcSortant = listeArcsSortant;
+}
+
+
+/******************************************************
+	* CArc
+	* *****************************************************
+	* Entrée : un string sParam
+	* Nécessite : Rien
+	* Sortie : Rien
+	* Entraîne : l'initialisation d'un CSommet avec comme parametres sSOMNom = sParam
+	* ****************************************************/
+CSommet::CSommet(string sParam) {
+	list<CArc*>listeArcsEntrant;
+	list<CArc*>listeArcsSortant;
+	sSOMNom = sParam;
+	lSOMListArcEntrant = listeArcsEntrant;
+	lSOMListArcSortant = listeArcsSortant;
+}
+
+
+
+
+
+
 /******************************************************
 * SOMLireListArcEntrant
 * *****************************************************

@@ -41,18 +41,46 @@ private:
 	string sSOMNom;
 	list<CArc*> lSOMListArcEntrant;
 	list<CArc*> lSOMListArcSortant;
-	//CONSTRUCTEUR / DESTRUCTEUR
+	
 public:
+	//CONSTRUCTEUR/DESTRUCTEUR
+	/******************************************************
+	* CSommet
+	* *****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : Rien
+	* Entraîne : l'initialisation d'un CSommet
+	* ****************************************************/
+	CSommet();
+
+
+
+
+	/******************************************************
+	* CArc
+	* *****************************************************
+	* Entrée : un string sParam
+	* Nécessite : Rien
+	* Sortie : Rien
+	* Entraîne : l'initialisation d'un CSommet avec comme parametres sSOMNom = sParam
+	* ****************************************************/
+	CSommet(string sParam);
+
+
+
+
+
 	//METHODES
-		/******************************************************
-		* SOMLireElemListArcEntrant
-		* *****************************************************
-		* Entrée : un entier non signé l'indice de l'element
-		* souhaité dans la liste
-		* Nécessite : Rien
-		* Sortie : un Arc qui arrive dans ce sommet
-		* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
-		* ****************************************************/
+	/******************************************************
+	* SOMLireElemListArcEntrant
+	* *****************************************************
+	* Entrée : un entier non signé l'indice de l'element
+	* souhaité dans la liste
+	* Nécessite : Rien
+	* Sortie : un Arc qui arrive dans ce sommet
+	* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
+	* ****************************************************/
 	CArc* SOMLireElemListArcEntrant(unsigned int uiIndice); 
 
 	/******************************************************
