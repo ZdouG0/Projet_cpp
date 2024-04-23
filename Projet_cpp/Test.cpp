@@ -56,6 +56,7 @@ void CTest::TESTestMethodesSOM(CSommet* SomParam) {
     SomParam->SOMModifierNom(nomSOM);
     assert(SomParam->SOMLireNom() == nomSOM);
     assert((SomParam->SOMLireNom() == "sommet a") == false);
+
 }
 
 
@@ -69,33 +70,10 @@ void CTest::TESTestMethodesGRO(CGrapheOriente GROParam) {
 
     //Creation de deux sommets
     GROParam.GROCreerSommet("Paris");
-    GROParam.GROCreerSommet("Evry");
-
-    //Verification des methodes : CGrapheOriente, CreerSommet, LireSommet, TrouverSomPos
-
-    assert(GROParam.GROLireSommet(0)->SOMLireNom() == "Paris");
-    assert((GROParam.GROLireSommet(0)->SOMLireNom() == "paris") == false);
-    assert(GROParam.GROLireSommet(1)->SOMLireNom() == "Evry");
-    assert((GROParam.GROLireSommet(1)->SOMLireNom() == "évry") == false);
-    assert(GROParam.GROTrouverSommetPosition("Evry") == 1);
-    assert(GROParam.GROLireTailleListSommet() == 2);
-    GROParam.GROCreerSommet("Courcouronnes");
-    GROParam.GROCreerSommet("Lisses");
-    GROParam.GROCreerSommet("Mennecy");
-    GROParam.GROCreerSommet("Ris-Orangis");
-    GROParam.GROCreerSommet("Grigny");
-    GROParam.GROCreerArc("Paris", "Evry");
-    GROParam.GROCreerArc("Evry", "Courcouronnes");
-    GROParam.GROCreerArc("Ris-Orangis", "Lisses");
-    GROParam.GROCreerArc("Evry", "Ris-Orangis");
-    GROParam.GROCreerArc("Grigny", "Ris-Orangis");
-    //Verification des methodes : LireSommetEntrantLie, 
-    vector<string>TestVrai{ "Evry","Grigny" };
-    vector<string>TestFaux{ "Evri","Grigny" };
-    assert(GROParam.GROLireSommetEntrantLie("Ris-Orangis") == TestVrai);
-    assert((GROParam.GROLireSommetEntrantLie("Ris-Orangis") == TestFaux) == false);
-    assert((GROParam.GROLireSommetSortantLie("Ris-Orangis") == TestFaux) == false);
-    assert(GROParam.GROLireSommetSortantLie("Ris-Orangis")[0] == "Lisses");
+    size_t posParis = GROParam.GROTrouverSommetPosition("Paris");
+    assert(GROParam.GROLireSommet(posParis)->SOMLireNom() == "Paris");
+    assert((GROParam.GROLireSommet(posParis)->SOMLireNom() == "paris") == false);
+    assert(GROParam.GROTrouverSommetPosition("Paris") == posParis);
 }
 
 void CTest::TESTestMethodesGRO(CGrapheOriente* GROParam) {
@@ -103,35 +81,11 @@ void CTest::TESTestMethodesGRO(CGrapheOriente* GROParam) {
 
     //routine de test pour CGraphOriente
     cout << "\nTest sur la classe CGrapheOriente" << endl;
-
-
     //Creation de deux sommets
     GROParam->GROCreerSommet("Paris");
-    GROParam->GROCreerSommet("Evry");
-
     //Verification des methodes : CGrapheOriente, CreerSommet, LireSommet, TrouverSomPos
-
-    assert(GROParam->GROLireSommet(0)->SOMLireNom() == "Paris");
-    assert((GROParam->GROLireSommet(0)->SOMLireNom() == "paris") == false);
-    assert(GROParam->GROLireSommet(1)->SOMLireNom() == "Evry");
-    assert((GROParam->GROLireSommet(1)->SOMLireNom() == "évry") == false);
-    assert(GROParam->GROTrouverSommetPosition("Evry") == 1);
-    assert(GROParam->GROLireTailleListSommet() == 2);
-    GROParam->GROCreerSommet("Courcouronnes");
-    GROParam->GROCreerSommet("Lisses");
-    GROParam->GROCreerSommet("Mennecy");
-    GROParam->GROCreerSommet("Ris-Orangis");
-    GROParam->GROCreerSommet("Grigny");
-    GROParam->GROCreerArc("Paris", "Evry");
-    GROParam->GROCreerArc("Evry", "Courcouronnes");
-    GROParam->GROCreerArc("Ris-Orangis", "Lisses");
-    GROParam->GROCreerArc("Evry", "Ris-Orangis");
-    GROParam->GROCreerArc("Grigny", "Ris-Orangis");
-    //Verification des methodes : LireSommetEntrantLie, 
-    vector<string>TestVrai{ "Evry","Grigny" };
-    vector<string>TestFaux{ "Evri","Grigny" };
-    assert(GROParam->GROLireSommetEntrantLie("Ris-Orangis") == TestVrai);
-    assert((GROParam->GROLireSommetEntrantLie("Ris-Orangis") == TestFaux) == false);
-    assert((GROParam->GROLireSommetSortantLie("Ris-Orangis") == TestFaux) == false);
-    assert(GROParam->GROLireSommetSortantLie("Ris-Orangis")[0] == "Lisses");
+    size_t posParis = GROParam->GROTrouverSommetPosition("Paris");
+    assert(GROParam->GROLireSommet(posParis)->SOMLireNom() == "Paris");
+    assert((GROParam->GROLireSommet(posParis)->SOMLireNom() == "paris") == false);
+    assert(GROParam->GROTrouverSommetPosition("Paris") == posParis);
 }

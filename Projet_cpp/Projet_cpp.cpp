@@ -4,6 +4,7 @@
 #include <vector>;
 #include "CGrapheOriente.h"
 #include "assert.h"
+#include "Test.h"
 
 
 
@@ -152,7 +153,10 @@ int main()
     }
     cout << endl << endl << endl;
 
-
+    CTest TestParam;
+    TestParam.TESTestMethodesARC(ARCVar5);
+    TestParam.TESTestMethodesSOM(SOMVar);
+    TestParam.TESTestMethodesGRO(GROParam);
        
 
     return 0;
