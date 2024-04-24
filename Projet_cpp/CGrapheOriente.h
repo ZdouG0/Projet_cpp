@@ -36,6 +36,30 @@ private:
 
 
 public:
+	//Constructeurs
+	/*****************************************************
+	* CGrapheOriente
+	* ****************************************************
+	* Entrée : Aucune
+	* Nécessite : RIen
+	* Sortie : Aucune
+	* Entraîne : Creation d'un objet CGrapheOriente
+	* ****************************************************/
+	CGrapheOriente();
+
+	/*****************************************************
+	* CGrapheOriente
+	* ****************************************************
+	* Entrée : Aucune
+	* Nécessite : RIen
+	* Sortie : Aucune
+	* Entraîne : Creation d'un objet CGrapheOriente
+	* ****************************************************/
+	CGrapheOriente(CGrapheOriente& GROTocopie);
+
+
+
+
 
 	/*****************************************************
 	* Methodes de gestion des Arcs
@@ -62,7 +86,20 @@ public:
 	* Sortie : string
 	* Entraîne : (le nom des sommets de depart et d'arrive de notre arc avec la position stPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
-	CArc& GROLireArc(size_t stPos) const;
+	CArc* GROLireArc(size_t stPos) const;
+
+
+
+
+	/*****************************************************
+	* GROLireTailleListArc
+	* ****************************************************
+	* Entrée : Aucune
+	* Nécessite : Rien
+	* Sortie : un size_t
+	* Entraîne : la taille de ma liste des arcs
+	* ****************************************************/
+	size_t GROLireTailleListArc() const { return pARCGROListArc.size(); }
 
 
 
@@ -116,6 +153,17 @@ public:
 
 
 	/*****************************************************
+	* GROLireTailleListSommet
+	* ****************************************************
+	* Entrée : Aucune
+	* Nécessite : Rien
+	* Sortie : un size_t
+	* Entraîne : la taille de ma liste des sommets
+	* ****************************************************/
+	size_t GROLireTailleListSommet() const { return pSOMGROListSom.size(); }
+
+
+	/*****************************************************
 	* GROLireSommet
 	* ****************************************************
 	* Entrée : un size_t (qui correspond à la position du sommet à lire)
@@ -126,6 +174,29 @@ public:
 	CSommet* GROLireSommet(size_t stPos) const;
 	//ICI tu va devoir utiliser iterator car la surcharge de loperator [] nous parait pas petinante
 
+
+
+
+/*****************************************************
+	* GROLireSommetSortantLie
+	* ****************************************************
+	* Entrée : un string (qui correspond au nom du sommet à lire)
+	* Nécessite : Rien
+	* Sortie : vector<string>
+	* Entraîne : (le nom des sommet qui sont lié avec des arcs à notre sommet d'entré) OU (Exception Element_inconnu)
+	* ****************************************************/
+	vector<string> GROLireSommetSortantLie(string chParam);
+
+
+	/*****************************************************
+	* GROLireSommetEntrantLie
+	* ****************************************************
+	* Entrée : un string (qui correspond au nom du sommet à lire)
+	* Nécessite : Rien
+	* Sortie : vector<string>
+	* Entraîne : (le nom des sommet qui sont lié avec des arcs à notre sommet d'entré) OU (Exception Element_inconnu)
+	* ****************************************************/
+	vector<string> GROLireSommetEntrantLie(string chParam);
 
 	/*****************************************************
 	* GROSupprimerSommet
