@@ -45,6 +45,8 @@ public:
 		* ****************************************************/
 	CArc();
 
+
+
 	/******************************************************
 	* CArc
 	* *****************************************************
@@ -83,7 +85,7 @@ public:
 	* Sortie : Rien
 	* Entraîne : le nom du sommet de depart est modifié
 	* ****************************************************/
-	inline void ARCModifierSommetDepart(string& sParam) { sARCSommetDepart = sParam; };
+	inline void ARCModifierSommetDepart(string sParam) { sARCSommetDepart = sParam; };
 
 	/******************************************************
 	* ARCModifierSommetArrive
@@ -93,7 +95,7 @@ public:
 	* Sortie : Rien
 	* Entraîne : le nom du sommet d'arrivé est modifié
 	* ****************************************************/
-	inline void ARCModifierSommetArrive(string& sParam) { sARCSommetArrive = sParam; };
+	inline void ARCModifierSommetArrive(string sParam) { sARCSommetArrive = sParam; };
 
 
 };

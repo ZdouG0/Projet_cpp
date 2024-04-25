@@ -131,6 +131,7 @@
     <ClCompile Include="CFichier.cpp" />
     <ClCompile Include="CException.cpp" />
     <ClCompile Include="CGrapheOriente.cpp" />
+    <ClCompile Include="CInversion.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="CSortie.cpp" />
     <ClCompile Include="Projet_cpp.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="CFichier.h" />
     <ClInclude Include="CException.h" />
     <ClInclude Include="CGrapheOriente.h" />
+    <ClInclude Include="CInversion.h" />
     <ClInclude Include="CSommet.h" />
     <ClInclude Include="CSortie.h" />
   </ItemGroup>

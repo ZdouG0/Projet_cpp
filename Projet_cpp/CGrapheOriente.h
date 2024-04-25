@@ -52,7 +52,7 @@ public:
 	* ****************************************************/
 	void GROCreerArc(string chParamDepart, string chParamArrive);
 
-
+	inline size_t GROLireTailleListSommet() { return pSOMGROListSom.size(); }
 
 	/*****************************************************
 	* GROLireArc
