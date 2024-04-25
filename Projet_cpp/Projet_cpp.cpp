@@ -91,7 +91,7 @@ int main()
 
 
 
-
+    /*
     //on test maintenant les fonctions SOMLireElemListArcEntrant SOMLireElemListArcSortant
     //pour cela comme un arc n'a pas de nom on va afficher les sommets auquel il est lié
     CArc* ARCVar5 = SOMVar.SOMLireElemListArcEntrant(1); //on doit obtenir ARCVar5 = ARCVar4
@@ -103,7 +103,7 @@ int main()
     assert(ARCVar5->ARCLireDepart() == ARCVar4.ARCLireDepart());
     assert((ARCVar5->ARCLireArrive() == ARCVar4.ARCLireDepart()) == false);
     cout << "Les methodes de CSommet semblent fonctionner correctement " << endl;
-    cout << "~********************************************************************************************~" << endl << endl << endl;
+    cout << "~********************************************************************************************~" << endl << endl << endl;*/
 
 
     // Creaction d'un objet de la classe graphe oriente
@@ -117,7 +117,6 @@ int main()
     
     //Creation de deux sommets
     GROParam.GROCreerSommet("Paris");
-    CGrapheOriente GROParam; //Creaction 'un objet de la classe graphe oriente
     string Capitale = "Paris";
     GROParam.GROCreerSommet(Capitale);
     GROParam.GROCreerSommet("Evry");
@@ -164,9 +163,10 @@ int main()
     }
     cout << endl << endl << endl;
     GROParam.GROSupprimerArc("Paris", "Evry");
-    */
+    GROParam.GROLireSommetEntrantLie("Evry");
     
-
+    
+    /*
     //routine de test pour CFichier
     CFichier FICMonFichier;
 
@@ -174,7 +174,6 @@ int main()
     FICMonFichier.FICModifierNomFichier("fichiertest.txt");
 
     CTest TestParam;
-    TestParam.TESTestMethodesARC(ARCVar5);
     TestParam.TESTestMethodesSOM(SOMVar);
     TestParam.TESTestMethodesGRO(GROParam);
        
@@ -199,7 +198,7 @@ int main()
     SORSortie->SORModifierGraphe(*FICMonFichier.FICLireGraphe());
     SORSortie->SORAfficher_Graphe();
 
-
+    */
     return 0;
 }
 

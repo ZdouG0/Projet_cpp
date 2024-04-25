@@ -130,6 +130,7 @@
     <ClCompile Include="CArc.cpp" />
     <ClCompile Include="CFichier.cpp" />
     <ClCompile Include="CException.cpp" />
+    <ClCompile Include="CGraph.cpp" />
     <ClCompile Include="CGrapheOriente.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="CSortie.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="CArc.h" />
     <ClInclude Include="CFichier.h" />
     <ClInclude Include="CException.h" />
+    <ClInclude Include="CGraph.h" />
     <ClInclude Include="CGrapheOriente.h" />
     <ClInclude Include="CSommet.h" />
     <ClInclude Include="CSortie.h" />
