@@ -2,6 +2,46 @@
 #include "CException.h"
 #include<iterator>
 
+
+
+/******************************************************
+* CSommet
+* *****************************************************
+* Entrée : Rien
+* Nécessite : Rien
+* Sortie : Rien
+* Entraîne : l'initialisation d'un CSommet
+* ****************************************************/
+CSommet::CSommet() {
+	list<CArc*>listeArcsEntrant;
+	list<CArc*>listeArcsSortant;
+	sSOMNom = "Le sommet n'a pas encore de nom";
+	lSOMListArcEntrant = listeArcsEntrant;
+	lSOMListArcSortant = listeArcsSortant;
+}
+
+
+/******************************************************
+	* CArc
+	* *****************************************************
+	* Entrée : un string sParam
+	* Nécessite : Rien
+	* Sortie : Rien
+	* Entraîne : l'initialisation d'un CSommet avec comme parametres sSOMNom = sParam
+	* ****************************************************/
+CSommet::CSommet(string sParam) {
+	list<CArc*>listeArcsEntrant;
+	list<CArc*>listeArcsSortant;
+	sSOMNom = sParam;
+	lSOMListArcEntrant = listeArcsEntrant;
+	lSOMListArcSortant = listeArcsSortant;
+}
+
+
+
+
+
+
 /******************************************************
 * SOMLireListArcEntrant
 * *****************************************************
@@ -59,23 +99,10 @@ CArc* CSommet::SOMLireElemListArcSortant(unsigned int uiIndice) {
 vector<string> CSommet::SOMLireListSomEntrant() {
 	vector<string> vListSom;
 	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcEntrant.size(); uiBoucle++) {
-		vListSom.push_back(SOMLireElemListArcEntrant(uiBoucle)->ARCLireDepart());
+		vListSom.push_back(SOMLireElemListArcEntrant(uiBoucle)->ARCLireArrive());
 	}
-	return vListSom;
-}
-
-/******************************************************
-* SOMLireListSomSortant
-* *****************************************************
-* Entrée : Rien
-* Nécessite : Rien
-* Sortie : la liste des sommets liés a ce sommet
-* Entraîne : la liste des sommets liés a ce sommet est retourne
-* ****************************************************/
-vector<string> CSommet::SOMLireListSomSortant() {
-	vector<string> vListSom;
 	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcSortant.size(); uiBoucle++) {
-		vListSom.push_back(SOMLireElemListArcSortant(uiBoucle)->ARCLireArrive());
+			vListSom.push_back(SOMLireElemListArcSortant(uiBoucle)->ARCLireArrive());
 	}
 	return vListSom;
 }

@@ -3,6 +3,44 @@
 
 
 /*****************************************************
+	* CGrapheOriente
+	* ****************************************************
+	* Entrée : Aucune
+	* Nécessite : RIen
+	* Sortie : Aucune
+	* Entraîne : Creation d'un objet CGrapheOriente
+	* ****************************************************/
+CGrapheOriente::CGrapheOriente() {
+	list<CArc*>listeArcs;
+	list<CSommet*>listeSommet;
+	pARCGROListArc = listeArcs;
+	pSOMGROListSom = listeSommet;
+}
+
+/***************************************************
+*CGrapheOriente
+*****************************************************
+* Entrée : Aucune
+* Nécessite : RIen
+* Sortie : Aucune
+* Entraîne : Creation d'un objet CGrapheOriente
+* ****************************************************/
+CGrapheOriente::CGrapheOriente(CGrapheOriente& GROTocopie) {
+	list<CArc*>listeArcs; size_t uiboucle;
+	for (uiboucle = 0; uiboucle < GROTocopie.GROLireTailleListArc(); uiboucle++) {
+		listeArcs.push_back(GROTocopie.GROLireArc(uiboucle));
+	}
+	list<CSommet*>listeSommet;
+	for (uiboucle = 0; uiboucle < GROTocopie.GROLireTailleListSommet(); uiboucle++) {
+		listeSommet.push_back(GROTocopie.GROLireSommet(uiboucle));
+	}
+	pARCGROListArc = listeArcs;
+	pSOMGROListSom = listeSommet;
+}
+
+
+
+/*****************************************************
 	* GROCreerArc
 	* ****************************************************
 	* Entrée : une chaine de caractere ( nom du sommet de depart) et une deuxième chaine de caractère (nom du sommet d'arrivée)
@@ -48,7 +86,7 @@ void CGrapheOriente::GROCreerArc(string sParamDepart, string sParamArrive) {
 	* Sortie : string
 	* Entraîne : (le nom des sommets de depart et d'arrive de notre arc avec la position stPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
-CArc& CGrapheOriente::GROLireArc(size_t stPos) const {
+CArc* CGrapheOriente::GROLireArc(size_t stPos) const {
 	unsigned int uiBoucle;
 	if (stPos >= pARCGROListArc.size()) {
 		CException EXCErreur;
@@ -61,7 +99,7 @@ CArc& CGrapheOriente::GROLireArc(size_t stPos) const {
 		++iter;
 	}
 
-	return **iter;
+	return *iter;
 }
 
 
@@ -79,8 +117,12 @@ void CGrapheOriente::GROSupprimerArc(string chParamDepart, string chParamArrive)
 	for (auto iter = pARCGROListArc.begin(); iter != pARCGROListArc.end(); ++iter) {
 		if ((*iter)->ARCLireDepart() == chParamDepart && (*iter)->ARCLireArrive() == chParamArrive) {
 			pARCGROListArc.erase(iter);
+			return;
 		}
 	}
+	CException EXCErreur;
+	EXCErreur.EXCModifierValeur(Element_inconnu);
+	throw(EXCErreur);
 }
 
 
@@ -98,6 +140,7 @@ void CGrapheOriente::GROSupprimerArcs(CSommet& SOMParam) {
 	for (stBoucle = 0; stBoucle < SOMParam.SOMTaileListArcEntrant(); stBoucle++) {
 		CArc* ARCParam = SOMParam.SOMLireElemListArcEntrant(stBoucle);
 		GROSupprimerArc(ARCParam->ARCLireDepart(), ARCParam->ARCLireArrive());
+
 	}
 	for (stBoucle = 0; stBoucle < SOMParam.SOMTaileListArcSortant(); stBoucle++) {
 		CArc* ARCParam = SOMParam.SOMLireElemListArcSortant(stBoucle);
@@ -162,7 +205,7 @@ size_t CGrapheOriente::GROTrouverSommetPosition(string chParam) {
 	* ****************************************************
 	* Entrée : un size_t (qui correspond à la position du sommet à lire)
 	* Nécessite : Rien
-	* Sortie : string
+	* Sortie : un pointeur vers un sommet
 	* Entraîne : (lenom du sommet avec la position sPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
 CSommet* CGrapheOriente::GROLireSommet(size_t stPos) const {
@@ -178,6 +221,39 @@ CSommet* CGrapheOriente::GROLireSommet(size_t stPos) const {
 	return (*iter);
 }
 
+
+
+
+/*****************************************************
+	* GROLireSommetSortantLie
+	* ****************************************************
+	* Entrée : un string (qui correspond au nom du sommet à lire)
+	* Nécessite : Rien
+	* Sortie : vector<string>
+	* Entraîne : (le nom des sommet qui sont lié avec des arcs à notre sommet d'entré) OU (Exception Element_inconnu)
+	* ****************************************************/
+vector<string> CGrapheOriente::GROLireSommetSortantLie(string chParam) {
+	size_t stPos = GROTrouverSommetPosition(chParam);
+	auto iter = pSOMGROListSom.begin();
+	advance(iter, stPos);
+	return (*iter)->SOMLireListSomSortant();
+}
+
+
+/*****************************************************
+	* GROLireSommetEntrantLie
+	* ****************************************************
+	* Entrée : un string (qui correspond au nom du sommet à lire)
+	* Nécessite : Rien
+	* Sortie : vector<string>
+	* Entraîne : (le nom des sommet qui sont lié avec des arcs à notre sommet d'entré) OU (Exception Element_inconnu)
+	* ****************************************************/
+vector<string> CGrapheOriente::GROLireSommetEntrantLie(string chParam) {
+	size_t stPos = GROTrouverSommetPosition(chParam);
+	auto iter = pSOMGROListSom.begin();
+	advance(iter, stPos);
+	return (*iter)->SOMLireListSomEntrant();
+}
 
 
 /*****************************************************
