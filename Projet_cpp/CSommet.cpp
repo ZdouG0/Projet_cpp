@@ -99,10 +99,23 @@ CArc* CSommet::SOMLireElemListArcSortant(unsigned int uiIndice) {
 vector<string> CSommet::SOMLireListSomEntrant() {
 	vector<string> vListSom;
 	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcEntrant.size(); uiBoucle++) {
-		vListSom.push_back(SOMLireElemListArcEntrant(uiBoucle)->ARCLireArrive());
+		vListSom.push_back(SOMLireElemListArcEntrant(uiBoucle)->ARCLireDepart());
 	}
+	return vListSom;
+}
+
+/******************************************************
+* SOMLireListSomSortant
+* *****************************************************
+* Entrée : Rien
+* Nécessite : Rien
+* Sortie : la liste des sommets liés a ce sommet
+* Entraîne : la liste des sommets liés a ce sommet est retourne
+* ****************************************************/
+vector<string> CSommet::SOMLireListSomSortant() {
+	vector<string> vListSom;
 	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcSortant.size(); uiBoucle++) {
-			vListSom.push_back(SOMLireElemListArcSortant(uiBoucle)->ARCLireArrive());
+		vListSom.push_back(SOMLireElemListArcSortant(uiBoucle)->ARCLireArrive());
 	}
 	return vListSom;
 }
