@@ -188,4 +188,28 @@ public:
 
 
 
+
+
+	/******************************************************
+	* SOMSupprimerArcLie
+	* *****************************************************
+	* Entrée : Deux chaînes de caractères représentant le nom du sommet de départ de l'arc à supprimer et le nom du sommet d'arrivée de l'arc à supprimer
+	* Nécessite : Rien
+	* Sortie : Rien
+	* Entraîne : Supprime l'arc de la liste des arcs entrants ou sortants du sommet, en fonction de ses noms de sommets de départ et d'arrivée
+	* ****************************************************/
+	void SOMSupprimerSOMEntrantLie(const string sParam);
+
+
+
+	/******************************************************
+	* SOMSupprimerArcSortantLie
+	* *****************************************************
+	* Entrée : Une chaîne de caractères représentant le nom du sommet de départ de l'arc à supprimer
+	* Nécessite : Rien
+	* Sortie : Rien
+	* Entraîne : Supprime l'arc sortant de la liste des arcs sortants du sommet, en fonction du nom du sommet de départ de l'arc à supprimer
+	* ****************************************************/
+	void SOMSupprimerArcSortantLie(const string sParam);
+
 };

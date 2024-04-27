@@ -22,13 +22,13 @@ CSommet::CSommet() {
 
 
 /******************************************************
-	* CArc
-	* *****************************************************
-	* Entrée : un string sParam
-	* Nécessite : Rien
-	* Sortie : Rien
-	* Entraîne : l'initialisation d'un CSommet avec comme parametres sSOMNom = sParam
-	* ****************************************************/
+* CArc
+* *****************************************************
+* Entrée : un string sParam
+* Nécessite : Rien
+* Sortie : Rien
+* Entraîne : l'initialisation d'un CSommet avec comme parametres sSOMNom = sParam
+* ****************************************************/
 CSommet::CSommet(string sParam) {
 	list<CArc*>listeArcsEntrant;
 	list<CArc*>listeArcsSortant;
@@ -89,13 +89,13 @@ CArc* CSommet::SOMLireElemListArcSortant(unsigned int uiIndice) {
 }
 
 /******************************************************
-	* SOMLireListSomEntrant
-	* *****************************************************
-	* Entrée : Rien
-	* Nécessite : Rien
-	* Sortie : la liste des sommets liés a ce sommet
-	* Entraîne : la liste des sommets liés a ce sommet est retourne
-	* ****************************************************/
+* SOMLireListSomEntrant
+* *****************************************************
+* Entrée : Rien
+* Nécessite : Rien
+* Sortie : la liste des sommets liés a ce sommet
+* Entraîne : la liste des sommets liés a ce sommet est retourne
+* ****************************************************/
 vector<string> CSommet::SOMLireListSomEntrant() {
 	vector<string> vListSom;
 	for (unsigned int uiBoucle = 0; uiBoucle < lSOMListArcEntrant.size(); uiBoucle++) {
@@ -105,4 +105,44 @@ vector<string> CSommet::SOMLireListSomEntrant() {
 			vListSom.push_back(SOMLireElemListArcSortant(uiBoucle)->ARCLireArrive());
 	}
 	return vListSom;
+}
+/******************************************************
+* SOMSupprimerArcEntrantLie
+* *****************************************************
+* Entrée : Une chaîne de caractères représentant le nom du sommet d'arrivée de l'arc à supprimer
+* Nécessite : Rien
+* Sortie : Rien
+* Entraîne : Supprime l'arc entrant de la liste des arcs entrants du sommet, en fonction du nom du sommet d'arrivée de l'arc à supprimer
+* ****************************************************/
+void CSommet::SOMSupprimerSOMEntrantLie(const string sParam) {
+	for (auto iter = lSOMListArcEntrant.begin(); iter != lSOMListArcEntrant.end(); ++iter) {
+		if ((*iter)->ARCLireArrive() == sParam) {
+			lSOMListArcEntrant.erase(iter);
+			return;
+		}
+	}
+	CException EXCErreur;
+	EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
+	throw(EXCErreur);
+}
+
+/******************************************************
+* SOMSupprimerArcSortantLie
+* *****************************************************
+* Entrée : Une chaîne de caractères représentant le nom du sommet de départ de l'arc à supprimer
+* Nécessite : Rien
+* Sortie : Rien
+* Entraîne : Supprime l'arc sortant de la liste des arcs sortants du sommet, en fonction du nom du sommet de départ de l'arc à supprimer
+* ****************************************************/
+void CSommet::SOMSupprimerArcSortantLie(const string sParam) {
+	// Recherche de l'arc dans la liste des arcs sortants
+	for (auto iter = lSOMListArcSortant.begin(); iter != lSOMListArcSortant.end(); ++iter) {
+		if ((*iter)->ARCLireDepart() == sParam) {
+			lSOMListArcSortant.erase(iter);
+			return; 
+		}
+	}
+	CException EXCErreur;
+	EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
+	throw(EXCErreur);
 }

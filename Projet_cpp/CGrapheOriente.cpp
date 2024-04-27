@@ -112,11 +112,20 @@ CArc* CGrapheOriente::GROLireArc(size_t stPos) const {
 	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 	* ****************************************************/
 void CGrapheOriente::GROSupprimerArc(string chParamDepart, string chParamArrive) {
-	
-	
+	//Cette methode a trois choses à faire : supprimer l'arc de la liste des arcs du graph mais aussi supprimer le fait que les deux sommets soient liées + désalour
+	size_t stPosSomE; size_t stPosSomS;
 	for (auto iter = pARCGROListArc.begin(); iter != pARCGROListArc.end(); ++iter) {
 		if ((*iter)->ARCLireDepart() == chParamDepart && (*iter)->ARCLireArrive() == chParamArrive) {
+			//etape 1
 			pARCGROListArc.erase(iter);
+			//etape 2
+			stPosSomE = GROTrouverSommetPosition(chParamDepart);
+			stPosSomS = GROTrouverSommetPosition(chParamArrive);
+			auto iterE = GROLireSommet(stPosSomE);
+			iterE->SOMSupprimerArcSortantLie(chParamDepart);
+			auto iterS = GROLireSommet(stPosSomS);
+			iterS->SOMSupprimerArcSortantLie(chParamArrive);
+			delete *iter;
 			return;
 		}
 	}
