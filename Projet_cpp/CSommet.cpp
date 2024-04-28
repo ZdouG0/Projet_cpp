@@ -119,3 +119,45 @@ vector<string> CSommet::SOMLireListSomSortant() {
 	}
 	return vListSom;
 }
+
+
+/******************************************************
+* SOMSupprimerArcEntrantLie
+* *****************************************************
+* Entrée : Une chaîne de caractères représentant le nom du sommet d'arrivée de l'arc à supprimer
+* Nécessite : Rien
+* Sortie : Rien
+* Entraîne : Supprime l'arc entrant de la liste des arcs entrants du sommet, en fonction du nom du sommet d'arrivée de l'arc à supprimer
+* ****************************************************/
+void CSommet::SOMSupprimerSOMEntrantLie(const string sParam) {
+	for (auto iter = lSOMListArcEntrant.begin(); iter != lSOMListArcEntrant.end(); ++iter) {
+		if ((*iter)->ARCLireArrive() == sParam) {
+			lSOMListArcEntrant.erase(iter);
+			return;
+		}
+	}
+	CException EXCErreur;
+	EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
+	throw(EXCErreur);
+}
+
+/******************************************************
+* SOMSupprimerArcSortantLie
+* *****************************************************
+* Entrée : Une chaîne de caractères représentant le nom du sommet de départ de l'arc à supprimer
+* Nécessite : Rien
+* Sortie : Rien
+* Entraîne : Supprime l'arc sortant de la liste des arcs sortants du sommet, en fonction du nom du sommet de départ de l'arc à supprimer
+* ****************************************************/
+void CSommet::SOMSupprimerArcSortantLie(const string sParam) {
+	// Recherche de l'arc dans la liste des arcs sortants
+	for (auto iter = lSOMListArcSortant.begin(); iter != lSOMListArcSortant.end(); ++iter) {
+		if ((*iter)->ARCLireDepart() == sParam) {
+			lSOMListArcSortant.erase(iter);
+			return;
+		}
+	}
+	CException EXCErreur;
+	EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
+	throw(EXCErreur);
+}

@@ -1,7 +1,7 @@
 #include <iostream>
-#include <iterator>;
-#include <string>;
-#include <vector>;
+#include <iterator>
+#include <string>
+#include <vector>
 #include "CArc.h"
 #include "CSommet.h"
 #include <iterator>
@@ -12,13 +12,14 @@
 #include "Test.h"
 #include "CFichier.h"
 #include "CSortie.h"
-
+#include "CInversion.h"
 
 
 using namespace std;
 
 int main()
-{
+{   
+    /*
     cout << "Hello World!"<<endl<<endl;
     cout << "Debut des routines de Test" << endl;
     // routine de test de la classe CArc
@@ -164,20 +165,20 @@ int main()
     }
     cout << endl << endl << endl;
     GROParam.GROSupprimerArc("Paris", "Evry");
-    */
     
-
+    
+    */
     //routine de test pour CFichier
     CFichier FICMonFichier;
 
     // test de FICModifierNomFichier
     FICMonFichier.FICModifierNomFichier("fichiertest.txt");
 
-    CTest TestParam;
-    TestParam.TESTestMethodesARC(ARCVar5);
-    TestParam.TESTestMethodesSOM(SOMVar);
-    TestParam.TESTestMethodesGRO(GROParam);
-       
+    //CTest TestParam;
+    //TestParam.TESTestMethodesARC(ARCVar5);
+    //TestParam.TESTestMethodesSOM(SOMVar);
+    //TestParam.TESTestMethodesGRO(GROParam);
+      
     //test de FICLireNomFichier
     cout << "Le nom du fichier est " + FICMonFichier.FICLireNomFichier() << endl;
 
@@ -195,10 +196,14 @@ int main()
     FICMonFichier.FICParser(FICMonFichier.FICLireFichier());
 
 
-    CSortie* SORSortie = new CSortie;
-    SORSortie->SORModifierGraphe(*FICMonFichier.FICLireGraphe());
+    CSortie* SORSortie = new CSortie();
+    SORSortie->SORModifierGraphe(FICMonFichier.FICLireGraphe());
     SORSortie->SORAfficher_Graphe();
-
+    CInversion* INVInverse = new CInversion();
+    INVInverse->INVChangerGraphe(FICMonFichier.FICLireGraphe());
+    INVInverse->INVInversion();
+    SORSortie->SORModifierGraphe(INVInverse->INVInversion());
+    SORSortie->SORAfficher_Graphe();
 
     return 0;
 }

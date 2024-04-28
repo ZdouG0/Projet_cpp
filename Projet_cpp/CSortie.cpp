@@ -10,7 +10,7 @@
 * Entraîne : Un objet de la classe CSortie est construit
 * ****************************************************/
 CSortie :: CSortie() {
-	pGROSORGraphe = new CGrapheOriente;
+	pGROSORGraphe = nullptr;
 }
 
 

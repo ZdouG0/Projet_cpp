@@ -1,21 +1,18 @@
 #pragma once
+
 #include "CGrapheOriente.h"
 #include "CException.h"
-using namespace std;
-#include <iostream>
-
-
 
 /************************************************************
-* CLASSE : Classe pour l'affichage de graphe
+* CLASSE : Classe pour l'inversion graphe
 * ************************************************************
-* ROLE : Interface de la classe CSortie,
-* cette classe fournit un ensemble de service pour l'affichage
-* sommaire d'un graphe dans un terminal
+* ROLE : Interface de la classe CInversion,
+* cette classe fournit un ensemble de service pour l'inversion
+* d'un graphe 
 * ************************************************************
 * VERSION :
 * AUTEUR : Yassine ELLATIFI / Milan HERGOTT
-* DATE : /04/2024
+* DATE : 23/04/2024
 * ************************************************************
 * INCLUSIONS EXTERNES :
 */
@@ -30,62 +27,78 @@ using namespace std;
 */
 
 
-class CSortie
+class CInversion
 {
-	//ATTRIBUTS
-	private :
-		CGrapheOriente* pGROSORGraphe;
-	//METHODES
-	public :
+	//attributs
+	private : 
+		CGrapheOriente* pGROINVGraphe;
+
+	//methodes
+	public:
 		/*****************************************************
-		* CSortie
+		* Cinversion
 		* ****************************************************
 		* Entrée : Rien
 		* Nécessite : Rien
 		* Sortie : Rien
-		* Entraîne : Un objet de la classe CSortie est construit
+		* Entraîne : constructeur par defaut
 		* ****************************************************/
-		CSortie();
+		inline CInversion() { pGROINVGraphe = nullptr; };
 
 		/*****************************************************
-		* CSortie
-		* ****************************************************
-		* Entrée : un objet de la Classe CSortie passe par valeur
-		* Nécessite : Rien
-		* Sortie : Rien
-		* Entraîne : L'objet en parametre est recopié
-		* ****************************************************/
-		CSortie(CSortie& SortieParam);
-
-		/*****************************************************
-		* operator=
-		* ****************************************************
-		* Entrée : un objet de la Classe CSortie passe par valeur
-		* Nécessite : Rien
-		* Sortie : Rien
-		* Entraîne : L'objet en parametre est recopié
-		* ****************************************************/
-		void operator=(CSortie& SortieParam);
-
-		/*****************************************************
-		* SORAfficher_Graphe
-		* ****************************************************
-		* Entrée : le GrapheOriente a afficher
-		* Nécessite : Rien
-		* Sortie : Rien
-		* Entraîne : Le graphe en parametre est Modifié
-		* ****************************************************/
-		void SORModifierGraphe(CGrapheOriente* GrapheParam) { pGROSORGraphe = GrapheParam; };
-
-		/*****************************************************
-		* SORAfficher_Graphe
+		* Cinversion
 		* ****************************************************
 		* Entrée : Rien
 		* Nécessite : Rien
 		* Sortie : Rien
-		* Entraîne : Notre Graphe est affiche
+		* Entraîne : constructeur de recopie par defaut
 		* ****************************************************/
-		void SORAfficher_Graphe();
+		CInversion(CInversion& InverParam);
+
+		/*****************************************************
+		* Cinversion
+		* ****************************************************
+		* Entrée : Rien
+		* Nécessite : Rien
+		* Sortie : Rien
+		* Entraîne : constructeur de recopie par defaut
+		* ****************************************************/
+		void operator=(CInversion& InverParam);
+
+
+		/*****************************************************
+		* INVLectureGraphe
+		* ****************************************************
+		* Entrée : Rien
+		* Nécessite : Rien
+		* Sortie : le graphe
+		* Entraîne : le graphe pointe par l'attribut est retourne
+		* ****************************************************/
+		inline CGrapheOriente* INVLectureGraphe() { return pGROINVGraphe; };
+
+
+		/*****************************************************
+		* INVLectureGraphe
+		* ****************************************************
+		* Entrée : Rien
+		* Nécessite : Rien
+		* Sortie : le graphe
+		* Entraîne : le graphe pointe par l'attribut est retourne
+		* ****************************************************/
+		inline void INVChangerGraphe(CGrapheOriente* GrapheParam) { pGROINVGraphe = GrapheParam; };
+
+
+		/*****************************************************
+		* INVInversion
+		* ****************************************************
+		* Entrée : Rien
+		* Nécessite : Rien
+		* Sortie : Le graphe oriente inverse
+		* Entraîne : le graphe en attribut est inverse dans une 
+		* nouvelle instance de la classe
+		* ****************************************************/
+		CGrapheOriente* INVInversion();
+
 
 };
 

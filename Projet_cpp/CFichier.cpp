@@ -28,7 +28,6 @@ CFichier :: CFichier() {
 * ****************************************************/
 ifstream CFichier :: FICLireFichier() {
 	
-	unsigned int uiNbArc;
 	
 
 	ifstream FILFichier(sFICNomFichier.c_str());
@@ -123,8 +122,8 @@ void CFichier :: FICParser(ifstream MonFichier) {
 		if (sLigne.find(BALISE_DEBUT) != string::npos) {
 			sBalise = BALISE_DEBUT;
 			stTaille = sBalise.size();
-			int temp = sLigne.find(sBalise) + stTaille;
-			int temp2 = sLigne.find(',');
+			size_t temp = sLigne.find(sBalise) + stTaille;
+			size_t temp2 = sLigne.find(',');
 			sNomSom = FILRecupNom(sLigne.find(sBalise) + stTaille, sLigne.find(','), sLigne);
 			sBalise = BALISE_FIN;
 			stTaille = sBalise.size();
