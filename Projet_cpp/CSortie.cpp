@@ -13,30 +13,27 @@ CSortie :: CSortie() {
 	pGROSORGraphe = nullptr;
 }
 
-
 /*****************************************************
-* CSortie
+* ~CSortie
 * ****************************************************
-* Entrée : un objet de la Classe CSortie passe par valeur
+* Entrée : Rien
 * Nécessite : Rien
 * Sortie : Rien
-* Entraîne : L'objet en parametre est recopié
+* Entraîne : destruction de l'instance
 * ****************************************************/
-CSortie :: CSortie(CSortie& SortieParam) {
-	pGROSORGraphe = new CGrapheOriente(*SortieParam.pGROSORGraphe);
+CSortie :: ~CSortie() {
+	unsigned int uiBoucle_arc;
+	unsigned int uiBoucle_som;
+	for (uiBoucle_arc = 0; uiBoucle_arc < pGROSORGraphe->GROLireTailleListArc(); uiBoucle_arc++) {  // cette boucle permet de copier notre graphe en attributs mais prové des arcs
+		delete pGROSORGraphe->GROLireArc(uiBoucle_arc);
+	}
+	for (uiBoucle_som= 0; uiBoucle_som < pGROSORGraphe->GROLireTailleListSommet(); uiBoucle_som++) {  // cette boucle permet de copier notre graphe en attributs mais prové des arcs
+		delete pGROSORGraphe->GROLireSommet(uiBoucle_som);
+	}
+	delete pGROSORGraphe;
 }
 
-/*****************************************************
-* operator=
-* ****************************************************
-* Entrée : un objet de la Classe CSortie passe par valeur
-* Nécessite : Rien
-* Sortie : Rien
-* Entraîne : L'objet en parametre est recopié
-* ****************************************************/
-void CSortie::operator=(CSortie& SortieParam) {
-	pGROSORGraphe = new CGrapheOriente(*SortieParam.pGROSORGraphe);
-}
+
 
 
 /*****************************************************

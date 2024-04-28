@@ -60,7 +60,15 @@ public:
 	* ****************************************************/
 	CGrapheOriente(CGrapheOriente& GROTocopie);
 
-
+	/*****************************************************
+	* operator=
+	* ****************************************************
+	* Entrée : Aucune
+	* Nécessite : RIen
+	* Sortie : Aucune
+	* Entraîne : Creation d'un objet CGrapheOriente
+	* ****************************************************/
+	void operator=(CGrapheOriente& GROTocopie);
 
 
 
@@ -77,7 +85,7 @@ public:
 	* Entraîne : Il y a un arc de plus dans la liste des arc si les sommets sont bien dans la liste
 	* De plus les deux sommets sont maintenant lié par un arc
 	* ****************************************************/
-	void GROCreerArc(string chParamDepart, string chParamArrive);
+	virtual void GROCreerArc(string chParamDepart, string chParamArrive);
 
 
 
@@ -124,7 +132,7 @@ public:
 	* Sortie : Aucune
 	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 	* ****************************************************/
-	void GROSupprimerArc(string chParamDepart, string chParamArrive);
+	virtual void GROSupprimerArc(string chParamDepart, string chParamArrive);
 
 
 

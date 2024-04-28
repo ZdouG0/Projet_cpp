@@ -38,6 +38,27 @@ CGrapheOriente::CGrapheOriente(CGrapheOriente& GROTocopie) {
 	pSOMGROListSom = listeSommet;
 }
 
+/*****************************************************
+* operator=
+* ****************************************************
+* Entrée : Aucune
+* Nécessite : RIen
+* Sortie : Aucune
+* Entraîne : Creation d'un objet CGrapheOriente
+* ****************************************************/
+void CGrapheOriente :: operator=(CGrapheOriente& GROTocopie) {
+	list<CArc*>listeArcs; size_t uiboucle;
+	for (uiboucle = 0; uiboucle < GROTocopie.GROLireTailleListArc(); uiboucle++) {
+		listeArcs.push_back(GROTocopie.GROLireArc(uiboucle));
+	}
+	list<CSommet*>listeSommet;
+	for (uiboucle = 0; uiboucle < GROTocopie.GROLireTailleListSommet(); uiboucle++) {
+		listeSommet.push_back(GROTocopie.GROLireSommet(uiboucle));
+	}
+	pARCGROListArc = listeArcs;
+	pSOMGROListSom = listeSommet;
+}
+
 
 
 /*****************************************************

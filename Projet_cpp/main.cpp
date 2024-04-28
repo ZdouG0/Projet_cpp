@@ -22,11 +22,28 @@ int main() {
    
 
     CFichier FICMonFichier;
-
-    FICMonFichier.FICModifierNomFichier("fichiertest.txt"); // parametre a modifier si on souhaite modifier le fichier a interpreter
+    string snomfichier;
+    cout << "Entrer le nom de votre fichier ou son chemin complet :";
+    cin >> snomfichier;
+    FICMonFichier.FICModifierNomFichier(snomfichier); // parametre a modifier si on souhaite modifier le fichier a interpreter
+    bool bCheminOK = false;
+    while (!bCheminOK) {
+        try {
+            bCheminOK = true;
+            ifstream ifsMonfichier = FICMonFichier.FICLireFichier();
+        }
+        catch (CException EXCErreur) {
+            bCheminOK = false;
+            cout << "nom ou chemin du fichier incorrect reesayer :";
+            cin >> snomfichier;
+            FICMonFichier.FICModifierNomFichier(snomfichier); // parametre a modifier si on souhaite modifier le fichier a interpreter
+        }
+    }
+    
+    
     
 
-    ifstream ifsMonfichier = FICMonFichier.FICLireFichier();
+    
     FICMonFichier.FICParser(FICMonFichier.FICLireFichier());
 
 

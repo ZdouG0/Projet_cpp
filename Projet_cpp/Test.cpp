@@ -8,7 +8,7 @@ void CTest::TESTestMethodesARC(CArc ARCParam) {
     string somB = "sommet B";
     // ajout d'un sommet d'arrivée
     ARCVar.ARCModifierSommetArrive(somA);
-    // ajout d'un sommet de depar
+    // ajout d'un sommet de depart
     ARCVar.ARCModifierSommetDepart(somB);
     assert(ARCParam.ARCLireDepart() == "sommet B");
     assert(ARCParam.ARCLireDepart() == ARCVar.ARCLireDepart() == false);
@@ -27,7 +27,7 @@ void CTest::TESTestMethodesARC(CArc* ARCParam) {
     string somB = "sommet B";
     // ajout d'un sommet d'arrivée
     ARCParam->ARCModifierSommetArrive(somA);
-    // ajout d'un sommet de depar
+    // ajout d'un sommet de depart
     ARCParam->ARCModifierSommetDepart(somB);
     cout << "Les constructeurs de la classe CArc fonctionnent correctement" << endl;
 

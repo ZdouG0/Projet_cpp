@@ -50,26 +50,17 @@ class CSortie
 		* ****************************************************/
 		CSortie();
 
-		/*****************************************************
-		* CSortie
-		* ****************************************************
-		* Entrée : un objet de la Classe CSortie passe par valeur
-		* Nécessite : Rien
-		* Sortie : Rien
-		* Entraîne : L'objet en parametre est recopié
-		* ****************************************************/
-		CSortie(CSortie& SortieParam);
 
 		/*****************************************************
-		* operator=
+		* ~CSortie
 		* ****************************************************
-		* Entrée : un objet de la Classe CSortie passe par valeur
+		* Entrée : Rien
 		* Nécessite : Rien
 		* Sortie : Rien
-		* Entraîne : L'objet en parametre est recopié
+		* Entraîne : destruction de l'instance
 		* ****************************************************/
-		void operator=(CSortie& SortieParam);
-
+		~CSortie();
+		
 		/*****************************************************
 		* SORAfficher_Graphe
 		* ****************************************************

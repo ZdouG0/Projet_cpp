@@ -52,7 +52,7 @@ class CFichier
 	//Attributs
 	private :
 		string  sFICNomFichier; // le chemin d'acces du fichier
-		unsigned int uiTypeGraphe; // le type de GrapheOriente ou non
+		string sTypeGraphe; // le type de GrapheOriente ou non
 		CGrapheOriente* GROFICGraphe;
 		unsigned int FICNbSommet;
 		unsigned int FICNbArc;
@@ -73,13 +73,13 @@ class CFichier
 		/*****************************************************
 		* CFichier
 		* ****************************************************
-		* Entrée : unsigned int Le type de Graphe 
+		* Entrée : string Le type de Graphe 
 		* Nécessite : 1 ou 2
 		* Sortie : rien
 		* Entraîne : le type du graphe qui sera creer 
 		* plus tard depend de cette valeur
 		* ****************************************************/
-		void FICModifierTypeGraphe(unsigned int uiParam);
+		void FICModifierTypeGraphe(string sParam);
 
 		/*****************************************************
 		* CFichier

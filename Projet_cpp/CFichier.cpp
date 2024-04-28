@@ -11,29 +11,29 @@
 * Entraîne : Constructeur pardefaut
 * ****************************************************/
 CFichier :: CFichier() {
-	GROFICGraphe = new CGrapheOriente;
+	GROFICGraphe = new CGrapheOriente();
 	FICNbSommet=0;
 	FICNbArc=0;
 	sFICNomFichier= "Rien";
-	uiTypeGraphe = 1;
+	sTypeGraphe = "NonOriente";
 }
 
 /*****************************************************
 * CFichier
 * ****************************************************
-* Entrée : unsigned int Le type de Graphe
-* Nécessite : 1 ou 2
+* Entrée : string Le type de Graphe
+* Nécessite : Oriente ou NonOriente
 * Sortie : rien
 * Entraîne : le type du graphe qui sera creer
 * plus tard depend de cette valeur
 * ****************************************************/
-void CFichier :: FICModifierTypeGraphe(unsigned int uiParam) { 
-	uiTypeGraphe = uiParam;
-	if (uiTypeGraphe == 1){
-		GROFICGraphe = new CGrapheOriente;
+void CFichier :: FICModifierTypeGraphe(string sParam) { 
+	sTypeGraphe = sParam;
+	if (sTypeGraphe == "Oriente") {
+		GROFICGraphe = new CGrapheOriente();
 	}
-	else {
-		GROFICGraphe = new CGraph;
+	if (sTypeGraphe == "NonOriente") {
+		GROFICGraphe = new CGraph();
 	}
 }
 
@@ -124,14 +124,14 @@ void CFichier :: FICParser(ifstream MonFichier) {
 	string sNomSomFin;
 	while (getline(MonFichier, sLigne)) { //permet qu'a chaque iteration de la boucle on travaille sur une nouvelle ligne
 		if (sLigne.find(BALISE_NBSOMMET) != string::npos) {
-			sBalise = BALISE_NBSOMMET; //on place la variable gloobale dans une variable local afin d'avoir acces a toute les methodes de String
+			sBalise = BALISE_NBSOMMET; //on place la variable globale dans une variable local afin d'avoir acces a toute les methodes de String
 			stTaille = sBalise.size(); //on recupere la taille car la methode .find retourne la position du debut de la balise et non la fin
 			FICNbSommet = FILRecupNombre(sLigne.find(sBalise) + stTaille, sLigne.size(), sLigne); // on met dans la variable le nombre de Sommet 
 		}
 		if (sLigne.find(BALISE_GRAPHE) != string::npos) {
-			sBalise = BALISE_GRAPHE; //on place la variable gloobale dans une variable local afin d'avoir acces a toute les methodes de String
+			sBalise = BALISE_GRAPHE; //on place la variable globale dans une variable local afin d'avoir acces a toute les methodes de String
 			stTaille = sBalise.size(); //on recupere la taille car la methode .find retourne la position du debut de la balise et non la fin
-			FICModifierTypeGraphe(FILRecupNombre(sLigne.find(sBalise) + stTaille, sLigne.size(), sLigne))  ; // on met dans la variable le nombre de Sommet
+			FICModifierTypeGraphe(FILRecupNom(sLigne.find(sBalise) + stTaille, sLigne.size(), sLigne))  ;
 		}
 		if (sLigne.find(BALISE_NBARC) != string::npos) {
 			sBalise = BALISE_NBARC; //--
