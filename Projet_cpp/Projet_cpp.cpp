@@ -205,6 +205,17 @@ int main()
     SORSortie->SORModifierGraphe(INVInverse->INVInversion());
     SORSortie->SORAfficher_Graphe();
 
+    CGrapheOriente GROParam;
+    GROParam.GROCreerSommet("1");
+    GROParam.GROCreerSommet("2");
+    GROParam.GROCreerArc("1", "2");
+    GROParam.GROModifierSommet("1","3");
+    GROParam.GROModifierSommet("2", "30");
+    string s = GROParam.GROLireSommetEntrantLie("30")[0];
+    string s2 = GROParam.GROLireSommetSortantLie("3")[0];
+    cout << "rep" << s<< s2;
+
+
     return 0;
 }
 

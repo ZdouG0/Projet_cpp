@@ -178,6 +178,50 @@ void CGrapheOriente::GROCreerSommet(string chParam) {
 
 
 
+
+/*****************************************************
+* GROModifierSommet
+* ****************************************************
+* Entrée : une chaine de caractere
+* Nécessite : Rien
+* Sortie : Aucune
+* Entraîne : Il y a un sommet qui a changé de nom
+* ****************************************************/
+void CGrapheOriente::GROModifierSommet(string chParam, string chNvNom) {
+	size_t posSOM;
+	auto iter = pSOMGROListSom.begin();
+	posSOM = GROTrouverSommetPosition(chParam);
+	advance(iter, posSOM);
+
+	// Modifier le nom du sommet
+	(*iter)->SOMModifierNom(chNvNom);
+
+	// Parcourir tous les sommets du graphe
+	for (auto it = pSOMGROListSom.begin(); it != pSOMGROListSom.end(); ++it) {
+		CSommet* sommet = *it;
+
+		// Mettre à jour les arcs sortants
+		for (size_t i = 0; i < sommet->SOMTaileListArcSortant(); ++i) {
+			CArc* arc = sommet->SOMLireElemListArcSortant(i);
+			if (arc->ARCLireDepart() == chParam) {
+				arc->ARCModifierSommetDepart((*it)->SOMLireNom());
+			}
+		}
+
+		// Mettre à jour les arcs entrants
+		for (size_t i = 0; i < sommet->SOMTaileListArcEntrant(); ++i) {
+			CArc* arc = sommet->SOMLireElemListArcEntrant(i);
+			if (arc->ARCLireArrive() == chParam) {
+				arc->ARCModifierSommetArrive((*it)->SOMLireNom());
+			}
+		}
+	}
+}
+
+
+
+
+
 /*****************************************************
 * GROTrouverSommet
 * ****************************************************
