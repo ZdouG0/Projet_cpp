@@ -125,7 +125,7 @@ void CGrapheOriente::GROSupprimerArc(string chParamDepart, string chParamArrive)
 			iterE->SOMSupprimerArcSortantLie(chParamDepart);
 			auto iterS = GROLireSommet(stPosSomS);
 			iterS->SOMSupprimerArcSortantLie(chParamArrive);
-			//delete *iter;
+			delete *iter;
 			return;
 		}
 	}
