@@ -104,7 +104,7 @@ int main()
     assert(ARCVar5->ARCLireDepart() == ARCVar4.ARCLireDepart());
     assert((ARCVar5->ARCLireArrive() == ARCVar4.ARCLireDepart()) == false);
     cout << "Les methodes de CSommet semblent fonctionner correctement " << endl;
-    cout << "~********************************************************************************************~" << endl << endl << endl;*/
+    cout << "~********************************************************************************************~" << endl << endl << endl;
 
 
     // Creaction d'un objet de la classe graphe oriente
