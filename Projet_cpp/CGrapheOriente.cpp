@@ -125,7 +125,9 @@ void CGrapheOriente::GROSupprimerArc(string chParamDepart, string chParamArrive)
 			iterE->SOMSupprimerArcSortantLie(chParamDepart);
 			auto iterS = GROLireSommet(stPosSomS);
 			iterS->SOMSupprimerArcSortantLie(chParamArrive);
+			pARCGROListArc.erase(iter);
 			delete *iter;
+			
 			return;
 		}
 	}
@@ -282,6 +284,6 @@ void CGrapheOriente::GROSupprimerSommet(string chParam) {
 	GROSupprimerArcs(**iter);
 
 	// Supprimer le sommet de la liste
-	delete* iter;
+	delete *iter;
 	pSOMGROListSom.erase(iter);
 }

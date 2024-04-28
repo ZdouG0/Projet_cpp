@@ -279,6 +279,7 @@
     <ClCompile Include="CInversion.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="CSortie.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Projet_cpp.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>

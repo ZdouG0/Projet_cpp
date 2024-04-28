@@ -16,10 +16,10 @@
 
 
 using namespace std;
-
+/*
 int main()
 {   
-    /*
+    
     cout << "Hello World!"<<endl<<endl;
     cout << "Debut des routines de Test" << endl;
     // routine de test de la classe CArc
@@ -167,7 +167,7 @@ int main()
     GROParam.GROSupprimerArc("Paris", "Evry");
     
     
-    */
+    
     //routine de test pour CFichier
     CFichier FICMonFichier;
 
@@ -208,3 +208,4 @@ int main()
     return 0;
 }
 
+*/

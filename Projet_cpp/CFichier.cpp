@@ -15,6 +15,26 @@ CFichier :: CFichier() {
 	FICNbSommet=0;
 	FICNbArc=0;
 	sFICNomFichier= "Rien";
+	uiTypeGraphe = 1;
+}
+
+/*****************************************************
+* CFichier
+* ****************************************************
+* Entrée : unsigned int Le type de Graphe
+* Nécessite : 1 ou 2
+* Sortie : rien
+* Entraîne : le type du graphe qui sera creer
+* plus tard depend de cette valeur
+* ****************************************************/
+void CFichier :: FICModifierTypeGraphe(unsigned int uiParam) { 
+	uiTypeGraphe = uiParam;
+	if (uiTypeGraphe == 1){
+		GROFICGraphe = new CGrapheOriente;
+	}
+	//else {
+		//GROFICGraphe = new CGrapeNonOrient;
+	//}
 }
 
 /*****************************************************
@@ -107,6 +127,11 @@ void CFichier :: FICParser(ifstream MonFichier) {
 			sBalise = BALISE_NBSOMMET; //on place la variable gloobale dans une variable local afin d'avoir acces a toute les methodes de String
 			stTaille = sBalise.size(); //on recupere la taille car la methode .find retourne la position du debut de la balise et non la fin
 			FICNbSommet = FILRecupNombre(sLigne.find(sBalise) + stTaille, sLigne.size(), sLigne); // on met dans la variable le nombre de Sommet 
+		}
+		if (sLigne.find(BALISE_GRAPHE) != string::npos) {
+			sBalise = BALISE_GRAPHE; //on place la variable gloobale dans une variable local afin d'avoir acces a toute les methodes de String
+			stTaille = sBalise.size(); //on recupere la taille car la methode .find retourne la position du debut de la balise et non la fin
+			FICModifierTypeGraphe(FILRecupNombre(sLigne.find(sBalise) + stTaille, sLigne.size(), sLigne))  ; // on met dans la variable le nombre de Sommet
 		}
 		if (sLigne.find(BALISE_NBARC) != string::npos) {
 			sBalise = BALISE_NBARC; //--

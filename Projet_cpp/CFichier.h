@@ -14,6 +14,7 @@ using namespace std;
 
 
 //on definnit des variables pour les differnte balise 
+#define BALISE_GRAPHE "TypedeGraphe="
 #define BALISE_NBARC "NBArcs="
 #define BALISE_NBSOMMET "NBSommets="
 #define BALISE_NUMERO "Numero="
@@ -50,6 +51,7 @@ class CFichier
 	//Attributs
 	private :
 		string  sFICNomFichier; // le chemin d'acces du fichier
+		unsigned int uiTypeGraphe; // le type de GrapheOriente ou non
 		CGrapheOriente* GROFICGraphe;
 		unsigned int FICNbSommet;
 		unsigned int FICNbArc;
@@ -66,6 +68,17 @@ class CFichier
 		* Entraîne : Le nom/chemin du fichier est retourné
 		* ****************************************************/
 		CFichier();
+
+		/*****************************************************
+		* CFichier
+		* ****************************************************
+		* Entrée : unsigned int Le type de Graphe 
+		* Nécessite : 1 ou 2
+		* Sortie : rien
+		* Entraîne : le type du graphe qui sera creer 
+		* plus tard depend de cette valeur
+		* ****************************************************/
+		void FICModifierTypeGraphe(unsigned int uiParam);
 
 		/*****************************************************
 		* CFichier

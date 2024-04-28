@@ -1,3 +1,4 @@
+TypedeGraphe=1
 NBSommets=3
 NBArcs=3
 Sommets=[
