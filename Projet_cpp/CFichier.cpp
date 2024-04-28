@@ -32,9 +32,9 @@ void CFichier :: FICModifierTypeGraphe(unsigned int uiParam) {
 	if (uiTypeGraphe == 1){
 		GROFICGraphe = new CGrapheOriente;
 	}
-	//else {
-		//GROFICGraphe = new CGrapeNonOrient;
-	//}
+	else {
+		GROFICGraphe = new CGraph;
+	}
 }
 
 /*****************************************************

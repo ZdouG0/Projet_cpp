@@ -8,6 +8,7 @@ using namespace std;
 #include <iostream>
 #include "CException.h"
 #include "CGrapheOriente.h"
+#include "CGraph.h"
 
 //variable exception
 #define ECHEC_LECTURE 984

@@ -43,6 +43,9 @@ int main() {
 
     SORSortie->SORAfficher_Graphe();
 
+    delete INVInverse;
+    delete SORSortie;
+
 
     return 0;
 }

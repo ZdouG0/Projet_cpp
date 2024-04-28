@@ -1,4 +1,8 @@
-#pragma once
+#ifndef __CGRAPH__
+#define __CGRAPH__					
+
+
+
 #include <string>
 #include <list>
 #include "CGrapheOriente.h"
@@ -54,3 +58,4 @@ class CGraph : public CGrapheOriente {
 	* ****************************************************/
 	void GROSupprimerArc(string chParamDepart, string chParamArrive);
 };
+#endif
