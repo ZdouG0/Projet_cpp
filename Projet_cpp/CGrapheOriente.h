@@ -76,6 +76,16 @@ public:
 	* ****************************************************/
 	void GROCreerArc(string chParamDepart, string chParamArrive);
 
+
+
+	/*****************************************************
+	* GROLireTailleListSommet
+	* ****************************************************
+	* Entrée : Aucune
+	* Nécessite : Aucune
+	* Sortie : size_t 
+	* Entraîne : Renvoie le nombre de sommet 
+	* ****************************************************/
 	inline size_t GROLireTailleListSommet() { return pSOMGROListSom.size(); }
 
 	/*****************************************************
@@ -126,9 +136,13 @@ public:
 	* ****************************************************/
 	void GROSupprimerArcs(CSommet& SOMParam);
 
+
+
 	/*****************************************************
 	* Methodes de gestion des Sommets
 	******************************************************/
+
+
 
 	/*****************************************************
 	* GROCreerSommet
@@ -140,6 +154,20 @@ public:
 	* ****************************************************/
 	void GROCreerSommet(string chParam);
 
+
+
+	/*****************************************************
+	* GROModifierSommet
+	* ****************************************************
+	* Entrée : deux chaines de caracteres
+	* Nécessite : Rien
+	* Sortie : Aucune
+	* Entraîne : Il y a un sommet qui a changé de nom
+	* ****************************************************/
+	void GROModifierSommet(string chParam, string chNvnom);
+
+
+
 	/*****************************************************
 	* GROTrouverSommet
 	* ****************************************************
@@ -150,6 +178,7 @@ public:
 	* ****************************************************/
 	size_t GROTrouverSommetPosition(string chParam);
 
+	
 
 
 	/*****************************************************
@@ -161,6 +190,9 @@ public:
 	* Entraîne : la taille de ma liste des sommets
 	* ****************************************************/
 	size_t GROLireTailleListSommet() const { return pSOMGROListSom.size(); }
+
+
+
 
 
 	/*****************************************************
@@ -177,7 +209,7 @@ public:
 
 
 
-/*****************************************************
+	/*****************************************************
 	* GROLireSommetSortantLie
 	* ****************************************************
 	* Entrée : un string (qui correspond au nom du sommet à lire)
