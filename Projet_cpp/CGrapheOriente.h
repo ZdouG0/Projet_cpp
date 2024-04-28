@@ -1,4 +1,7 @@
-#pragma once
+#ifndef __CGrapheOriente__
+#define __CGrapheOriente__
+
+
 #include <string>
 #include <list>
 #include "CSommet.h"
@@ -234,3 +237,4 @@ public:
 
 
 };
+#endif

@@ -1,4 +1,7 @@
-#pragma once
+#ifndef __CINVERSION__
+#define __CINVERSION__					
+
+
 
 #include "CGrapheOriente.h"
 #include "CException.h"
@@ -100,5 +103,7 @@ class CInversion
 		CGrapheOriente* INVInversion();
 
 
+
 };
 
+#endif

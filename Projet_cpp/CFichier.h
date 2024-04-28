@@ -1,4 +1,6 @@
-#pragma once
+#ifndef __CFICHIER__
+#define __CFICHIER__					
+
 
 using namespace std;
 #include <string>
@@ -113,8 +115,8 @@ class CFichier
 		* Entrée : une variables istream
 		* Nécessite : la variable est valide
 		* Sortie : Rien
-		* Entraîne : determine le contenu d'un ligne et quelles
-		* methode appele en consequence
+		* Entraîne : determine le contenu d'un fichier en faisant une 
+		* analyse syntaxique ligne par ligne
 		* ****************************************************/
 		void FICParser(ifstream MonFichier);
 
@@ -138,8 +140,9 @@ class CFichier
 		* le traitement est fait
 		* Nécessite : les position sont bien dans les ligne FAIRE EXCEPTIONN ???????
 		* Sortie : un entier non signé
-		* Entraîne : On recupere le nombre apres le egale
+		* Entraîne : On recupere le nom apres le egale
 		* ****************************************************/
 		const string FILRecupNom(size_t uiDebut, size_t uiFin, string sLigne);
 };
 
+#endif

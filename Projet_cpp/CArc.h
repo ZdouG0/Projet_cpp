@@ -1,14 +1,17 @@
-#pragma once
+#ifndef __CARC__
+#define __CARC__
+
+
 #include <string>
 using namespace std;
 
 
 
 /************************************************************
-* CLASSE : Classe pour la gestion des arc
+* CLASSE : Classe pour la gestion des arcs
 * ************************************************************
 * ROLE : Interface de la classe CArc,
-* cette classe permet de gerer les liaison entre les Sommets
+* cette classe permet de gerer les liaisons entre les Sommets
 * ************************************************************
 * VERSION :
 * AUTEUR : Yassine ELLATIFI / Milan HERGOTT
@@ -53,9 +56,12 @@ public:
 	* Entrée : deux strings sParamDepart, sParamArrive
 	* Nécessite : Rien
 	* Sortie : Rien
-	* Entraîne : l'initialisation d'un CArc avec comme parametres sARCSommetDepart = sParamDepart et sARCSommetArrive = sParamArrive
+	* Entraîne : l'initialisation d'un CArc avec comme
+	* parametres sARCSommetDepart = sParamDepart et 
+	* sARCSommetArrive = sParamArrive
 	* ****************************************************/
 	CArc(string sParamDepart, string sParamArrive);
+	
 	//METHODES
 		/******************************************************
 		* ARCLireDepart
@@ -99,3 +105,4 @@ public:
 
 
 };
+#endif

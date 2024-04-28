@@ -119,7 +119,7 @@ void CFichier :: FICParser(ifstream MonFichier) {
 			sNomSom = FILRecupNom(sLigne.find(sBalise)+stTaille, sLigne.size(), sLigne);
 			GROFICGraphe->GROCreerSommet(sNomSom); //On appele la methode creer sommet de notre Classe CGrapheOrient
 		}
-		if (sLigne.find(BALISE_DEBUT) != string::npos) {
+		if (sLigne.find(BALISE_DEBUT) != string::npos) {  // on recherche la balise Debut et on interprete
 			sBalise = BALISE_DEBUT;
 			stTaille = sBalise.size();
 			size_t temp = sLigne.find(sBalise) + stTaille;

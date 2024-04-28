@@ -1,4 +1,8 @@
-#pragma once
+#ifndef __CSommet__
+#define __CSommet__					
+
+
+
 #include <string>
 using namespace std;
 #include "CArc.h"
@@ -210,3 +214,5 @@ public:
 	void SOMSupprimerArcSortantLie(const string sParam);
 
 };
+
+#endif

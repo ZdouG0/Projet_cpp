@@ -1,4 +1,7 @@
-#pragma once
+#ifndef __CSortie__
+#define __CSortie__					
+
+
 #include "CGrapheOriente.h"
 #include "CException.h"
 using namespace std;
@@ -89,3 +92,4 @@ class CSortie
 
 };
 
+#endif
