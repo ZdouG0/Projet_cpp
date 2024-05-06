@@ -273,6 +273,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />
+    <ClCompile Include="CBoruvka.cpp" />
     <ClCompile Include="CFichier.cpp" />
     <ClCompile Include="CException.cpp" />
     <ClCompile Include="CGraph.cpp" />
@@ -286,6 +287,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CArc.h" />
+    <ClInclude Include="CBoruvka.h" />
     <ClInclude Include="CFichier.h" />
     <ClInclude Include="CException.h" />
     <ClInclude Include="CGraph.h" />
