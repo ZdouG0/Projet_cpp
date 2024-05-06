@@ -35,6 +35,7 @@ class CArc
 private:
 	string sARCSommetDepart;
 	string sARCSommetArrive;
+	unsigned int uiARCPoids;
 
 public:
 	//CONSTRUCTEUR/DESTRUCTEUR
@@ -61,6 +62,23 @@ public:
 	* sARCSommetArrive = sParamArrive
 	* ****************************************************/
 	CArc(string sParamDepart, string sParamArrive);
+
+
+
+
+	/******************************************************
+	* CArc
+	* *****************************************************
+	* Entrée : deux strings sParamDepart, sParamArrive et un entier non signé
+	* Nécessite : Rien
+	* Sortie : Rien
+	* Entraîne : l'initialisation d'un CArc avec comme
+	* parametres sARCSommetDepart = sParamDepart et
+	* sARCSommetArrive = sParamArrive et uiARCPoids = uiParam
+	* ****************************************************/
+	CArc(string sParamDepart, string sParamArrive, unsigned int uiParamPoids);
+
+
 	
 	//METHODES
 		/******************************************************
@@ -102,6 +120,35 @@ public:
 	* Entraîne : le nom du sommet d'arrivé est modifié
 	* ****************************************************/
 	inline void ARCModifierSommetArrive(string sParam) { sARCSommetArrive = sParam; };
+
+
+
+
+	/******************************************************
+	* ARCLirePoids
+	* *****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : un entier non signé
+	* Entraîne : Le poids de l'arc est retourné
+	* ****************************************************/
+	inline unsigned int ARCLirePoids() { return uiARCPoids; }
+
+
+
+
+	/******************************************************
+	* ARCModifierPoids
+	* *****************************************************
+	* Entrée : un unsigned int 
+	* Nécessite : le sommet en parametre doit exister
+	* Sortie : Rien
+	* Entraîne : le poids de l'arc  est modifié
+	* ****************************************************/
+	inline void ARCModifierPoids(unsigned int uiParamPoids) { uiARCPoids = uiParamPoids; };
+
+
+
 
 
 };

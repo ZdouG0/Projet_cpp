@@ -48,7 +48,7 @@
     <ClCompile Include="CGraph.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="CBoruvka.cpp">
+    <ClCompile Include="CArbreBoruvka.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -77,7 +77,7 @@
     <ClInclude Include="CGraph.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="CBoruvka.h">
+    <ClInclude Include="CArbreBoruvka.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
