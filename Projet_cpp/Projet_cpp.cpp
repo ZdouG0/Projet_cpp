@@ -7,7 +7,7 @@
 #include <iterator>
 #include <string>
 #include <vector>
-#include "CGrapheOriente.h"
+#include "PGrapheOriente.h"
 #include "assert.h"
 #include "Test.h"
 #include "CFichier.h"
@@ -108,12 +108,12 @@ int main()
 
 
     // Creaction d'un objet de la classe graphe oriente
-    CGrapheOriente GROParam; 
+    PGrapheOriente GROParam; 
     cout << "~*************************************~      CGRAPHORIENTE      ~*************************************~" << endl;
     
     
     //routine de test pour CGraphOriente
-    cout << "\nTest sur la classe CGrapheOriente" << endl;
+    cout << "\nTest sur la classe PGrapheOriente" << endl;
 
     
     //Creation de deux sommets
@@ -122,7 +122,7 @@ int main()
     GROParam.GROCreerSommet(Capitale);
     GROParam.GROCreerSommet("Evry");
 
-    //Verification des methodes : CGrapheOriente, CreerSommet, LireSommet, TrouverSomPos
+    //Verification des methodes : PGrapheOriente, CreerSommet, LireSommet, TrouverSomPos
     
     assert(GROParam.GROLireSommet(0)->SOMLireNom() == "Paris");
     assert((GROParam.GROLireSommet(0)->SOMLireNom() == "paris") == false);

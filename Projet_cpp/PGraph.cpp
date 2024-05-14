@@ -1,4 +1,4 @@
-#include "CGraph.h"
+#include "PGraph.h"
 
 
 
@@ -12,9 +12,9 @@
 	* Il y a un arc de plus dans la liste des arc si les sommets sont bien dans la liste
 	* De plus les deux sommets sont maintenant lié par un arc
 	* ****************************************************/
-void CGraph::GROCreerArc(string sParamDepart, string sParamArrive) {
-	CGrapheOriente::GROCreerArc(sParamDepart, sParamArrive);
-	CGrapheOriente::GROCreerArc(sParamArrive, sParamDepart);
+template<class T,class S> void PGraph<T,S>::GROCreerArc(string sParamDepart, string sParamArrive) {
+	PGrapheOriente<T>::GROCreerArc(sParamDepart, sParamArrive);
+	PGrapheOriente<T>::GROCreerArc(sParamArrive, sParamDepart);
 }
 
 
@@ -28,8 +28,8 @@ void CGraph::GROCreerArc(string sParamDepart, string sParamArrive) {
 * Sortie : Aucune
 * Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 * ****************************************************/
-void CGraph::GROSupprimerArc(string chParamDepart, string chParamArrive) {
+template<class T,class S> void PGraph<T,S>::GROSupprimerArc(string chParamDepart, string chParamArrive) {
 	//Je vais devoir supprimer les deux arcs si bool = false lors de la suppression c'est que j'ai pas encore trouve le retour
-	CGrapheOriente::GROSupprimerArc(chParamDepart, chParamArrive);
-	CGrapheOriente::GROSupprimerArc(chParamArrive, chParamDepart);
+	PGrapheOriente<T>::GROSupprimerArc(chParamDepart, chParamArrive);
+	PGrapheOriente<T>::GROSupprimerArc(chParamArrive, chParamDepart);
 }

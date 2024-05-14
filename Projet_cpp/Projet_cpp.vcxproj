@@ -274,10 +274,11 @@
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />
     <ClCompile Include="CArbreBoruvka.cpp" />
+    <ClCompile Include="CArcPondere.cpp" />
     <ClCompile Include="CFichier.cpp" />
     <ClCompile Include="CException.cpp" />
-    <ClCompile Include="CGraph.cpp" />
-    <ClCompile Include="CGrapheOriente.cpp" />
+    <ClCompile Include="PGraph.cpp" />
+    <ClCompile Include="PGrapheOriente.cpp" />
     <ClCompile Include="CInversion.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="CSortie.cpp" />
@@ -288,13 +289,15 @@
   <ItemGroup>
     <ClInclude Include="CArc.h" />
     <ClInclude Include="CArbreBoruvka.h" />
+    <ClInclude Include="CArcPondere.h" />
     <ClInclude Include="CFichier.h" />
     <ClInclude Include="CException.h" />
-    <ClInclude Include="CGraph.h" />
-    <ClInclude Include="CGrapheOriente.h" />
+    <ClInclude Include="PGraph.h" />
+    <ClInclude Include="PGrapheOriente.h" />
     <ClInclude Include="CInversion.h" />
     <ClInclude Include="CSommet.h" />
     <ClInclude Include="CSortie.h" />
+    <ClInclude Include="Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

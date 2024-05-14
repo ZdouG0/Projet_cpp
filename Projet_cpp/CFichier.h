@@ -7,8 +7,8 @@ using namespace std;
 #include <fstream>
 #include <iostream>
 #include "CException.h"
-#include "CGrapheOriente.h"
-#include "CGraph.h"
+#include "PGrapheOriente.h"
+#include "PGraph.h"
 
 //variable exception
 #define ECHEC_LECTURE 984
@@ -52,8 +52,8 @@ class CFichier
 	//Attributs
 	private :
 		string  sFICNomFichier; // le chemin d'acces du fichier
-		string sTypeGraphe; // le type de GrapheOriente ou non
-		CGrapheOriente* GROFICGraphe;
+		string	sTypeGraphe; // le type de GrapheOriente ou non
+		PGrapheOriente<CArc,CSommet<CArc>>* GROFICGraphe;
 		unsigned int FICNbSommet;
 		unsigned int FICNbArc;
 
@@ -89,7 +89,7 @@ class CFichier
 		* Sortie : un pointeur vers GROFICGraphe
 		* Entraîne : un pointeur vers GROFICGraphe est retourné
 		* ****************************************************/
-		inline CGrapheOriente* FICLireGraphe() { return GROFICGraphe; }
+		inline PGrapheOriente<CArc,CSommet<CArc>>* FICLireGraphe() { return GROFICGraphe; }
 
 
 		/*****************************************************

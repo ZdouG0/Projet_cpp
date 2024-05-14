@@ -45,7 +45,7 @@ CSortie :: ~CSortie() {
 * Entraîne : Notre Graphe est affiche
 * ****************************************************/
 void CSortie :: SORAfficher_Graphe() {
-	CSommet* SOMTemp;
+	CSommet<CArc>* SOMTemp;
 	vector<string> vListeNomSommet;
 	size_t uiNombreSommet = pGROSORGraphe->GRONombreSommet();
 	for (unsigned int uiBoucle = 0; uiBoucle < uiNombreSommet; uiBoucle++) {   // on parcourt les sommets de notre graphe

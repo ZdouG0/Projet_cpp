@@ -10,7 +10,7 @@
 * Entraîne : constructeur de recopie par defaut
 * ****************************************************/
 CInversion::CInversion(CInversion& InverParam) {
-	pGROINVGraphe = new CGrapheOriente(*InverParam.pGROINVGraphe);
+	pGROINVGraphe = new PGrapheOriente<CArc,CSommet<CArc>>(*InverParam.pGROINVGraphe);
 }
 
 /*****************************************************
@@ -22,7 +22,7 @@ CInversion::CInversion(CInversion& InverParam) {
 * Entraîne : constructeur de recopie par defaut
 * ****************************************************/
 void CInversion :: operator=(CInversion& InverParam) {
-	pGROINVGraphe = new CGrapheOriente(*InverParam.pGROINVGraphe);
+	pGROINVGraphe = new PGrapheOriente<CArc, CSommet<CArc>>(*InverParam.pGROINVGraphe);
 }
 
 
@@ -34,15 +34,15 @@ void CInversion :: operator=(CInversion& InverParam) {
 * Sortie : Rien
 * Entraîne : le graphe en attribut est inverse
 * ****************************************************/
-CGrapheOriente* CInversion :: INVInversion() {
+PGrapheOriente<CArc, CSommet<CArc>>* CInversion :: INVInversion() {
 	unsigned int uiBoucle_som;
 	unsigned int uiBoucle_arc;
-	CSommet* pSOMtemp = nullptr;
+	CSommet<CArc>* pSOMtemp = nullptr;
 	string sNomArrive;
 	string sNomDepart;
 	CArc* pARCtemp = nullptr;
 	CArc* pARCtemp2 = nullptr;
-	CGrapheOriente* pGROGrapheInv = new CGrapheOriente();
+	PGrapheOriente<CArc, CSommet<CArc>>* pGROGrapheInv = new PGrapheOriente<CArc,CSommet<CArc>>();
 	for (uiBoucle_som = 0; uiBoucle_som < pGROINVGraphe->GROLireTailleListSommet(); uiBoucle_som++) {  // cette boucle permet de copier notre graphe en attributs mais prové des arcs
 		pSOMtemp = pGROINVGraphe->GROLireSommet(uiBoucle_som);
 		pGROGrapheInv->GROCreerSommet(pSOMtemp->SOMLireNom());

@@ -7,7 +7,7 @@
 #include <iterator>
 #include <string>
 #include <vector>
-#include "CGrapheOriente.h"
+#include "PGrapheOriente.h"
 #include "assert.h"
 #include "Test.h"
 #include "CFichier.h"

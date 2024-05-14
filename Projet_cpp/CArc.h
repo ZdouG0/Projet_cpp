@@ -35,6 +35,7 @@ class CArc
 private:
 	string sARCSommetDepart;
 	string sARCSommetArrive;
+	unsigned int uiARCPoids;
 
 public:
 	//CONSTRUCTEUR/DESTRUCTEUR
@@ -48,7 +49,7 @@ public:
 		* ****************************************************/
 	CArc();
 
-
+	
 
 	/******************************************************
 	* CArc
@@ -62,6 +63,20 @@ public:
 	* ****************************************************/
 	CArc(string sParamDepart, string sParamArrive);
 	
+	/******************************************************
+	* CArc
+	* *****************************************************
+	* Entrée : deux strings sParamDepart, sParamArrive et un
+	*		entier non signé
+	* Nécessite : Rien
+	* Sortie : Rien
+	* Entraîne : l'initialisation d'un CArc avec comme
+	* parametres sARCSommetDepart = sParamDepart et
+	* sARCSommetArrive = sParamArrive et uiARCPoids = uiParamPoids
+	* ****************************************************/
+	CArc(string sParamDepart, string sParamArrive, unsigned int uiParamPoids);
+
+
 	//METHODES
 		/******************************************************
 		* ARCLireDepart
@@ -82,6 +97,16 @@ public:
 	* Entraîne : Le nom du sommet d'arrive est retourné
 	* ****************************************************/
 	inline const string ARCLireArrive() const { return sARCSommetArrive; };
+
+	/******************************************************
+	* ARCLirePoids
+	* *****************************************************
+	* Entrée : Rien
+	* Nécessite : Rien
+	* Sortie : le poids de l'arc
+	* Entraîne : Le poids de l'arc est retourné
+	* ****************************************************/
+	inline const unsigned int ARCLirePoids() const { return uiARCPoids; };
 
 	/******************************************************
 	* ARCModifierSommetDepart

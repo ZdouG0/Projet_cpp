@@ -38,13 +38,13 @@ using namespace std;
 
 #define INDICE_HORS_TABLEAU 866
 
-class CSommet
+template<class T> class CSommet
 {
 	//ATTRIBUTS
 private:
 	string sSOMNom;
-	list<CArc*> lSOMListArcEntrant;
-	list<CArc*> lSOMListArcSortant;
+	list<T*> lSOMListArcEntrant;
+	list<T*> lSOMListArcSortant;
 	
 public:
 	//CONSTRUCTEUR/DESTRUCTEUR
@@ -85,7 +85,7 @@ public:
 	* Sortie : un Arc qui arrive dans ce sommet
 	* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 	* ****************************************************/
-	CArc* SOMLireElemListArcEntrant(unsigned int uiIndice); 
+	T* SOMLireElemListArcEntrant(unsigned int uiIndice); 
 
 	/******************************************************
 	* SOMLireListSomEntrant
@@ -118,7 +118,7 @@ public:
 	* Sortie : un Arc qui part de ce sommet
 	* Entraîne : (l'Arc voulu est retourne ) OU (EXCEPTION l'indice est trop grand)
 	* ****************************************************/
-	CArc* SOMLireElemListArcSortant(unsigned int uiIndice);
+	T* SOMLireElemListArcSortant(unsigned int uiIndice);
 
 	/******************************************************
 	* SOMAjoutArcSortant
@@ -129,7 +129,7 @@ public:
 	* Entraîne : L'arc entre en parametre est ajouté a la liste
 	* des arc sortant
 	* ****************************************************/
-	inline void SOMAjoutArcSortant(CArc* ARCParam) { lSOMListArcSortant.push_back(ARCParam); };
+	inline void SOMAjoutArcSortant(T* ARCParam) { lSOMListArcSortant.push_back(ARCParam); };
 
 	/******************************************************
 	* SOMAjoutArcEntrant
@@ -140,7 +140,7 @@ public:
 	* Entraîne : L'arc entre en parametre est ajouté a la liste
 	* des arc entrant
 	* ****************************************************/
-	inline void SOMAjoutArcEntrant(CArc* ARCParam) { lSOMListArcEntrant.push_back(ARCParam); };
+	inline void SOMAjoutArcEntrant(T* ARCParam) { lSOMListArcEntrant.push_back(ARCParam); };
 
 	/******************************************************
 	* SOMLireNom

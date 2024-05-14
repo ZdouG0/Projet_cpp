@@ -1,5 +1,5 @@
-#ifndef __CGrapheOriente__
-#define __CGrapheOriente__
+#ifndef __PGrapheOriente__
+#define __PGrapheOriente__
 
 
 #include <string>
@@ -12,7 +12,7 @@ using namespace std;
 /************************************************************
 * CLASSE : Classe pour la gestion d' un Graphe Orienté
 * ************************************************************
-* ROLE : Interface de la classe CGrapheOriente,
+* ROLE : Interface de la classe PGrapheOriente,
 * cette classe permet de generer un graphe orienté
 * ************************************************************
 * VERSION :
@@ -31,34 +31,35 @@ using namespace std;
 */
 #define Element_inconnu 404
 
-class CGrapheOriente {
+template<class T, class S>
+class PGrapheOriente {
 	//ATTRIBUTS
 private:
-	list<CArc*> pARCGROListArc;
-	list<CSommet*> pSOMGROListSom;
+	list<T*> pARCGROListArc;
+	list<S*> pSOMGROListSom;
 
 
 public:
 	//Constructeurs
 	/*****************************************************
-	* CGrapheOriente
+	* PGrapheOriente
 	* ****************************************************
 	* Entrée : Aucune
 	* Nécessite : RIen
 	* Sortie : Aucune
-	* Entraîne : Creation d'un objet CGrapheOriente
+	* Entraîne : Creation d'un objet PGrapheOriente
 	* ****************************************************/
-	CGrapheOriente();
+	PGrapheOriente();
 
 	/*****************************************************
-	* CGrapheOriente
+	* PGrapheOriente
 	* ****************************************************
 	* Entrée : Aucune
 	* Nécessite : RIen
 	* Sortie : Aucune
-	* Entraîne : Creation d'un objet CGrapheOriente
+	* Entraîne : Creation d'un objet PGrapheOriente
 	* ****************************************************/
-	CGrapheOriente(CGrapheOriente& GROTocopie);
+	PGrapheOriente(PGrapheOriente<T,S>& GROTocopie);
 
 	/*****************************************************
 	* operator=
@@ -66,9 +67,9 @@ public:
 	* Entrée : Aucune
 	* Nécessite : RIen
 	* Sortie : Aucune
-	* Entraîne : Creation d'un objet CGrapheOriente
+	* Entraîne : Creation d'un objet PGrapheOriente
 	* ****************************************************/
-	void operator=(CGrapheOriente& GROTocopie);
+	void operator=(PGrapheOriente<T,S>& GROTocopie);
 
 
 
@@ -107,7 +108,7 @@ public:
 	* Sortie : string
 	* Entraîne : (le nom des sommets de depart et d'arrive de notre arc avec la position stPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
-	CArc* GROLireArc(size_t stPos) const;
+	T* GROLireArc(size_t stPos) const;
 
 
 
@@ -145,7 +146,7 @@ public:
 	* Sortie : Aucune
 	* Entraîne : Un sommet isolé qui ne pointent vers personne et avec personne qui pointent sur lui
 	* ****************************************************/
-	void GROSupprimerArcs(CSommet& SOMParam);
+	void GROSupprimerArcs(S& SOMParam);
 
 
 
@@ -214,7 +215,7 @@ public:
 	* Sortie : un pointeur vers un sommet
 	* Entraîne : (lenom du sommet avec la position sPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
-	CSommet* GROLireSommet(size_t stPos) const;
+	S* GROLireSommet(size_t stPos) const;
 	//ICI tu va devoir utiliser iterator car la surcharge de loperator [] nous parait pas petinante
 
 

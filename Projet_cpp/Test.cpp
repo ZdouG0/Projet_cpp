@@ -1,4 +1,7 @@
 #include "Test.h"
+#include "CArc.h"
+#include "CSommet.h"
+#include "PGrapheOriente.h"
 
 void CTest::TESTestMethodesARC(CArc ARCParam) {
     CArc ARCVar;
@@ -40,7 +43,7 @@ void CTest::TESTestMethodesARC(CArc* ARCParam) {
 
 
 
-void CTest::TESTestMethodesSOM(CSommet SomParam) {
+void CTest::TESTestMethodesSOM(CSommet<CArc> SomParam) {
     cout << "~*************************************~      CSOMMET      ~*************************************~" << endl;
     cout << "\nTest sur la classe CSommet" << endl;
     string nomSOM = "sommet A";
@@ -49,7 +52,7 @@ void CTest::TESTestMethodesSOM(CSommet SomParam) {
     assert((SomParam.SOMLireNom() == "sommet a") == false);
 }
 
-void CTest::TESTestMethodesSOM(CSommet* SomParam) {
+void CTest::TESTestMethodesSOM(CSommet<CArc>* SomParam) {
     cout << "~*************************************~      CSOMMET      ~*************************************~" << endl;
     cout << "\nTest sur la classe CSommet" << endl;
     string nomSOM = "sommet A";
@@ -61,11 +64,11 @@ void CTest::TESTestMethodesSOM(CSommet* SomParam) {
 
 
 
-void CTest::TESTestMethodesGRO(CGrapheOriente GROParam) {
+void CTest::TESTestMethodesGRO(PGrapheOriente<CArc,CSommet<CArc>> GROParam) {
     cout << "~*************************************~      CGRAPHORIENTE      ~*************************************~" << endl;
 
     //routine de test pour CGraphOriente
-    cout << "\nTest sur la classe CGrapheOriente" << endl;
+    cout << "\nTest sur la classe PGrapheOriente" << endl;
 
 
     //Creation de deux sommets
@@ -76,14 +79,14 @@ void CTest::TESTestMethodesGRO(CGrapheOriente GROParam) {
     assert(GROParam.GROTrouverSommetPosition("Paris") == posParis);
 }
 
-void CTest::TESTestMethodesGRO(CGrapheOriente* GROParam) {
+void CTest::TESTestMethodesGRO(PGrapheOriente<CArc, CSommet<CArc>>* GROParam) {
     cout << "~*************************************~      CGRAPHORIENTE      ~*************************************~" << endl;
 
     //routine de test pour CGraphOriente
-    cout << "\nTest sur la classe CGrapheOriente" << endl;
+    cout << "\nTest sur la classe PGrapheOriente" << endl;
     //Creation de deux sommets
     GROParam->GROCreerSommet("Paris");
-    //Verification des methodes : CGrapheOriente, CreerSommet, LireSommet, TrouverSomPos
+    //Verification des methodes : PGrapheOriente, CreerSommet, LireSommet, TrouverSomPos
     size_t posParis = GROParam->GROTrouverSommetPosition("Paris");
     assert(GROParam->GROLireSommet(posParis)->SOMLireNom() == "Paris");
     assert((GROParam->GROLireSommet(posParis)->SOMLireNom() == "paris") == false);

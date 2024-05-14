@@ -2,7 +2,7 @@
 #define __CSortie__					
 
 
-#include "CGrapheOriente.h"
+#include "PGrapheOriente.h"
 #include "CException.h"
 using namespace std;
 #include <iostream>
@@ -37,7 +37,7 @@ class CSortie
 {
 	//ATTRIBUTS
 	private :
-		CGrapheOriente* pGROSORGraphe;
+		PGrapheOriente<CArc, CSommet<CArc>>* pGROSORGraphe;
 	//METHODES
 	public :
 		/*****************************************************
@@ -69,7 +69,7 @@ class CSortie
 		* Sortie : Rien
 		* Entraîne : Le graphe en parametre est Modifié
 		* ****************************************************/
-		void SORModifierGraphe(CGrapheOriente* GrapheParam) { pGROSORGraphe = GrapheParam; };
+		void SORModifierGraphe(PGrapheOriente<CArc, CSommet<CArc>>* GrapheParam) { pGROSORGraphe = GrapheParam; };
 
 		/*****************************************************
 		* SORAfficher_Graphe

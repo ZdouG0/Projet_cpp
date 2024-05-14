@@ -1,5 +1,5 @@
 #pragma once
-#include "CGrapheOriente.h"
+#include "PGrapheOriente.h"
 #include "assert.h"
 #include <iostream>
 
@@ -17,7 +17,7 @@ public:
 
 
 
-	void TESTestMethodesGRO(CGrapheOriente GROParam);
-	void TESTestMethodesGRO(CGrapheOriente* GROParam);
+	void TESTestMethodesGRO(PGrapheOriente<CArc> GROParam);
+	void TESTestMethodesGRO(PGrapheOriente<CArc>* GROParam);
 };
 

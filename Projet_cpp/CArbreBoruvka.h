@@ -1,7 +1,9 @@
 #ifndef __CBoruvka__
 #define __CBoruvka__					
 
-#include "CGrapheOriente.h"
+#include "PGrapheOriente.h"
+#include "CArc.h"
+#include "CArcPondere.h"
 using namespace std;
 
 
@@ -33,8 +35,67 @@ using namespace std;
 
 
 class CArbreBoruvka
-{
-	CGrapheOriente* pGROABKGraphParam;
+{	
+	//attributs
+
+	private :
+		PGrapheOriente<CArcPondere,CSommet<CArcPondere>>* pGROABKGraphParam;
+	//Constructeur/ Destructeurs
+	public :
+		/*****************************************************
+		* CArbreBoruvka
+		* ****************************************************
+		* Entrée : Rien
+		* Nécessite : Rien
+		* Sortie : Rien
+		* Entraîne : Un objet de la classe CArbreBoruvka est construit
+		* ****************************************************/
+		inline CArbreBoruvka() { pGROABKGraphParam = new PGrapheOriente<CArcPondere, CSommet<CArcPondere>>(); };
+
+		/*****************************************************
+		* CArbreBoruvka
+		* ****************************************************
+		* Entrée : Un CArbreBoruvka a copier
+		* Nécessite : Rien
+		* Sortie : Rien
+		* Entraîne : Un objet de la classe CSortie est creer en 
+		* copiant l'objet en parametre
+		* ****************************************************/
+		CArbreBoruvka(CArbreBoruvka& ABKParam);
+
+		/*****************************************************
+		* operator=
+		* ****************************************************
+		* Entrée : Un CArbreBoruvka a copier
+		* Nécessite : Rien
+		* Sortie : Rien
+		* Entraîne : Un objet de la classe CSortie est creer en
+		* copiant l'objet en parametre
+		* ****************************************************/
+		void operator=(CArbreBoruvka& ABKParam);
+
+
+		/*****************************************************
+		* ABKBoruvka
+		* ****************************************************
+		* Entrée : rien
+		* Nécessite : Rien
+		* Sortie : Un PGrapheOriente l'arbe couvrant minimal
+		* Entraîne : creation de l'arbre couvrant minimal a partir
+		* de l'algorithme Boruvka
+		* ****************************************************/
+		PGrapheOriente<CArcPondere, CSommet<CArcPondere>>* ABKBoruvka();
+
+		/*****************************************************
+		* ABKMinPoids
+		* ****************************************************
+		* Entrée : rien
+		* Nécessite : Rien
+		* Sortie : Un PGrapheOriente l'arbe couvrant minimal
+		* Entraîne : creation de l'arbre couvrant minimal a partir
+		* de l'algorithme Boruvka
+		* ****************************************************/
+		CArc* ABKMinPoids(list<CArc*> ListParam);
 };
 
 #endif

@@ -3,7 +3,7 @@
 
 
 
-#include "CGrapheOriente.h"
+#include "PGrapheOriente.h"
 #include "CException.h"
 
 /************************************************************
@@ -34,7 +34,7 @@ class CInversion
 {
 	//attributs
 	private : 
-		CGrapheOriente* pGROINVGraphe;
+		PGrapheOriente<CArc, CSommet<CArc>>* pGROINVGraphe;
 
 	//methodes
 	public:
@@ -77,7 +77,7 @@ class CInversion
 		* Sortie : le graphe
 		* Entraîne : le graphe pointe par l'attribut est retourne
 		* ****************************************************/
-		inline CGrapheOriente* INVLectureGraphe() { return pGROINVGraphe; };
+		inline PGrapheOriente<CArc, CSommet<CArc>>* INVLectureGraphe() { return pGROINVGraphe; };
 
 
 		/*****************************************************
@@ -88,7 +88,7 @@ class CInversion
 		* Sortie : le graphe
 		* Entraîne : le graphe pointe par l'attribut est retourne
 		* ****************************************************/
-		inline void INVChangerGraphe(CGrapheOriente* GrapheParam) { pGROINVGraphe = GrapheParam; };
+		inline void INVChangerGraphe(PGrapheOriente<CArc, CSommet<CArc>>* GrapheParam) { pGROINVGraphe = GrapheParam; };
 
 
 		/*****************************************************
@@ -100,7 +100,7 @@ class CInversion
 		* Entraîne : le graphe en attribut est inverse dans une 
 		* nouvelle instance de la classe
 		* ****************************************************/
-		CGrapheOriente* INVInversion();
+		PGrapheOriente<CArc, CSommet<CArc>>* INVInversion();
 
 
 

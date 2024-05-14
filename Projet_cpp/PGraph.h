@@ -5,7 +5,7 @@
 
 #include <string>
 #include <list>
-#include "CGrapheOriente.h"
+#include "PGrapheOriente.h"
 using namespace std;
 
 
@@ -30,7 +30,8 @@ using namespace std;
 
 
 
-class CGraph : public CGrapheOriente {
+template<class T,class S>
+class PGraph : public PGrapheOriente<T,S> {
 
 
 
