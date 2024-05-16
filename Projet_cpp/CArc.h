@@ -35,8 +35,7 @@ class CArc
 private:
 	string sARCSommetDepart;
 	string sARCSommetArrive;
-	unsigned int uiARCPoids;
-
+	
 public:
 	//CONSTRUCTEUR/DESTRUCTEUR
 		/******************************************************
@@ -66,17 +65,7 @@ public:
 
 
 
-	/******************************************************
-	* CArc
-	* *****************************************************
-	* Entrée : deux strings sParamDepart, sParamArrive et un entier non signé
-	* Nécessite : Rien
-	* Sortie : Rien
-	* Entraîne : l'initialisation d'un CArc avec comme
-	* parametres sARCSommetDepart = sParamDepart et
-	* sARCSommetArrive = sParamArrive et uiARCPoids = uiParam
-	* ****************************************************/
-	CArc(string sParamDepart, string sParamArrive, unsigned int uiParamPoids);
+
 
 
 	
@@ -89,7 +78,7 @@ public:
 		* Sortie : une chaine de caractere le nom d'un sommet
 		* Entraîne : Le nom du sommet de depart est retourné
 		* ****************************************************/
-	inline const string ARCLireDepart() const { return sARCSommetDepart; };
+	inline const string ARCLireDepart() const { return sARCSommetDepart; }
 
 	/******************************************************
 	* ARCLireArrive
@@ -99,7 +88,7 @@ public:
 	* Sortie : une chaine de caractere le nom d'un sommet
 	* Entraîne : Le nom du sommet d'arrive est retourné
 	* ****************************************************/
-	inline const string ARCLireArrive() const { return sARCSommetArrive; };
+	inline const string ARCLireArrive() const { return sARCSommetArrive; }
 
 	/******************************************************
 	* ARCModifierSommetDepart
@@ -109,7 +98,7 @@ public:
 	* Sortie : Rien
 	* Entraîne : le nom du sommet de depart est modifié
 	* ****************************************************/
-	inline void ARCModifierSommetDepart(string sParam) { sARCSommetDepart = sParam; };
+	inline void ARCModifierSommetDepart(string sParam) { sARCSommetDepart = sParam; }
 
 	/******************************************************
 	* ARCModifierSommetArrive
@@ -119,36 +108,7 @@ public:
 	* Sortie : Rien
 	* Entraîne : le nom du sommet d'arrivé est modifié
 	* ****************************************************/
-	inline void ARCModifierSommetArrive(string sParam) { sARCSommetArrive = sParam; };
-
-
-
-
-	/******************************************************
-	* ARCLirePoids
-	* *****************************************************
-	* Entrée : Rien
-	* Nécessite : Rien
-	* Sortie : un entier non signé
-	* Entraîne : Le poids de l'arc est retourné
-	* ****************************************************/
-	inline unsigned int ARCLirePoids() { return uiARCPoids; }
-
-
-
-
-	/******************************************************
-	* ARCModifierPoids
-	* *****************************************************
-	* Entrée : un unsigned int 
-	* Nécessite : le sommet en parametre doit exister
-	* Sortie : Rien
-	* Entraîne : le poids de l'arc  est modifié
-	* ****************************************************/
-	inline void ARCModifierPoids(unsigned int uiParamPoids) { uiARCPoids = uiParamPoids; };
-
-
-
+	inline void ARCModifierSommetArrive(string sParam) { sARCSommetArrive = sParam; }
 
 
 };

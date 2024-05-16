@@ -1,1 +1,1 @@
-#include "CArbreBoruvka.h"
+#include "CBoruvka.h"

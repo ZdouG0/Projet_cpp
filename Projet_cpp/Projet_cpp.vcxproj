@@ -274,6 +274,7 @@
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />
     <ClCompile Include="CArbreBoruvka.cpp" />
+    <ClCompile Include="CArcPondere.cpp" />
     <ClCompile Include="CFichier.cpp" />
     <ClCompile Include="CException.cpp" />
     <ClCompile Include="CGraph.cpp" />
@@ -288,6 +289,7 @@
   <ItemGroup>
     <ClInclude Include="CArc.h" />
     <ClInclude Include="CArbreBoruvka.h" />
+    <ClInclude Include="CArcPondere.h" />
     <ClInclude Include="CFichier.h" />
     <ClInclude Include="CException.h" />
     <ClInclude Include="CGraph.h" />
