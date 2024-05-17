@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include "CArc.h"
-#include "CSommet.h"
+#include "PSommet.h"
 #include <iterator>
 #include <string>
 #include <vector>

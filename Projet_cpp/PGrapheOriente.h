@@ -4,7 +4,7 @@
 
 #include <string>
 #include <list>
-#include "CSommet.h"
+#include "PSommet.h"
 using namespace std;
 
 
@@ -49,17 +49,34 @@ public:
 	* Sortie : Aucune
 	* Entraîne : Creation d'un objet PGrapheOriente
 	* ****************************************************/
-	PGrapheOriente();
+	PGrapheOriente() {
+		list<T*>listeArcs;
+		list<S*>listeSommet;
+		pARCGROListArc = listeArcs;
+		pSOMGROListSom = listeSommet;
+	}
 
-	/*****************************************************
-	* PGrapheOriente
-	* ****************************************************
+
+	/***************************************************
+	*PGrapheOriente
+	*****************************************************
 	* Entrée : Aucune
 	* Nécessite : RIen
 	* Sortie : Aucune
 	* Entraîne : Creation d'un objet PGrapheOriente
 	* ****************************************************/
-	PGrapheOriente(PGrapheOriente<T,S>& GROTocopie);
+	PGrapheOriente(PGrapheOriente<T, S>& GROTocopie) {
+		list<T*>listeArcs; size_t uiboucle;
+		for (uiboucle = 0; uiboucle < GROTocopie.GROLireTailleListArc(); uiboucle++) {
+			listeArcs.push_back(GROTocopie.GROLireArc(uiboucle));
+		}
+		list<S*>listeSommet;
+		for (uiboucle = 0; uiboucle < GROTocopie.GROLireTailleListSommet(); uiboucle++) {
+			listeSommet.push_back(GROTocopie.GROLireSommet(uiboucle));
+		}
+		pARCGROListArc = listeArcs;
+		pSOMGROListSom = listeSommet;
+	}
 
 	/*****************************************************
 	* operator=
@@ -69,7 +86,18 @@ public:
 	* Sortie : Aucune
 	* Entraîne : Creation d'un objet PGrapheOriente
 	* ****************************************************/
-	void operator=(PGrapheOriente<T,S>& GROTocopie);
+	void operator=(PGrapheOriente<T, S>& GROTocopie) {
+		list<T*>listeArcs; size_t uiboucle;
+		for (uiboucle = 0; uiboucle < GROTocopie.GROLireTailleListArc(); uiboucle++) {
+			listeArcs.push_back(GROTocopie.GROLireArc(uiboucle));
+		}
+		list<S*>listeSommet;
+		for (uiboucle = 0; uiboucle < GROTocopie.GROLireTailleListSommet(); uiboucle++) {
+			listeSommet.push_back(GROTocopie.GROLireSommet(uiboucle));
+		}
+		pARCGROListArc = listeArcs;
+		pSOMGROListSom = listeSommet;
+	}
 
 
 
@@ -81,12 +109,37 @@ public:
 	* GROCreerArc
 	* ****************************************************
 	* Entrée : une chaine de caractere ( nom du sommet de depart) et une deuxième chaine de caractère (nom du sommet d'arrivée)
-	* Nécessite : La liste de CSommet contienne au moins deux elements et que les deux chaines de caractères se réfèrent bien à des sommets existants
+	* Nécessite : La liste de PSommet contienne au moins deux elements et que les deux chaines de caractères se réfèrent bien à des sommets existants
 	* Sortie : Aucune
-	* Entraîne : Il y a un arc de plus dans la liste des arc si les sommets sont bien dans la liste
+	* Entraîne : ( Il y a un arc de plus dans la liste des arc si les sommets sont bien dans la liste) OU (Exception Element_inconnu)
+	* Il y a un arc de plus dans la liste des arc si les sommets sont bien dans la liste
 	* De plus les deux sommets sont maintenant lié par un arc
 	* ****************************************************/
-	virtual void GROCreerArc(string chParamDepart, string chParamArrive);
+	 void GROCreerArc(string sParamDepart, string sParamArrive) {
+		//Je vais appeler ces deux fonctions pour etre sur que les sommet de depart et d'arrive existent
+		//Dans cette fonction je lève une CException si le sommet n'est pas dans le tableau des sommets
+		size_t stPosD = GROTrouverSommetPosition(sParamDepart); size_t stPosA = GROTrouverSommetPosition(sParamArrive); size_t stCompteur = 0;
+
+
+		///Depart -----> Arrive ///////////// Dans depart jai donc un arc sortant allant vers arrive et dans arrive un arc entrant allant dans depart
+
+		//ajouter liste des arcs
+		T* ARCParam = new T(sParamDepart, sParamArrive);  // verifier quelle constructeur appele ici avce template
+		pARCGROListArc.push_back(ARCParam);
+		// ajouter dans les sommets
+		S* sommetDepart = nullptr;
+		S* sommetArrive = nullptr;
+		for (auto iter = pSOMGROListSom.begin(); iter != pSOMGROListSom.end(); ++iter, ++stCompteur) {
+			if (stCompteur == stPosD) {
+				sommetDepart = *iter;
+			}
+			if (stCompteur == stPosA) {
+				sommetArrive = *iter;
+			}
+		}
+		sommetDepart->SOMAjoutArcSortant(ARCParam);
+		sommetArrive->SOMAjoutArcEntrant(ARCParam);
+	 }
 
 
 
@@ -100,6 +153,7 @@ public:
 	* ****************************************************/
 	inline size_t GROLireTailleListSommet() { return pSOMGROListSom.size(); }
 
+
 	/*****************************************************
 	* GROLireArc
 	* ****************************************************
@@ -108,7 +162,21 @@ public:
 	* Sortie : string
 	* Entraîne : (le nom des sommets de depart et d'arrive de notre arc avec la position stPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
-	T* GROLireArc(size_t stPos) const;
+	T* GROLireArc(size_t stPos) const {
+		unsigned int uiBoucle;
+		if (stPos >= pARCGROListArc.size()) {
+			CException EXCErreur;
+			EXCErreur.EXCModifierValeur(Element_inconnu);
+			throw(EXCErreur);
+		}
+
+		auto iter = pARCGROListArc.begin();
+		for (uiBoucle = 0; uiBoucle < stPos; ++uiBoucle) {
+			++iter;
+		}
+
+		return *iter;
+	}
 
 
 
@@ -125,6 +193,7 @@ public:
 
 
 
+
 	/*****************************************************
 	* GROSupprimerArc
 	* ****************************************************
@@ -133,7 +202,31 @@ public:
 	* Sortie : Aucune
 	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 	* ****************************************************/
-	virtual void GROSupprimerArc(string chParamDepart, string chParamArrive);
+	void GROSupprimerArc(string chParamDepart, string chParamArrive) {
+		//Cette methode a trois choses à faire : supprimer l'arc de la liste des arcs du graph mais aussi supprimer le fait que les deux sommets soient liées + désalour
+		size_t stPosSomE; size_t stPosSomS;
+		for (auto iter = pARCGROListArc.begin(); iter != pARCGROListArc.end(); ++iter) {
+			if ((*iter)->ARCLireDepart() == chParamDepart && (*iter)->ARCLireArrive() == chParamArrive) {
+				//etape 1
+				pARCGROListArc.erase(iter);
+				//etape 2
+				stPosSomE = GROTrouverSommetPosition(chParamDepart);
+				stPosSomS = GROTrouverSommetPosition(chParamArrive);
+				auto iterE = GROLireSommet(stPosSomE);
+				iterE->SOMSupprimerArcSortantLie(chParamDepart);
+				auto iterS = GROLireSommet(stPosSomS);
+				iterS->SOMSupprimerArcSortantLie(chParamArrive);
+				pARCGROListArc.erase(iter);
+				delete* iter;
+
+				return;
+			}
+		}
+		CException EXCErreur;
+		EXCErreur.EXCModifierValeur(Element_inconnu);
+		throw(EXCErreur);
+	}
+
 
 
 
@@ -146,13 +239,26 @@ public:
 	* Sortie : Aucune
 	* Entraîne : Un sommet isolé qui ne pointent vers personne et avec personne qui pointent sur lui
 	* ****************************************************/
-	void GROSupprimerArcs(S& SOMParam);
+	 void GROSupprimerArcs(S& SOMParam) {
+		unsigned int  stBoucle;
+
+		for (stBoucle = 0; stBoucle < SOMParam.SOMTaileListArcEntrant(); stBoucle++) {
+			T* ARCParam = SOMParam.SOMLireElemListArcEntrant(stBoucle);
+			GROSupprimerArc(ARCParam->ARCLireDepart(), ARCParam->ARCLireArrive());
+
+		}
+		for (stBoucle = 0; stBoucle < SOMParam.SOMTaileListArcSortant(); stBoucle++) {
+			T* ARCParam = SOMParam.SOMLireElemListArcSortant(stBoucle);
+			GROSupprimerArc(ARCParam->ARCLireDepart(), ARCParam->ARCLireArrive());
+		}
+	 }
 
 
 
 	/*****************************************************
 	* Methodes de gestion des Sommets
 	******************************************************/
+
 
 
 
@@ -164,31 +270,84 @@ public:
 	* Sortie : Aucune
 	* Entraîne : Il y a un sommet de plus dans la liste des sommets si le sommet est bien dans la liste
 	* ****************************************************/
-	void GROCreerSommet(string chParam);
+	 void GROCreerSommet(string chParam) {
+		 S* SOMParam = new S();
+		 SOMParam->SOMModifierNom(chParam);
+		 pSOMGROListSom.push_back(SOMParam);
+	 }
 
 
 
-	/*****************************************************
-	* GROModifierSommet
-	* ****************************************************
-	* Entrée : deux chaines de caracteres
-	* Nécessite : Rien
-	* Sortie : Aucune
-	* Entraîne : Il y a un sommet qui a changé de nom
-	* ****************************************************/
-	void GROModifierSommet(string chParam, string chNvnom);
+	 /*****************************************************
+	 * GROModifierSommet
+	 * ****************************************************
+	 * Entrée : une chaine de caractere
+	 * Nécessite : Rien
+	 * Sortie : Aucune
+	 * Entraîne : Il y a un sommet qui a changé de nom
+	 * ****************************************************/
+	 void GROModifierSommet(string chParam, string chNvNom) {
+		 size_t posSOM;
+		 auto iter = pSOMGROListSom.begin();
+		 posSOM = GROTrouverSommetPosition(chParam);
+		 advance(iter, posSOM);
+
+		 // Modifier le nom du sommet
+		 (*iter)->SOMModifierNom(chNvNom);
+
+		 // Parcourir tous les sommets du graphe
+		 for (auto it = pSOMGROListSom.begin(); it != pSOMGROListSom.end(); ++it) {
+			 S* sommet = *it;
+
+			 // Mettre à jour les arcs sortants
+			 for (size_t i = 0; i < sommet->SOMTaileListArcSortant(); ++i) {
+				 T* arc = sommet->SOMLireElemListArcSortant(i);
+				 if (arc->ARCLireDepart() == chParam) {
+					 arc->ARCModifierSommetDepart((*it)->SOMLireNom());
+				 }
+			 }
+
+			 // Mettre à jour les arcs entrants
+			 for (size_t i = 0; i < sommet->SOMTaileListArcEntrant(); ++i) {
+				 T* arc = sommet->SOMLireElemListArcEntrant(i);
+				 if (arc->ARCLireArrive() == chParam) {
+					 arc->ARCModifierSommetArrive((*it)->SOMLireNom());
+				 }
+			 }
+		 }
+	 }
 
 
 
-	/*****************************************************
-	* GROTrouverSommet
-	* ****************************************************
-	* Entrée : une chaine de caractere (nom du sommet à ajouter)
-	* Nécessite : Rien
-	* Sortie : size_t
-	* Entraîne : (la position du sommet avec le nom chParam est retournée) OU (Exception Element_inconnu)
-	* ****************************************************/
-	size_t GROTrouverSommetPosition(string chParam);
+
+	 /*****************************************************
+	 * GROTrouverSommet
+	 * ****************************************************
+	 * Entrée : une chaine de caractere (nom du sommet à trouver)
+	 * Nécessite : Rien
+	 * Sortie : size_t
+	 * Entraîne : (la position du sommet avec le nom chParam est retournée) OU (Exception Element_inconnu)
+	 * ****************************************************/
+	 size_t GROTrouverSommetPosition(string chParam) {
+		 bool bEstDansLaListe = false; size_t stboucle = 0;
+		 auto iter = pSOMGROListSom.begin();
+		 while (stboucle < pSOMGROListSom.size() && bEstDansLaListe == false) {
+			 if ((*iter)->SOMLireNom() == chParam) {
+				 bEstDansLaListe = true;
+			 }
+			 else {
+				 iter++;
+				 stboucle++;
+			 }
+		 }
+		 if (bEstDansLaListe == false) {
+			 CException EXCErreur;
+			 EXCErreur.EXCModifierValeur(Element_inconnu);
+			 throw(EXCErreur);
+		 }
+		 return stboucle;
+	 }
+
 
 	
 
@@ -207,6 +366,7 @@ public:
 
 
 
+
 	/*****************************************************
 	* GROLireSommet
 	* ****************************************************
@@ -215,8 +375,19 @@ public:
 	* Sortie : un pointeur vers un sommet
 	* Entraîne : (lenom du sommet avec la position sPos est retournée) OU (Exception Element_inconnu)
 	* ****************************************************/
-	S* GROLireSommet(size_t stPos) const;
-	//ICI tu va devoir utiliser iterator car la surcharge de loperator [] nous parait pas petinante
+	S* GROLireSommet(size_t stPos) const {
+		if (stPos >= pSOMGROListSom.size()) {
+			CException EXCErreur;
+			EXCErreur.EXCModifierValeur(Element_inconnu);
+			throw(EXCErreur);
+		}
+
+		auto iter = pSOMGROListSom.begin();
+		advance(iter, stPos);
+
+		return (*iter);
+	}
+
 
 
 
@@ -229,7 +400,13 @@ public:
 	* Sortie : vector<string>
 	* Entraîne : (le nom des sommet qui sont lié avec des arcs à notre sommet d'entré) OU (Exception Element_inconnu)
 	* ****************************************************/
-	vector<string> GROLireSommetSortantLie(string chParam);
+	vector<string> GROLireSommetSortantLie(string chParam) {
+		size_t stPos = GROTrouverSommetPosition(chParam);
+		auto iter = pSOMGROListSom.begin();
+		advance(iter, stPos);
+		return (*iter)->SOMLireListSomSortant();
+	}
+
 
 
 	/*****************************************************
@@ -240,7 +417,13 @@ public:
 	* Sortie : vector<string>
 	* Entraîne : (le nom des sommet qui sont lié avec des arcs à notre sommet d'entré) OU (Exception Element_inconnu)
 	* ****************************************************/
-	vector<string> GROLireSommetEntrantLie(string chParam);
+	vector<string> GROLireSommetEntrantLie(string chParam) {
+		size_t stPos = GROTrouverSommetPosition(chParam);
+		auto iter = pSOMGROListSom.begin();
+		advance(iter, stPos);
+		return (*iter)->SOMLireListSomEntrant();
+	}
+
 
 	/*****************************************************
 	* GROSupprimerSommet
@@ -250,7 +433,18 @@ public:
 	* Sortie : Aucune
 	* Entraîne : (le sommet avec le nom chParam est supprimé) OU (Exception Element_inconnu)
 	* ****************************************************/
-	void GROSupprimerSommet(string chParam);
+	void GROSupprimerSommet(string chParam) {
+		size_t stPos = GROTrouverSommetPosition(chParam);
+		auto iter = pSOMGROListSom.begin();
+		advance(iter, stPos);
+
+		// Supprimer les arcs associe au sommet
+		GROSupprimerArcs(**iter);
+
+		// Supprimer le sommet de la liste
+		delete* iter;
+		pSOMGROListSom.erase(iter);
+	}
 
 	/*****************************************************
 	* GRONombreSommet
@@ -279,3 +473,9 @@ public:
 
 };
 #endif
+
+
+
+
+
+

@@ -11,13 +11,13 @@ public:
 	void TESTestMethodesARC(CArc* ARCParam);
 
 
-	void TESTestMethodesSOM(CSommet SOMParam);
-	void TESTestMethodesSOM(CSommet* SOMParam);
+	void TESTestMethodesSOM(PSommet<CArc> SOMParam);
+	void TESTestMethodesSOM(PSommet<CArc>* SOMParam);
 
 
 
 
-	void TESTestMethodesGRO(PGrapheOriente<CArc> GROParam);
-	void TESTestMethodesGRO(PGrapheOriente<CArc>* GROParam);
+	void TESTestMethodesGRO(PGrapheOriente<CArc, PSommet<CArc>> GROParam);
+	void TESTestMethodesGRO(PGrapheOriente<CArc,PSommet<CArc>>* GROParam);
 };
 

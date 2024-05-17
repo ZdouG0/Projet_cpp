@@ -39,7 +39,7 @@ class CArbreBoruvka
 	//attributs
 
 	private :
-		PGrapheOriente<CArcPondere,CSommet<CArcPondere>>* pGROABKGraphParam;
+		PGrapheOriente<CArcPondere,PSommet<CArcPondere>>* pGROABKGraphParam;
 	//Constructeur/ Destructeurs
 	public :
 		/*****************************************************
@@ -50,7 +50,7 @@ class CArbreBoruvka
 		* Sortie : Rien
 		* Entraîne : Un objet de la classe CArbreBoruvka est construit
 		* ****************************************************/
-		inline CArbreBoruvka() { pGROABKGraphParam = new PGrapheOriente<CArcPondere, CSommet<CArcPondere>>(); };
+		inline CArbreBoruvka() { pGROABKGraphParam = new PGrapheOriente<CArcPondere, PSommet<CArcPondere>>(); };
 
 		/*****************************************************
 		* CArbreBoruvka
@@ -84,7 +84,7 @@ class CArbreBoruvka
 		* Entraîne : creation de l'arbre couvrant minimal a partir
 		* de l'algorithme Boruvka
 		* ****************************************************/
-		PGrapheOriente<CArcPondere, CSommet<CArcPondere>>* ABKBoruvka();
+		PGrapheOriente<CArcPondere, PSommet<CArcPondere>>* ABKBoruvka();
 
 		/*****************************************************
 		* ABKMinPoids
@@ -95,7 +95,7 @@ class CArbreBoruvka
 		* Entraîne : creation de l'arbre couvrant minimal a partir
 		* de l'algorithme Boruvka
 		* ****************************************************/
-		CArc* ABKMinPoids(list<CArc*> ListParam);
+		CArcPondere* ABKMinPoids(list<CArcPondere*> ListParam);
 };
 
 #endif

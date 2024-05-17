@@ -13,7 +13,7 @@
 * copiant l'objet en parametre
 * ****************************************************/
 CArbreBoruvka::CArbreBoruvka(CArbreBoruvka& ABKParam) {
-	pGROABKGraphParam = new PGrapheOriente<CArcPondere,CSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
+	pGROABKGraphParam = new PGrapheOriente<CArcPondere,PSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
 }
 
 /*****************************************************
@@ -26,7 +26,7 @@ CArbreBoruvka::CArbreBoruvka(CArbreBoruvka& ABKParam) {
 * copiant l'objet en parametre
 * ****************************************************/
 void CArbreBoruvka :: operator=(CArbreBoruvka& ABKParam) {
-	pGROABKGraphParam = new PGrapheOriente<CArcPondere, CSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
+	pGROABKGraphParam = new PGrapheOriente<CArcPondere, PSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
 }
 
 
@@ -39,10 +39,10 @@ void CArbreBoruvka :: operator=(CArbreBoruvka& ABKParam) {
 * Entraîne : retourne l'arc avec le plus petit poids 
 * d'une liste
 * ****************************************************/
-CArc* CArbreBoruvka::ABKMinPoids(list<CArc*> ListParam) {
+CArcPondere* CArbreBoruvka::ABKMinPoids(list<CArcPondere*> ListParam) {
 	
-	CArc* ARCPoidsMin = (*ListParam.begin()); // on recupere le premier element de la liste
-	for (CArc* Arctemp : ListParam) {  // on parcout la liste en parametre
+	CArcPondere* ARCPoidsMin = (*ListParam.begin()); // on recupere le premier element de la liste
+	for (CArcPondere* Arctemp : ListParam) {  // on parcout la liste en parametre
 		if (Arctemp->ARCLirePoids() < ARCPoidsMin->ARCLirePoids()) ARCPoidsMin = Arctemp; // si le poids de l'element stocké dans ARCPoidsMin est plus petit on l'ecrase
 	}
 	return ARCPoidsMin;
