@@ -65,8 +65,8 @@ CArcPondere* CArbreBoruvka::ABKMinPoids(list<CArcPondere*> ListParam) {
 
 void CArbreBoruvka::ABKBoruvka() {
 	unsigned int uiBoucle;
-	PGrapheOriente* pGROArbreCouvrant = new PGrapheOriente();
-	PGrapheOriente* pGROGrapheTravail = new PGrapheOriente(*pGROABKGraphParam);
+	PGrapheOriente<CArcPondere,CSommet<CArcPondere>>* pGROArbreCouvrant = new PGrapheOriente<CArcPondere,CSommet<CArcPondere>>();
+	PGrapheOriente<CArcPondere, CSommet<CArcPondere>>* pGROArbreTravail = new PGrapheOriente<CArcPondere, CSommet<CArcPondere>>();
 	while (pGROGrapheTravail->GRONombreSommet() > 1) {
 		//elimination arc reflexif et multiple
 		for (uiBoucle = 0; uiBoucle < pGROABKGraphParam->GRONombreSommet(); uiBoucle++) {
