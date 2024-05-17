@@ -31,6 +31,7 @@ using namespace std;
 */
 #define Element_inconnu 404
 
+
 template<class T, class S>
 class PGrapheOriente {
 	//ATTRIBUTS

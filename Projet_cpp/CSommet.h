@@ -6,6 +6,7 @@
 #include <string>
 using namespace std;
 #include "CArc.h"
+#include "CArcPondere.h"
 #include <list>
 #include<iterator> 
 #include <vector>

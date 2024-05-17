@@ -62,7 +62,7 @@ CArc* CArbreBoruvka::ABKMinPoids(list<CArc*> ListParam) {
 * Entraîne : creation de l'arbre couvrant minimal a partir
 * de l'algorithme Boruvka
 * ****************************************************/
-/*
+
 PGrapheOriente* CArbreBoruvka::ABKBoruvka() {
 	unsigned int uiBoucle;
 	PGrapheOriente* pGROArbreCouvrant = new PGrapheOriente();
@@ -75,4 +75,29 @@ PGrapheOriente* CArbreBoruvka::ABKBoruvka() {
 	}
 }
 
-*/
+
+
+
+/*****************************************************
+* ABKArbreNonReflexif
+* ****************************************************
+* Entrée : rien
+* Nécessite : Rien
+* Sortie : Un PGrapheOriente l'arbre sans arcs reflexif
+* Entraîne : Un PGrapheOriente l'arbre sans arcs reflexif
+* ****************************************************/
+template<class T, class S>
+void CArbreBoruvka<T, S>::ABKArbreNonReflexif() {
+	unsigned int uiCompteur = 0;
+
+	auto iter = GROLireSommet(0); // On met un iterateur sur le premier sommet de la list
+	auto iter2 = GROLireSommet(1);
+	while (iter2 != GROLireSommet(GROLireTailleListSommet()-1)) { // tant qu'on est pas à la fin
+		while (uiCompteur < iter2->SOMTaileListArcEntrant()) {//tant qu'on est pas à la fin de ses sommets entrants
+			if (iter->SOMLireNom() == iter->SOMLireElemListArcEntrant(compteur){// il faut supprimer -> arc reflexible
+
+			}
+			else if {}
+		}
+	}
+}

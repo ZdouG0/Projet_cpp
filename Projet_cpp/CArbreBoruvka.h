@@ -1,3 +1,5 @@
+
+					
 #ifndef __CBoruvka__
 #define __CBoruvka__					
 
@@ -34,8 +36,9 @@ using namespace std;
 
 
 
-class CArbreBoruvka
-{	
+template <class T, class S>
+class CArbreBoruvka: public PGrapheOriente<T, S> {
+	
 	//attributs
 
 	private :
@@ -84,7 +87,19 @@ class CArbreBoruvka
 		* Entraîne : creation de l'arbre couvrant minimal a partir
 		* de l'algorithme Boruvka
 		* ****************************************************/
-		PGrapheOriente<CArcPondere, CSommet<CArcPondere>>* ABKBoruvka();
+		void ABKBoruvka();
+
+
+
+		/*****************************************************
+		* ABKArbreNonReflexif
+		* ****************************************************
+		* Entrée : rien
+		* Nécessite : Rien
+		* Sortie : Un PGrapheOriente l'arbre sans arcs reflexif
+		* Entraîne : Un PGrapheOriente l'arbre sans arcs reflexif
+		* ****************************************************/
+		void ABKArbreNonReflexif();
 
 		/*****************************************************
 		* ABKMinPoids
@@ -96,6 +111,10 @@ class CArbreBoruvka
 		* de l'algorithme Boruvka
 		* ****************************************************/
 		CArc* ABKMinPoids(list<CArc*> ListParam);
+
+
+
+
 };
 
 #endif
