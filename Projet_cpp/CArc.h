@@ -90,15 +90,6 @@ public:
 	* ****************************************************/
 	inline const string ARCLireArrive() const { return sARCSommetArrive; }
 
-	/******************************************************
-	* ARCLirePoids
-	* *****************************************************
-	* Entrée : Rien
-	* Nécessite : Rien
-	* Sortie : le poids de l'arc
-	* Entraîne : Le poids de l'arc est retourné
-	* ****************************************************/
-	inline const unsigned int ARCLirePoids() const { return uiARCPoids; };
 
 	/******************************************************
 	* ARCModifierSommetDepart

@@ -278,8 +278,7 @@ template <class T> T* CSommet<T>::SOMLireElemListArcEntrant(unsigned int uiIndic
 		EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
 		throw(EXCErreur);
 	}
-	list<T*>::iterator iter;
-	iter = lSOMListArcEntrant.begin();
+	auto iter = lSOMListArcEntrant.begin();
 	for (unsigned int uiBoucle = 0; uiBoucle < uiIndice; uiBoucle++) {
 		iter++;
 	}
@@ -301,8 +300,7 @@ template <class T> T* CSommet<T>::SOMLireElemListArcSortant(unsigned int uiIndic
 		EXCErreur.EXCModifierValeur(INDICE_HORS_TABLEAU);
 		throw(EXCErreur);
 	}
-	list<T*>::iterator iter;
-	iter = lSOMListArcSortant.begin();
+	auto iter = lSOMListArcSortant.begin();
 	for (unsigned int uiBoucle = 0; uiBoucle < uiIndice; uiBoucle++) {
 		iter++;
 	}

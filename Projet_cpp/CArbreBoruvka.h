@@ -36,8 +36,8 @@ using namespace std;
 
 
 
-template <class T, class S>
-class CArbreBoruvka: public PGrapheOriente<T, S> {
+class CArbreBoruvka
+{
 	
 	//attributs
 
@@ -110,7 +110,7 @@ class CArbreBoruvka: public PGrapheOriente<T, S> {
 		* Entraîne : creation de l'arbre couvrant minimal a partir
 		* de l'algorithme Boruvka
 		* ****************************************************/
-		CArc* ABKMinPoids(list<CArc*> ListParam);
+		CArcPondere* ABKMinPoids(list<CArcPondere*> ListParam);
 
 
 

@@ -39,10 +39,10 @@ void CArbreBoruvka :: operator=(CArbreBoruvka& ABKParam) {
 * Entraîne : retourne l'arc avec le plus petit poids 
 * d'une liste
 * ****************************************************/
-CArc* CArbreBoruvka::ABKMinPoids(list<CArc*> ListParam) {
+CArcPondere* CArbreBoruvka::ABKMinPoids(list<CArcPondere*> ListParam) {
 	
-	CArc* ARCPoidsMin = (*ListParam.begin()); // on recupere le premier element de la liste
-	for (CArc* Arctemp : ListParam) {  // on parcout la liste en parametre
+	CArcPondere* ARCPoidsMin = (*ListParam.begin()); // on recupere le premier element de la liste
+	for (CArcPondere* Arctemp : ListParam) {  // on parcout la liste en parametre
 		if (Arctemp->ARCLirePoids() < ARCPoidsMin->ARCLirePoids()) ARCPoidsMin = Arctemp; // si le poids de l'element stocké dans ARCPoidsMin est plus petit on l'ecrase
 	}
 	return ARCPoidsMin;
@@ -63,7 +63,7 @@ CArc* CArbreBoruvka::ABKMinPoids(list<CArc*> ListParam) {
 * de l'algorithme Boruvka
 * ****************************************************/
 
-PGrapheOriente* CArbreBoruvka::ABKBoruvka() {
+void CArbreBoruvka::ABKBoruvka() {
 	unsigned int uiBoucle;
 	PGrapheOriente* pGROArbreCouvrant = new PGrapheOriente();
 	PGrapheOriente* pGROGrapheTravail = new PGrapheOriente(*pGROABKGraphParam);
@@ -86,18 +86,22 @@ PGrapheOriente* CArbreBoruvka::ABKBoruvka() {
 * Sortie : Un PGrapheOriente l'arbre sans arcs reflexif
 * Entraîne : Un PGrapheOriente l'arbre sans arcs reflexif
 * ****************************************************/
-template<class T, class S>
-void CArbreBoruvka<T, S>::ABKArbreNonReflexif() {
-	unsigned int uiCompteur = 0;
-
-	auto iter = GROLireSommet(0); // On met un iterateur sur le premier sommet de la list
-	auto iter2 = GROLireSommet(1);
-	while (iter2 != GROLireSommet(GROLireTailleListSommet()-1)) { // tant qu'on est pas à la fin
-		while (uiCompteur < iter2->SOMTaileListArcEntrant()) {//tant qu'on est pas à la fin de ses sommets entrants
-			if (iter->SOMLireNom() == iter->SOMLireElemListArcEntrant(compteur){// il faut supprimer -> arc reflexible
-
+void CArbreBoruvka::ABKArbreNonReflexif() {
+	unsigned int uiCompteur = 1; 
+	unsigned int uiCompteurFixe = 0;
+	auto iter = pGROABKGraphParam->GROLireSommet(0); // On met un iterateur sur le premier sommet de la list
+	while (iter != pGROABKGraphParam->GROLireSommet(pGROABKGraphParam->GROLireTailleListSommet())) { // tant que le sommet n'est pas le dernier sommet de la list
+		while (uiCompteurFixe < iter->SOMTaileListArcEntrant()) { //tant qu'on est pas à la fin du sommet du ses sommets entrants
+			if (iter->SOMLireNom() == iter->SOMLireListSomEntrant()[uiCompteurFixe]){// il faut supprimer -> arc reflexible
+				pGROABKGraphParam->GROSupprimerArc(iter->SOMLireNom(), iter->SOMLireNom());
 			}
-			else if {}
+			else if (iter->SOMLireListSomEntrant()[uiCompteur] != iter->SOMLireListSomEntrant()[uiCompteurFixe]){
+				uiCompteur++;
+			}
+			else {
+				pGROABKGraphParam->GROSupprimerArc(iter->SOMLireNom(), iter->SOMLireListSomEntrant()[uiCompteurFixe]);
+				uiCompteurFixe++;
+			}
 		}
 	}
 }

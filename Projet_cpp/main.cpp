@@ -13,13 +13,14 @@
 #include "CFichier.h"
 #include "CSortie.h"
 #include "CInversion.h"
+#include "CArbreBoruvka.h"
 
 using namespace std;
 
 int main() {
     
    
-   
+   /*
 
     CFichier FICMonFichier;
     string snomfichier;
@@ -62,7 +63,10 @@ int main() {
 
     delete INVInverse;
     delete SORSortie;
+    */
 
+    CArbreBoruvka Test;
+    Test.ABKArbreNonReflexif();
 
     return 0;
 }
