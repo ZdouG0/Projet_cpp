@@ -37,7 +37,7 @@ class CSortie
 {
 	//ATTRIBUTS
 	private :
-		PGrapheOriente<CArc, CSommet<CArc>>* pGROSORGraphe;
+		PGrapheOriente<CArc, PSommet<CArc>>* pGROSORGraphe;
 	//METHODES
 	public :
 		/*****************************************************
@@ -69,7 +69,7 @@ class CSortie
 		* Sortie : Rien
 		* Entraîne : Le graphe en parametre est Modifié
 		* ****************************************************/
-		void SORModifierGraphe(PGrapheOriente<CArc, CSommet<CArc>>* GrapheParam) { pGROSORGraphe = GrapheParam; };
+		void SORModifierGraphe(PGrapheOriente<CArc, PSommet<CArc>>* GrapheParam) { pGROSORGraphe = GrapheParam; };
 
 		/*****************************************************
 		* SORAfficher_Graphe

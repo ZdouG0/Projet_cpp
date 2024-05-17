@@ -13,7 +13,7 @@
 * copiant l'objet en parametre
 * ****************************************************/
 CArbreBoruvka::CArbreBoruvka(CArbreBoruvka& ABKParam) {
-	pGROABKGraphParam = new PGrapheOriente<CArcPondere,CSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
+	pGROABKGraphParam = new PGrapheOriente<CArcPondere,PSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
 }
 
 /*****************************************************
@@ -26,7 +26,7 @@ CArbreBoruvka::CArbreBoruvka(CArbreBoruvka& ABKParam) {
 * copiant l'objet en parametre
 * ****************************************************/
 void CArbreBoruvka :: operator=(CArbreBoruvka& ABKParam) {
-	pGROABKGraphParam = new PGrapheOriente<CArcPondere, CSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
+	pGROABKGraphParam = new PGrapheOriente<CArcPondere, PSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
 }
 
 

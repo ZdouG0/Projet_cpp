@@ -11,7 +11,7 @@
 * Entraîne : Constructeur pardefaut
 * ****************************************************/
 CFichier :: CFichier() {
-	GROFICGraphe = new PGrapheOriente<CArc,CSommet<CArc>>();
+	GROFICGraphe = new PGrapheOriente<CArc,PSommet<CArc>>();
 	FICNbSommet=0;
 	FICNbArc=0;
 	sFICNomFichier= "Rien";
@@ -30,10 +30,10 @@ CFichier :: CFichier() {
 void CFichier :: FICModifierTypeGraphe(string sParam) { 
 	sTypeGraphe = sParam;
 	if (sTypeGraphe == "Oriente") {
-		GROFICGraphe = new PGrapheOriente<CArc, CSommet<CArc>>();
+		GROFICGraphe = new PGrapheOriente<CArc, PSommet<CArc>>();
 	}
 	if (sTypeGraphe == "NonOriente") {
-		GROFICGraphe = new PGraph<CArc, CSommet<CArc>>();
+		GROFICGraphe = new PGraph<CArc, PSommet<CArc>>();
 	}
 }
 

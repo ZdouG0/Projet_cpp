@@ -34,7 +34,7 @@ class CInversion
 {
 	//attributs
 	private : 
-		PGrapheOriente<CArc, CSommet<CArc>>* pGROINVGraphe;
+		PGrapheOriente<CArc, PSommet<CArc>>* pGROINVGraphe;
 
 	//methodes
 	public:
@@ -77,7 +77,7 @@ class CInversion
 		* Sortie : le graphe
 		* Entraîne : le graphe pointe par l'attribut est retourne
 		* ****************************************************/
-		inline PGrapheOriente<CArc, CSommet<CArc>>* INVLectureGraphe() { return pGROINVGraphe; };
+		inline PGrapheOriente<CArc, PSommet<CArc>>* INVLectureGraphe() { return pGROINVGraphe; };
 
 
 		/*****************************************************
@@ -88,7 +88,7 @@ class CInversion
 		* Sortie : le graphe
 		* Entraîne : le graphe pointe par l'attribut est retourne
 		* ****************************************************/
-		inline void INVChangerGraphe(PGrapheOriente<CArc, CSommet<CArc>>* GrapheParam) { pGROINVGraphe = GrapheParam; };
+		inline void INVChangerGraphe(PGrapheOriente<CArc, PSommet<CArc>>* GrapheParam) { pGROINVGraphe = GrapheParam; };
 
 
 		/*****************************************************
@@ -100,7 +100,7 @@ class CInversion
 		* Entraîne : le graphe en attribut est inverse dans une 
 		* nouvelle instance de la classe
 		* ****************************************************/
-		PGrapheOriente<CArc, CSommet<CArc>>* INVInversion();
+		PGrapheOriente<CArc, PSommet<CArc>>* INVInversion();
 
 
 

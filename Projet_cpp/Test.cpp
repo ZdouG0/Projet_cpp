@@ -1,6 +1,6 @@
 #include "Test.h"
 #include "CArc.h"
-#include "CSommet.h"
+#include "PSommet.h"
 #include "PGrapheOriente.h"
 
 void CTest::TESTestMethodesARC(CArc ARCParam) {
@@ -43,18 +43,18 @@ void CTest::TESTestMethodesARC(CArc* ARCParam) {
 
 
 
-void CTest::TESTestMethodesSOM(CSommet<CArc> SomParam) {
-    cout << "~*************************************~      CSOMMET      ~*************************************~" << endl;
-    cout << "\nTest sur la classe CSommet" << endl;
+void CTest::TESTestMethodesSOM(PSommet<CArc> SomParam) {
+    cout << "~*************************************~      PSommet      ~*************************************~" << endl;
+    cout << "\nTest sur la classe PSommet" << endl;
     string nomSOM = "sommet A";
     SomParam.SOMModifierNom(nomSOM);
     assert(SomParam.SOMLireNom() == nomSOM);
     assert((SomParam.SOMLireNom() == "sommet a") == false);
 }
 
-void CTest::TESTestMethodesSOM(CSommet<CArc>* SomParam) {
-    cout << "~*************************************~      CSOMMET      ~*************************************~" << endl;
-    cout << "\nTest sur la classe CSommet" << endl;
+void CTest::TESTestMethodesSOM(PSommet<CArc>* SomParam) {
+    cout << "~*************************************~      PSommet      ~*************************************~" << endl;
+    cout << "\nTest sur la classe PSommet" << endl;
     string nomSOM = "sommet A";
     SomParam->SOMModifierNom(nomSOM);
     assert(SomParam->SOMLireNom() == nomSOM);
@@ -64,7 +64,7 @@ void CTest::TESTestMethodesSOM(CSommet<CArc>* SomParam) {
 
 
 
-void CTest::TESTestMethodesGRO(PGrapheOriente<CArc,CSommet<CArc>> GROParam) {
+void CTest::TESTestMethodesGRO(PGrapheOriente<CArc,PSommet<CArc>> GROParam) {
     cout << "~*************************************~      CGRAPHORIENTE      ~*************************************~" << endl;
 
     //routine de test pour CGraphOriente
@@ -79,7 +79,7 @@ void CTest::TESTestMethodesGRO(PGrapheOriente<CArc,CSommet<CArc>> GROParam) {
     assert(GROParam.GROTrouverSommetPosition("Paris") == posParis);
 }
 
-void CTest::TESTestMethodesGRO(PGrapheOriente<CArc, CSommet<CArc>>* GROParam) {
+void CTest::TESTestMethodesGRO(PGrapheOriente<CArc, PSommet<CArc>>* GROParam) {
     cout << "~*************************************~      CGRAPHORIENTE      ~*************************************~" << endl;
 
     //routine de test pour CGraphOriente

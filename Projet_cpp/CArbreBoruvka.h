@@ -42,7 +42,7 @@ class CArbreBoruvka
 	//attributs
 
 	private :
-		PGrapheOriente<CArcPondere,CSommet<CArcPondere>>* pGROABKGraphParam;
+		PGrapheOriente<CArcPondere,PSommet<CArcPondere>>* pGROABKGraphParam;
 	//Constructeur/ Destructeurs
 	public :
 		/*****************************************************
@@ -53,7 +53,7 @@ class CArbreBoruvka
 		* Sortie : Rien
 		* Entraîne : Un objet de la classe CArbreBoruvka est construit
 		* ****************************************************/
-		inline CArbreBoruvka() { pGROABKGraphParam = new PGrapheOriente<CArcPondere, CSommet<CArcPondere>>(); };
+		inline CArbreBoruvka() { pGROABKGraphParam = new PGrapheOriente<CArcPondere, PSommet<CArcPondere>>(); };
 
 		/*****************************************************
 		* CArbreBoruvka

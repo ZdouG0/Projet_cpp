@@ -53,7 +53,7 @@ class CFichier
 	private :
 		string  sFICNomFichier; // le chemin d'acces du fichier
 		string	sTypeGraphe; // le type de GrapheOriente ou non
-		PGrapheOriente<CArc,CSommet<CArc>>* GROFICGraphe;
+		PGrapheOriente<CArc,PSommet<CArc>>* GROFICGraphe;
 		unsigned int FICNbSommet;
 		unsigned int FICNbArc;
 
@@ -89,7 +89,7 @@ class CFichier
 		* Sortie : un pointeur vers GROFICGraphe
 		* Entraîne : un pointeur vers GROFICGraphe est retourné
 		* ****************************************************/
-		inline PGrapheOriente<CArc,CSommet<CArc>>* FICLireGraphe() { return GROFICGraphe; }
+		inline PGrapheOriente<CArc,PSommet<CArc>>* FICLireGraphe() { return GROFICGraphe; }
 
 
 		/*****************************************************

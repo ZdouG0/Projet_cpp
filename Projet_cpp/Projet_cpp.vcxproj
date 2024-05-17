@@ -277,10 +277,7 @@
     <ClCompile Include="CArcPondere.cpp" />
     <ClCompile Include="CFichier.cpp" />
     <ClCompile Include="CException.cpp" />
-    <ClCompile Include="PGraph.cpp" />
-    <ClCompile Include="PGrapheOriente.cpp" />
     <ClCompile Include="CInversion.cpp" />
-    <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="CSortie.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Projet_cpp.cpp" />
@@ -295,7 +292,7 @@
     <ClInclude Include="PGraph.h" />
     <ClInclude Include="PGrapheOriente.h" />
     <ClInclude Include="CInversion.h" />
-    <ClInclude Include="CSommet.h" />
+    <ClInclude Include="PSommet.h" />
     <ClInclude Include="CSortie.h" />
     <ClInclude Include="Test.h" />
   </ItemGroup>

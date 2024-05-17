@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include "CArc.h"
-#include "CSommet.h"
+#include "PSommet.h"
 #include <iterator>
 #include <string>
 #include <vector>
@@ -48,16 +48,16 @@ int main()
     cout << "Les méthodes de CArc semblent fonctionner correctement " << endl;
     cout << "~********************************************************************************************~" << endl<<endl<<endl;
     
-    //routine de test des methodes de la classe CSommet
-    // création d'un objet de la classe Csommet a partir du constructeur par défault
-    CSommet SOMVar;
-    cout << "~*************************************~      CSOMMET      ~*************************************~" << endl;
-    cout << "\nTest sur la classe CSommet" << endl;
+    //routine de test des methodes de la classe PSommet
+    // création d'un objet de la classe PSommet a partir du constructeur par défault
+    PSommet SOMVar;
+    cout << "~*************************************~      PSommet      ~*************************************~" << endl;
+    cout << "\nTest sur la classe PSommet" << endl;
     string nomSOM = "sommet A";
     SOMVar.SOMModifierNom(nomSOM);
     assert(SOMVar.SOMLireNom() == nomSOM);
     assert((SOMVar.SOMLireNom() == "sommet a") == false );
-    CSommet SOMConfort = CSommet("sommet Z");
+    PSommet SOMConfort = PSommet("sommet Z");
     assert(SOMConfort.SOMLireNom() == "sommet Z");
     assert((SOMConfort.SOMLireNom() == nomSOM) == false);
     cout << "Les constructeurs de la classe CArc fonctionnent correctement" << endl;
@@ -103,7 +103,7 @@ int main()
     assert(ARCVar5->ARCLireArrive() == ARCVar4.ARCLireArrive());
     assert(ARCVar5->ARCLireDepart() == ARCVar4.ARCLireDepart());
     assert((ARCVar5->ARCLireArrive() == ARCVar4.ARCLireDepart()) == false);
-    cout << "Les methodes de CSommet semblent fonctionner correctement " << endl;
+    cout << "Les methodes de PSommet semblent fonctionner correctement " << endl;
     cout << "~********************************************************************************************~" << endl << endl << endl;
 
 
