@@ -516,7 +516,67 @@ public:
 
 
 
+	/*****************************************************
+	* ABKArbreNonReflexif
+	* ****************************************************
+	* Entrée : rien
+	* Nécessite : Rien
+	* Sortie : Un PGraph l'arbre sans arcs reflexif
+	* Entraîne : Un PGraph l'arbre sans arcs reflexif
+	* ****************************************************/
+	void ABKArbreNonReflexif() {
+		unsigned int uiCompteurIter = 0;
+		unsigned int uiCompteurIter2 = 2;
+		auto iter = GROLireArc(uiCompteurIter);
+		auto iter2 = GROLireArc(uiCompteurIter2);
+		while (uiCompteurIter <  GROLireTailleListArc() - 2) {
+			if (iter->ARCLireArrive() == iter->ARCLireDepart()) { // ArcRefelxible oblige de mettre iter et iter2 au cas ou premier (iter) ou dernier (iter2)
 
+				string sParam1 = iter->ARCLireDepart();
+				uiCompteurIter2 += 1;
+				iter2 = GROLireArc(uiCompteurIter2);
+				GROSupprimerArc(sParam1, sParam1);
+			}
+			else if (iter->ARCLireDepart() == iter2->ARCLireDepart()) {
+				if (iter->ARCLireArrive() == iter2->ARCLireArrive()) { // il faut supprimer
+					string sParam1 = iter->ARCLireDepart(); string sParam2 = iter->ARCLireArrive();
+					try {
+						 GROSupprimerArc(sParam1, sParam2); // si jmais 3 pareil, pas d'augmentation , je suppr tout d'un coup
+						//defaut je vais mm suppr le dernier que je rajt a la main ici
+					}
+					catch (CException) {
+						uiCompteurIter2++;
+						iter2 =  GROLireArc(uiCompteurIter2);
+						 GROCreerArc(iter->ARCLireDepart(), iter->ARCLireArrive()); //ici
+					}
+				}
+				else { //ils sont differents
+					if (uiCompteurIter2 <  GROLireTailleListSommet() - 1) {
+						uiCompteurIter2++;
+						iter2 =  GROLireArc(uiCompteurIter2);
+					}
+					else {
+						uiCompteurIter++; //car cgraph
+						uiCompteurIter2 = uiCompteurIter + 1;
+						iter =  GROLireArc(uiCompteurIter);
+						iter2 =  GROLireArc(uiCompteurIter2);
+					}
+				}
+			}
+			else { //ils sont differents
+				if (uiCompteurIter2 <  GROLireTailleListSommet() - 1) {
+					uiCompteurIter2++;
+					iter2 =  GROLireArc(uiCompteurIter2);
+				}
+				else {
+					uiCompteurIter++; //car cgraph
+					uiCompteurIter2 = uiCompteurIter + 1;
+					iter =  GROLireArc(uiCompteurIter);
+					iter2 =  GROLireArc(uiCompteurIter2);
+				}
+			}
+		}
+	}
 
 };
 #endif

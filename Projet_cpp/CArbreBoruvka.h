@@ -107,15 +107,7 @@ class CArbreBoruvka
 
 
 
-		/*****************************************************
-		* ABKArbreNonReflexif
-		* ****************************************************
-		* Entrée : rien
-		* Nécessite : Rien
-		* Sortie : Un PGraph l'arbre sans arcs reflexif
-		* Entraîne : Un PGraph l'arbre sans arcs reflexif
-		* ****************************************************/
-		void ABKArbreNonReflexif();
+
 
 		/*****************************************************
 		* ABKMinPoids
