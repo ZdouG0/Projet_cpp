@@ -90,42 +90,6 @@ void CArbreBoruvka::ABKBoruvka() {
 * Entraîne : Un PGraph l'arbre sans arcs reflexif
 * ****************************************************/
 void CArbreBoruvka::ABKArbreNonReflexif() {
-	unsigned int uiCompteur = 1; 
-	unsigned int uiCompteurFixe = 0;
-	unsigned int uiLimite = 0;
-	unsigned int uiCompteurIter = 0;
-	auto iter = pGROABKGraphParam->GROLireSommet(uiCompteurIter); // On met un iterateur sur le premier sommet de la list
-	while (uiCompteurIter != pGROABKGraphParam->GROLireTailleListArc()-1) { // tant que le sommet n'est pas le dernier sommet de la list
-		uiLimite = iter->SOMTaileListArcEntrant();
-		while (uiCompteurFixe < uiLimite || uiCompteur>uiLimite) { //tant qu'on est pas à la fin du sommet du ses sommets entrants
-			if (iter->SOMLireNom() == iter->SOMLireListSomEntrant()[uiCompteurFixe]){// il faut supprimer -> arc reflexible
-				pGROABKGraphParam->GROSupprimerArc(iter->SOMLireNom(), iter->SOMLireNom());
-				uiLimite--;
-			}
-			else if (iter->SOMLireListSomEntrant()[uiCompteurFixe] == iter->SOMLireListSomEntrant()[uiCompteur]){ // on a bien deux arcs identiques
-				pGROABKGraphParam->GROSupprimerArc(iter->SOMLireNom(), iter->SOMLireListSomEntrant()[uiCompteur]);
-				uiLimite--;
-				 //on ne peut pas augmenter iter ni fixe car on puet avoir +2 arcs identiques
-			}
-			else { // ils sont bel et bien differents :
-				uiCompteur++;
-			}
-
-			if (uiCompteur == iter->SOMTaileListArcEntrant()) { // on a fini de tester pour un arc
-				uiCompteurFixe++;
-				uiCompteur = uiCompteurFixe + 1; // on sait quon a pas d'egaliter en dessous de lui
-			}
-
-		}
-		uiCompteurIter++;
-		iter = pGROABKGraphParam->GROLireSommet(uiCompteurIter);
-		uiCompteurFixe = 0;
-		uiCompteur = 1;
-	}
-}
-
-
-void CArbreBoruvka::ABKArbreNonReflexifv2() {
 	unsigned int uiCompteurIter = 0;
 	unsigned int uiCompteurIter2 = 2;
 	auto iter = pGROABKGraphParam->GROLireArc(uiCompteurIter);

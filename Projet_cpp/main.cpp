@@ -89,7 +89,7 @@ int main() {
 
     CArbreBoruvka Test(GROParam);
     cout << "nombre d'arc avant " << GROParam->GRONombreArc()<<endl;
-    Test.ABKArbreNonReflexifv2();
+    Test.ABKArbreNonReflexif();
     //cout << "nombre d'arc après " << Test.pGROABKGraphParam->GRONombreArc() << endl;
     
 
