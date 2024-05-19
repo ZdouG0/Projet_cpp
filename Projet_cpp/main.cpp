@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
 
     delete INVInverse;
     delete SORSortie;
-
+    /*
     PGraph<CArcPondere, PSommet<CArcPondere>>* initialGraph;
 
     initialGraph->GROCreerSommet("A");
@@ -96,6 +96,6 @@ int main(int argc, char* argv[]) {
 
     // Clean up
     delete minimumSpanningTree;
-
+    */
     return 0;
 }
