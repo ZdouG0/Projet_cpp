@@ -128,6 +128,7 @@ class CArbreBoruvka
 		* ****************************************************/
 		CArcPondere* ABKMinPoids(list<CArcPondere*> ListParam);
 
+		void ABKArbreNonReflexifv2();
 
 
 

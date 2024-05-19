@@ -92,19 +92,93 @@ void CArbreBoruvka::ABKBoruvka() {
 void CArbreBoruvka::ABKArbreNonReflexif() {
 	unsigned int uiCompteur = 1; 
 	unsigned int uiCompteurFixe = 0;
-	auto iter = pGROABKGraphParam->GROLireSommet(0); // On met un iterateur sur le premier sommet de la list
-	while (iter != pGROABKGraphParam->GROLireSommet(pGROABKGraphParam->GROLireTailleListSommet()-1)) { // tant que le sommet n'est pas le dernier sommet de la list
-		while (uiCompteurFixe < iter->SOMTaileListArcEntrant()) { //tant qu'on est pas à la fin du sommet du ses sommets entrants
+	unsigned int uiLimite = 0;
+	unsigned int uiCompteurIter = 0;
+	auto iter = pGROABKGraphParam->GROLireSommet(uiCompteurIter); // On met un iterateur sur le premier sommet de la list
+	while (uiCompteurIter != pGROABKGraphParam->GROLireTailleListArc()-1) { // tant que le sommet n'est pas le dernier sommet de la list
+		uiLimite = iter->SOMTaileListArcEntrant();
+		while (uiCompteurFixe < uiLimite || uiCompteur>uiLimite) { //tant qu'on est pas à la fin du sommet du ses sommets entrants
 			if (iter->SOMLireNom() == iter->SOMLireListSomEntrant()[uiCompteurFixe]){// il faut supprimer -> arc reflexible
 				pGROABKGraphParam->GROSupprimerArc(iter->SOMLireNom(), iter->SOMLireNom());
+				uiLimite--;
 			}
-			else if (iter->SOMLireListSomEntrant()[uiCompteur] != iter->SOMLireListSomEntrant()[uiCompteurFixe]){
+			else if (iter->SOMLireListSomEntrant()[uiCompteurFixe] == iter->SOMLireListSomEntrant()[uiCompteur]){ // on a bien deux arcs identiques
+				pGROABKGraphParam->GROSupprimerArc(iter->SOMLireNom(), iter->SOMLireListSomEntrant()[uiCompteur]);
+				uiLimite--;
+				 //on ne peut pas augmenter iter ni fixe car on puet avoir +2 arcs identiques
+			}
+			else { // ils sont bel et bien differents :
 				uiCompteur++;
 			}
-			else {
-				pGROABKGraphParam->GROSupprimerArc(iter->SOMLireNom(), iter->SOMLireListSomEntrant()[uiCompteurFixe]);
+
+			if (uiCompteur == iter->SOMTaileListArcEntrant()) { // on a fini de tester pour un arc
 				uiCompteurFixe++;
+				uiCompteur = uiCompteurFixe + 1; // on sait quon a pas d'egaliter en dessous de lui
+			}
+
+		}
+		uiCompteurIter++;
+		iter = pGROABKGraphParam->GROLireSommet(uiCompteurIter);
+		uiCompteurFixe = 0;
+		uiCompteur = 1;
+	}
+}
+
+
+void CArbreBoruvka::ABKArbreNonReflexifv2() {
+	unsigned int uiCompteurIter = 0;
+	unsigned int uiCompteurIter2 = 2;
+	auto iter = pGROABKGraphParam->GROLireArc(uiCompteurIter);
+	auto iter2 = pGROABKGraphParam->GROLireArc(uiCompteurIter2);
+	while (uiCompteurIter < pGROABKGraphParam->GROLireTailleListArc() - 2) {
+		if (iter->ARCLireArrive() == iter->ARCLireDepart()) { // ArcRefelxible oblige de mettre iter et iter2 au cas ou premier (iter) ou dernier (iter2)
+			
+			string sParam1 = iter->ARCLireDepart();
+			uiCompteurIter2 += 1;
+			iter2 = pGROABKGraphParam->GROLireArc(uiCompteurIter2);
+			pGROABKGraphParam->GROSupprimerArc(sParam1, sParam1);
+		}
+		else if (iter->ARCLireDepart() == iter2->ARCLireDepart()) {
+			if (iter->ARCLireArrive() == iter2->ARCLireArrive()) { // il faut supprimer
+				string sParam1 = iter->ARCLireDepart(); string sParam2 = iter->ARCLireArrive();
+				try {
+					pGROABKGraphParam->GROSupprimerArc(sParam1, sParam2); // si jmais 3 pareil, pas d'augmentation , je suppr tout d'un coup
+					//defaut je vais mm suppr le dernier que je rajt a la main ici
+				}
+				catch (CException EXCErreur) {
+					uiCompteurIter2++;
+					iter2 = pGROABKGraphParam->GROLireArc(uiCompteurIter2);
+					pGROABKGraphParam->GROCreerArc(iter->ARCLireDepart(), iter->ARCLireArrive()); //ici
+				}
+			}
+			else { //ils sont differents
+				if (uiCompteurIter2 < pGROABKGraphParam->GROLireTailleListSommet() - 1) {
+					uiCompteurIter2++;
+					iter2 = pGROABKGraphParam->GROLireArc(uiCompteurIter2);
+				}
+				else {
+					uiCompteurIter ++; //car cgraph
+					uiCompteurIter2 = uiCompteurIter + 1;
+					iter = pGROABKGraphParam->GROLireArc(uiCompteurIter);
+					iter2 = pGROABKGraphParam->GROLireArc(uiCompteurIter2);
+				}
+			}
+		}
+		else { //ils sont differents
+			if (uiCompteurIter2 < pGROABKGraphParam->GROLireTailleListSommet() - 1) {
+				uiCompteurIter2++;
+				iter2 = pGROABKGraphParam->GROLireArc(uiCompteurIter2);
+			}
+			else {
+				uiCompteurIter ++ ; //car cgraph
+				uiCompteurIter2 = uiCompteurIter + 1;
+				iter = pGROABKGraphParam->GROLireArc(uiCompteurIter);
+				iter2 = pGROABKGraphParam->GROLireArc(uiCompteurIter2);
 			}
 		}
 	}
 }
+
+
+				
+

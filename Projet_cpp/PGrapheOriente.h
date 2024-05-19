@@ -128,16 +128,16 @@ public:
 		T* ARCParam = nullptr;
 		if constexpr (is_same<T, CArcPondere>::value) {
 			// Si T est CArcPondere, appelez le constructeur avec trois paramètres
-			 T* ARCParam = new T(sParamDepart, sParamArrive, uiPoids);
-			 pARCGROListArc.push_back(ARCParam);
+			 ARCParam = new T(sParamDepart, sParamArrive, uiPoids);
 
 		}
 		else {
 			// Sinon, appelez le constructeur avec deux paramètres
-			T* ARCParam = new T(sParamDepart, sParamArrive);
-			pARCGROListArc.push_back(ARCParam);
+			ARCParam = new T(sParamDepart, sParamArrive);
 
 		}
+		pARCGROListArc.push_back(ARCParam);
+
 		// ajouter dans les sommets
 		S* sommetDepart = nullptr;
 		S* sommetArrive = nullptr;
@@ -222,16 +222,15 @@ public:
 		for (auto iter = pARCGROListArc.begin(); iter != pARCGROListArc.end(); ++iter) {
 			if ((*iter)->ARCLireDepart() == chParamDepart && (*iter)->ARCLireArrive() == chParamArrive) {
 				//etape 1
-				pARCGROListArc.erase(iter);
 				//etape 2
 				stPosSomE = GROTrouverSommetPosition(chParamDepart);
 				stPosSomS = GROTrouverSommetPosition(chParamArrive);
 				auto iterE = GROLireSommet(stPosSomE);
 				iterE->SOMSupprimerArcSortantLie(chParamDepart);
 				auto iterS = GROLireSommet(stPosSomS);
-				iterS->SOMSupprimerArcSortantLie(chParamArrive);
+				iterS->SOMSupprimerSOMEntrantLie(chParamArrive);
 				pARCGROListArc.erase(iter);
-				delete* iter;
+				//delete* iter;
 
 				return;
 			}
