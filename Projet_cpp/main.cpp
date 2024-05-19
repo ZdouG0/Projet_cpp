@@ -13,18 +13,20 @@
 #include "CFichier.h"
 #include "CSortie.h"
 #include "CInversion.h"
+#include "CArcPondere.h"
 
 using namespace std;
 
-int main() {
-    
-   
-   
-
+int main(int argc, char* argv[]) {
     CFichier FICMonFichier;
     string snomfichier;
-    cout << "Entrer le nom de votre fichier ou son chemin complet :";
-    cin >> snomfichier;
+    if (argc > 1) {
+        snomfichier = argv[argc - 1];
+    }
+    else {
+        cout << "Entrer le nom de votre fichier ou son chemin complet :";
+        cin >> snomfichier;
+    }
     FICMonFichier.FICModifierNomFichier(snomfichier); // parametre a modifier si on souhaite modifier le fichier a interpreter
     bool bCheminOK = false;
     while (!bCheminOK) {
@@ -62,7 +64,6 @@ int main() {
 
     delete INVInverse;
     delete SORSortie;
-
 
     return 0;
 }

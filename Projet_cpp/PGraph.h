@@ -34,7 +34,7 @@ template<class T,class S>
 class PGraph : public PGrapheOriente<T,S> {
 
 
-
+public :
 	/*****************************************************
 	* GROCreerArc
 	* ****************************************************
@@ -46,8 +46,8 @@ class PGraph : public PGrapheOriente<T,S> {
 	* De plus les deux sommets sont maintenant lié par un arc
 	* ****************************************************/
 	void GROCreerArc(string sParamDepart, string sParamArrive) {
-		PGrapheOriente<T>::GROCreerArc(sParamDepart, sParamArrive);
-		PGrapheOriente<T>::GROCreerArc(sParamArrive, sParamDepart);
+		PGrapheOriente<T,S>::GROCreerArc(sParamDepart, sParamArrive);
+		PGrapheOriente<T,S>::GROCreerArc(sParamArrive, sParamDepart);
 	}
 
 
@@ -64,8 +64,8 @@ class PGraph : public PGrapheOriente<T,S> {
 	* ****************************************************/
 	void GROSupprimerArc(string chParamDepart, string chParamArrive) {
 		//Je vais devoir supprimer les deux arcs si bool = false lors de la suppression c'est que j'ai pas encore trouve le retour
-		PGrapheOriente<T>::GROSupprimerArc(chParamDepart, chParamArrive);
-		PGrapheOriente<T>::GROSupprimerArc(chParamArrive, chParamDepart);
+		PGrapheOriente<T,S>::GROSupprimerArc(chParamDepart, chParamArrive);
+		PGrapheOriente<T,S>::GROSupprimerArc(chParamArrive, chParamDepart);
 	}
 };
 
