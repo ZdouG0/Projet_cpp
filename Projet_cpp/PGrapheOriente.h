@@ -143,6 +143,7 @@ public:
 
 
 
+
 	/*****************************************************
 	* GROLireTailleListSommet
 	* ****************************************************
@@ -398,7 +399,7 @@ public:
 	* ****************************************************/
 	bool GROSommetPresent(string chParam) {
 		for (S* pSOMTemp : pSOMGROListSom){
-			if (pSOMTemp->SOMLireNom()) == chParam) {
+			if (pSOMTemp->SOMLireNom() == chParam) {
 				return true;
 			}
 		}
@@ -414,13 +415,13 @@ public:
 	* Entraîne : retourne vrai la liste des sommet agregé dans un meme sommet
 	* ****************************************************/
 	list<S*> GRODecomposeNom(string chParam) {
-		list<PSommet<CArc>*> lSOMTemp;
-		for (PSommet<CArc>* pSOMTemp : pSOMGROListSom) {
-			if (chParam.find(pSOMTemp->SOMLireNom()) != npos) {
+		list<PSommet<T>*> lSOMTemp;
+		for (PSommet<T>* pSOMTemp : pSOMGROListSom) {
+			if (chParam.find(pSOMTemp->SOMLireNom()) != std::string::npos) {
 				lSOMTemp.push_back(pSOMTemp);
 			}
 		}
-		return false;
+		return lSOMTemp;
 	}
 
 

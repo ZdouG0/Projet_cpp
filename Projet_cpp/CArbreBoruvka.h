@@ -96,6 +96,19 @@ class CArbreBoruvka
 		* de l'algorithme Boruvka
 		* ****************************************************/
 		CArcPondere* ABKMinPoids(list<CArcPondere*> ListParam);
+
+
+		/*****************************************************
+		* ABKMinPoids
+		* ****************************************************
+		* Entrée : rien
+		* Nécessite : Rien
+		* Sortie : Un PGrapheOriente l'arbe couvrant minimal
+		* Entraîne : creation de l'arbre couvrant minimal a partir
+		* de l'algorithme Boruvka
+		* ****************************************************/
+		PSommet<CArcPondere>* ABKMinPoids(list<string> ListParam);
+
 };
 
 #endif

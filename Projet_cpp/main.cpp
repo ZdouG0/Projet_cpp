@@ -32,7 +32,7 @@ int main() {
             bCheminOK = true;
             ifstream ifsMonfichier = FICMonFichier.FICLireFichier();
         }
-        catch (CException EXCErreur) {
+        catch (CException) {
             bCheminOK = false;
             cout << "nom ou chemin du fichier incorrect reesayer :";
             cin >> snomfichier;
