@@ -6,6 +6,7 @@
 #include <string>
 using namespace std;
 #include "CArc.h"
+#include "CArcPondere.h"
 #include <list>
 #include<iterator> 
 #include <vector>
@@ -105,9 +106,7 @@ public:
 		}
 		
 		auto iter = lSOMListArcEntrant.begin();
-		for (unsigned int uiBoucle = 0; uiBoucle < uiIndice; uiBoucle++) {
-			iter++;
-		}
+		advance( iter, uiIndice);
 		return *iter;
 	}
 

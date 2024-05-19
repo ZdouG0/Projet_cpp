@@ -35,8 +35,7 @@ class CArc
 private:
 	string sARCSommetDepart;
 	string sARCSommetArrive;
-	unsigned int uiARCPoids;
-
+	
 public:
 	//CONSTRUCTEUR/DESTRUCTEUR
 		/******************************************************
@@ -62,21 +61,14 @@ public:
 	* sARCSommetArrive = sParamArrive
 	* ****************************************************/
 	CArc(string sParamDepart, string sParamArrive);
+
+
+
+
+
+
+
 	
-	/******************************************************
-	* CArc
-	* *****************************************************
-	* Entrée : deux strings sParamDepart, sParamArrive et un
-	*		entier non signé
-	* Nécessite : Rien
-	* Sortie : Rien
-	* Entraîne : l'initialisation d'un CArc avec comme
-	* parametres sARCSommetDepart = sParamDepart et
-	* sARCSommetArrive = sParamArrive et uiARCPoids = uiParamPoids
-	* ****************************************************/
-	CArc(string sParamDepart, string sParamArrive, unsigned int uiParamPoids);
-
-
 	//METHODES
 		/******************************************************
 		* ARCLireDepart
@@ -86,7 +78,7 @@ public:
 		* Sortie : une chaine de caractere le nom d'un sommet
 		* Entraîne : Le nom du sommet de depart est retourné
 		* ****************************************************/
-	inline const string ARCLireDepart() const { return sARCSommetDepart; };
+	inline const string ARCLireDepart() const { return sARCSommetDepart; }
 
 	/******************************************************
 	* ARCLireArrive
@@ -96,17 +88,8 @@ public:
 	* Sortie : une chaine de caractere le nom d'un sommet
 	* Entraîne : Le nom du sommet d'arrive est retourné
 	* ****************************************************/
-	inline const string ARCLireArrive() const { return sARCSommetArrive; };
+	inline const string ARCLireArrive() const { return sARCSommetArrive; }
 
-	/******************************************************
-	* ARCLirePoids
-	* *****************************************************
-	* Entrée : Rien
-	* Nécessite : Rien
-	* Sortie : le poids de l'arc
-	* Entraîne : Le poids de l'arc est retourné
-	* ****************************************************/
-	inline const unsigned int ARCLirePoids() const { return uiARCPoids; };
 
 	/******************************************************
 	* ARCModifierSommetDepart
@@ -116,7 +99,7 @@ public:
 	* Sortie : Rien
 	* Entraîne : le nom du sommet de depart est modifié
 	* ****************************************************/
-	inline void ARCModifierSommetDepart(string sParam) { sARCSommetDepart = sParam; };
+	inline void ARCModifierSommetDepart(string sParam) { sARCSommetDepart = sParam; }
 
 	/******************************************************
 	* ARCModifierSommetArrive
@@ -126,7 +109,7 @@ public:
 	* Sortie : Rien
 	* Entraîne : le nom du sommet d'arrivé est modifié
 	* ****************************************************/
-	inline void ARCModifierSommetArrive(string sParam) { sARCSommetArrive = sParam; };
+	inline void ARCModifierSommetArrive(string sParam) { sARCSommetArrive = sParam; }
 
 
 };

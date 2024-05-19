@@ -44,7 +44,7 @@ public:
 	//Constructeurs
 	/*****************************************************
 	* PGrapheOriente
-	* **************************<**************************
+	* ****************************************************
 	* Entrée : Aucune
 	* Nécessite : RIen
 	* Sortie : Aucune
@@ -154,7 +154,6 @@ public:
 			}
 		}
 	 }
-
 
 
 
@@ -402,40 +401,7 @@ public:
 		return (*iter);
 	}
 
-	/*****************************************************
-	* GROSommetPresent
-	* ****************************************************
-	* Entrée : un string (qui correspond au nom du sommet a chercher)
-	* Nécessite : Rien
-	* Sortie : bool
-	* Entraîne : retourne vrai si le sommet est dans le Graphe Faux sinon
-	* ****************************************************/
-	bool GROSommetPresent(string chParam) {
-		for (S* pSOMTemp : pSOMGROListSom){
-			if (pSOMTemp->SOMLireNom() == chParam) {
-				return true;
-			}
-		}
-		return false;
-	}
 
-	/*****************************************************
-	* GRODecomposeNom
-	* ****************************************************
-	* Entrée : un string (qui correspond au nom du sommet a decomposer)
-	* Nécessite : Rien
-	* Sortie : une liste de Sommet
-	* Entraîne : retourne vrai la liste des sommet agregé dans un meme sommet
-	* ****************************************************/
-	list<S*> GRODecomposeNom(string chParam) {
-		list<PSommet<T>*> lSOMTemp;
-		for (PSommet<T>* pSOMTemp : pSOMGROListSom) {
-			if (chParam.find(pSOMTemp->SOMLireNom()) != std::string::npos) {
-				lSOMTemp.push_back(pSOMTemp);
-			}
-		}
-		return lSOMTemp;
-	}
 
 
 

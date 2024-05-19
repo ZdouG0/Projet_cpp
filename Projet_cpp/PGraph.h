@@ -31,7 +31,8 @@ using namespace std;
 
 
 template<class T,class S>
-class PGraph : public PGrapheOriente<T,S> {
+class PGraph : public PGrapheOriente<T,S> 
+{
 
 
 public :
