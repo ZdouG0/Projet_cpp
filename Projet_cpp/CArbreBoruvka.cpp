@@ -155,6 +155,7 @@ PGrapheOriente<CArcPondere,PSommet<CArcPondere>>* CArbreBoruvka::ABKBoruvka() {
 			
 		}
 	}
+	return pGROArbreCouvrant;
 }
 
 
