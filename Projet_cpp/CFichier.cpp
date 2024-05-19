@@ -153,7 +153,7 @@ void CFichier :: FICParser(ifstream MonFichier) {
 			sBalise = BALISE_FIN;
 			stTaille = sBalise.size();
 			sNomSomFin = FILRecupNom(sLigne.find(sBalise) + stTaille, sLigne.size(), sLigne);
-			GROFICGraphe->GROCreerArc(sNomSom, sNomSomFin);
+			GROFICGraphe->GROCreerArc(sNomSom, sNomSomFin,0);
 		}
 		
 	}

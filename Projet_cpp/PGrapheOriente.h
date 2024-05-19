@@ -115,7 +115,7 @@ public:
 	* Il y a un arc de plus dans la liste des arc si les sommets sont bien dans la liste
 	* De plus les deux sommets sont maintenant lié par un arc
 	* ****************************************************/
-	 void GROCreerArc(string sParamDepart, string sParamArrive) {
+	 void GROCreerArc(string sParamDepart, string sParamArrive, unsigned int uiPoids) {
 		//Je vais appeler ces deux fonctions pour etre sur que les sommet de depart et d'arrive existent
 		//Dans cette fonction je lève une CException si le sommet n'est pas dans le tableau des sommets
 		size_t stPosD = GROTrouverSommetPosition(sParamDepart); size_t stPosA = GROTrouverSommetPosition(sParamArrive); size_t stCompteur = 0;
@@ -124,7 +124,7 @@ public:
 		///Depart -----> Arrive ///////////// Dans depart jai donc un arc sortant allant vers arrive et dans arrive un arc entrant allant dans depart
 
 		//ajouter liste des arcs
-		T* ARCParam = new T(sParamDepart, sParamArrive);  // verifier quelle constructeur appele ici avce template
+		T* ARCParam = new T(sParamDepart, sParamArrive,uiPoids);  // verifier quelle constructeur appele ici avce template
 		pARCGROListArc.push_back(ARCParam);
 		// ajouter dans les sommets
 		S* sommetDepart = nullptr;
@@ -139,6 +139,7 @@ public:
 		}
 		sommetDepart->SOMAjoutArcSortant(ARCParam);
 		sommetArrive->SOMAjoutArcEntrant(ARCParam);
+
 	 }
 
 

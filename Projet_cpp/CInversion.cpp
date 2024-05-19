@@ -53,7 +53,7 @@ PGrapheOriente<CArc, PSommet<CArc>>* CInversion :: INVInversion() {
 			pARCtemp = pSOMtemp->SOMLireElemListArcSortant(uiBoucle_arc); // on recupere l'arc a inverser
 			sNomArrive = pARCtemp->ARCLireArrive(); // on stock l'arrivée pour la seconde partie de l'inversion
 			sNomDepart = pARCtemp->ARCLireDepart();  // on stock l'arrivée pour la seconde partie de l'inversion
-			pGROGrapheInv->GROCreerArc(sNomArrive, sNomDepart); //on ajoute notre nouvel arc
+			pGROGrapheInv->GROCreerArc(sNomArrive, sNomDepart,0); //on ajoute notre nouvel arc
 		}
 		
 	}

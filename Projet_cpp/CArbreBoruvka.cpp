@@ -29,6 +29,17 @@ void CArbreBoruvka :: operator=(CArbreBoruvka& ABKParam) {
 	pGROABKGraphParam = new PGrapheOriente<CArcPondere, PSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
 }
 
+/*****************************************************
+* setGraphe
+* ****************************************************
+* Entrée : Un pointeur vers un PGrapheOriente
+* Nécessite : Rien
+* Sortie : Rien
+* Entraîne : Le pointeur pGROABKGraphParam est mis à jour
+* ****************************************************/
+void CArbreBoruvka::setGraphe(PGrapheOriente<CArcPondere, PSommet<CArcPondere>>* newGraph) {
+	pGROABKGraphParam = newGraph;
+}
 
 /*****************************************************
 * ABKMinPoids
@@ -61,6 +72,7 @@ CArcPondere* CArbreBoruvka::ABKMinPoids(list<CArcPondere*> ListParam) {
 
 PGrapheOriente<CArcPondere,PSommet<CArcPondere>>* CArbreBoruvka::ABKBoruvka() {
 	unsigned int uiBoucle;
+	unsigned int uiPoids;
 	PSommet<CArcPondere > *pSOMTemp;
 	list<CArcPondere*> lARCTemp;
 	CArcPondere* pARCMin;
@@ -116,7 +128,7 @@ PGrapheOriente<CArcPondere,PSommet<CArcPondere>>* CArbreBoruvka::ABKBoruvka() {
 			if (pGROArbreCouvrant->GROSommetPresent(SomArrivee->SOMLireNom()) == false) {
 				pGROArbreCouvrant->GROCreerSommet(SomArrivee->SOMLireNom());
 			}
-			pGROArbreCouvrant->GROCreerArc(SomDepart->SOMLireNom(), SomArrivee->SOMLireNom());
+			pGROArbreCouvrant->GROCreerArc(SomDepart->SOMLireNom(), SomArrivee->SOMLireNom(),uiPoids);
 
 			
 			//Partie Fusion 

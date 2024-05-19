@@ -74,7 +74,15 @@ class CArbreBoruvka
 		* ****************************************************/
 		void operator=(CArbreBoruvka& ABKParam);
 
-
+		/*****************************************************
+	* setGraphe
+	* ****************************************************
+	* Entrée : Un pointeur vers un PGrapheOriente
+	* Nécessite : Rien
+	* Sortie : Rien
+	* Entraîne : Le pointeur pGROABKGraphParam est mis à jour
+	* ****************************************************/
+		void setGraphe(PGrapheOriente<CArcPondere, PSommet<CArcPondere>>* newGraph);
 		/*****************************************************
 		* ABKBoruvka
 		* ****************************************************
