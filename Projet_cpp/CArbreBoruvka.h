@@ -70,7 +70,6 @@ class CArbreBoruvka
 
 
 
-
 		/*****************************************************
 		* CArbreBoruvka
 		* ****************************************************
@@ -103,7 +102,7 @@ class CArbreBoruvka
 		* Entraîne : creation de l'arbre couvrant minimal a partir
 		* de l'algorithme Boruvka
 		* ****************************************************/
-		PGrapheOriente<CArcPondere, PSommet<CArcPondere>>* ABKBoruvka();
+		PGraph<CArcPondere, PSommet<CArcPondere>>* ABKBoruvka();
 
 
 

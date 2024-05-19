@@ -62,7 +62,7 @@ CArcPondere* CArbreBoruvka::ABKMinPoids(list<CArcPondere*> ListParam) {
 * de l'algorithme Boruvka
 * ****************************************************/
 
-PGrapheOriente<CArcPondere,PSommet<CArcPondere>>* CArbreBoruvka::ABKBoruvka() {
+PGraph<CArcPondere,PSommet<CArcPondere>>* CArbreBoruvka::ABKBoruvka() {
 	unsigned int uiBoucle;
 	PSommet<CArcPondere > *pSOMTemp;
 	list<CArcPondere*> lARCTemp;
@@ -71,11 +71,11 @@ PGrapheOriente<CArcPondere,PSommet<CArcPondere>>* CArbreBoruvka::ABKBoruvka() {
 	string NomSommetArrivee;
 	list<PSommet<CArcPondere>*> lSOMAgregeDepart;
 	list<PSommet<CArcPondere>*> lSOMAgregeArrivee;
-	PGrapheOriente<CArcPondere, PSommet<CArcPondere>>* pGROArbreCouvrant = new PGrapheOriente<CArcPondere, PSommet<CArcPondere>>();
-	PGrapheOriente<CArcPondere, PSommet<CArcPondere>>* pGROGrapheTravail = new PGrapheOriente<CArcPondere, PSommet<CArcPondere>>(*pGROABKGraphParam);
+	PGraph<CArcPondere, PSommet<CArcPondere>>* pGROArbreCouvrant = new PGraph<CArcPondere, PSommet<CArcPondere>>();
+	PGraph<CArcPondere, PSommet<CArcPondere>>* pGROGrapheTravail = new PGraph<CArcPondere, PSommet<CArcPondere>>(*pGROABKGraphParam);
 	while (pGROGrapheTravail->GRONombreSommet() > 1) {
 		//elimination arc reflexif et multiple
-
+		pGROGrapheTravail->GROArbreNonReflexif();
 		for (uiBoucle = 0; uiBoucle < pGROGrapheTravail->GRONombreSommet(); uiBoucle++) {
 
 			//Partie Trouver Arc Minimum
@@ -119,7 +119,7 @@ PGrapheOriente<CArcPondere,PSommet<CArcPondere>>* CArbreBoruvka::ABKBoruvka() {
 			if (pGROArbreCouvrant->GROSommetPresent(SomArrivee->SOMLireNom()) == false) {
 				pGROArbreCouvrant->GROCreerSommet(SomArrivee->SOMLireNom());
 			}
-			pGROArbreCouvrant->GROCreerArc(SomDepart->SOMLireNom(), SomArrivee->SOMLireNom());
+			pGROArbreCouvrant->GROCreerArc(SomDepart->SOMLireNom(), SomArrivee->SOMLireNom(),pARCMin->ARCLirePoids());
 
 			
 			//Partie Fusion 

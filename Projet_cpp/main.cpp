@@ -14,6 +14,7 @@
 #include "CSortie.h"
 #include "CInversion.h"
 #include "CArcPondere.h"
+#include "CArbreBoruvka.h"
 
 using namespace std;
 
@@ -61,6 +62,35 @@ int main(int argc, char* argv[]) {
     SORSortie->SORModifierGraphe(INVInverse->INVInversion());
 
     SORSortie->SORAfficher_Graphe();
+    
+
+
+    PGraph < CArcPondere, PSommet<CArcPondere>>* GROGraphe = new PGraph< CArcPondere, PSommet<CArcPondere>>();
+    GROGraphe->GROCreerSommet("Sommet A");
+    GROGraphe->GROCreerSommet("Sommet B");
+    GROGraphe->GROCreerSommet("Sommet C");
+    GROGraphe->GROCreerSommet("Sommet D");
+    GROGraphe->GROCreerSommet("Sommet E");
+    GROGraphe->GROCreerSommet("Sommet F");
+
+    GROGraphe->GROCreerArc("sommet A", "sommet B", 2);
+    GROGraphe->GROCreerArc("sommet B", "sommet C", 3);
+    GROGraphe->GROCreerArc("sommet E", "sommet E", 5);
+    GROGraphe->GROCreerArc("sommet F", "sommet A", 1);
+    GROGraphe->GROCreerArc("sommet D", "sommet F", 6);
+    GROGraphe->GROCreerArc("sommet C", "sommet D", 2);
+    GROGraphe->GROCreerArc("sommet D", "sommet A", 1);
+    GROGraphe->GROCreerArc("sommet E", "sommet B", 8);
+    GROGraphe->GROCreerArc("sommet F", "sommet C", 4);
+    GROGraphe->GROCreerArc("sommet F", "sommet E", 5);
+    GROGraphe->GROCreerArc("sommet A", "sommet D", 3);
+
+
+    CArbreBoruvka* ABKBoruvka = new CArbreBoruvka(GROGraphe);
+    PGraph < CArcPondere, PSommet<CArcPondere>>* ABKCouvrant = ABKBoruvka->ABKBoruvka();
+
+
+
 
     delete INVInverse;
     delete SORSortie;

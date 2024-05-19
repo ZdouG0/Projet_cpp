@@ -517,14 +517,14 @@ public:
 
 
 	/*****************************************************
-	* ABKArbreNonReflexif
+	* GROArbreNonReflexif
 	* ****************************************************
 	* Entrée : rien
 	* Nécessite : Rien
 	* Sortie : Un PGraph l'arbre sans arcs reflexif
 	* Entraîne : Un PGraph l'arbre sans arcs reflexif
 	* ****************************************************/
-	void ABKArbreNonReflexif() {
+	void GROArbreNonReflexif() {
 		unsigned int uiCompteurIter = 0;
 		unsigned int uiCompteurIter2 = 2;
 		auto iter = GROLireArc(uiCompteurIter);
