@@ -152,9 +152,10 @@ PGrapheOriente<CArcPondere,PSommet<CArcPondere>>* CArbreBoruvka::ABKBoruvka() {
 				}
 			}
 
-			
+		
 		}
 	}
+	return pGROArbreCouvrant;
 }
 
 
@@ -188,7 +189,7 @@ void CArbreBoruvka::ABKArbreNonReflexif() {
 					pGROABKGraphParam->GROSupprimerArc(sParam1, sParam2); // si jmais 3 pareil, pas d'augmentation , je suppr tout d'un coup
 					//defaut je vais mm suppr le dernier que je rajt a la main ici
 				}
-				catch (CException EXCErreur) {
+				catch (CException) {
 					uiCompteurIter2++;
 					iter2 = pGROABKGraphParam->GROLireArc(uiCompteurIter2);
 					pGROABKGraphParam->GROCreerArc(iter->ARCLireDepart(), iter->ARCLireArrive()); //ici
