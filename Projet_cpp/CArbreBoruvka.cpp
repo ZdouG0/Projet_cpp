@@ -3,6 +3,9 @@
 #include "CArcPondere.h"
 
 
+
+
+
 /*****************************************************
 * CArbreBoruvka
 * ****************************************************
@@ -13,7 +16,7 @@
 * copiant l'objet en parametre
 * ****************************************************/
 CArbreBoruvka::CArbreBoruvka(CArbreBoruvka& ABKParam) {
-	pGROABKGraphParam = new PGrapheOriente<CArcPondere,PSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
+	pGROABKGraphParam = new PGraph<CArcPondere,PSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
 }
 
 /*****************************************************
@@ -26,7 +29,7 @@ CArbreBoruvka::CArbreBoruvka(CArbreBoruvka& ABKParam) {
 * copiant l'objet en parametre
 * ****************************************************/
 void CArbreBoruvka :: operator=(CArbreBoruvka& ABKParam) {
-	pGROABKGraphParam = new PGrapheOriente<CArcPondere, PSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
+	pGROABKGraphParam = new PGraph<CArcPondere, PSommet<CArcPondere>>(*ABKParam.pGROABKGraphParam);
 }
 
 
@@ -35,7 +38,7 @@ void CArbreBoruvka :: operator=(CArbreBoruvka& ABKParam) {
 * ****************************************************
 * Entrée : rien
 * Nécessite : Rien
-* Sortie : Un PGrapheOriente l'arbe couvrant minimal
+* Sortie : Un PGraph l'arbe couvrant minimal
 * Entraîne : retourne l'arc avec le plus petit poids 
 * d'une liste
 * ****************************************************/
@@ -58,16 +61,16 @@ CArcPondere* CArbreBoruvka::ABKMinPoids(list<CArcPondere*> ListParam) {
 * ****************************************************
 * Entrée : rien
 * Nécessite : Rien
-* Sortie : Un PGrapheOriente l'arbre couvrant minimal
+* Sortie : Un PGraph l'arbre couvrant minimal
 * Entraîne : creation de l'arbre couvrant minimal a partir
 * de l'algorithme Boruvka
 * ****************************************************/
 
 void CArbreBoruvka::ABKBoruvka() {
 	unsigned int uiBoucle;
-	PGrapheOriente<CArcPondere,CSommet<CArcPondere>>* pGROArbreCouvrant = new PGrapheOriente<CArcPondere,CSommet<CArcPondere>>();
-	PGrapheOriente<CArcPondere, CSommet<CArcPondere>>* pGROArbreTravail = new PGrapheOriente<CArcPondere, CSommet<CArcPondere>>();
-	while (pGROGrapheTravail->GRONombreSommet() > 1) {
+	PGraph<CArcPondere,PSommet<CArcPondere>>* pGROArbreCouvrant = new PGraph<CArcPondere,PSommet<CArcPondere>>();
+	PGraph<CArcPondere, PSommet<CArcPondere>>* pGROArbreTravail = new PGraph<CArcPondere, PSommet<CArcPondere>>();
+	while (pGROArbreTravail->GRONombreSommet() > 1) {
 		//elimination arc reflexif et multiple
 		for (uiBoucle = 0; uiBoucle < pGROABKGraphParam->GRONombreSommet(); uiBoucle++) {
 			pGROABKGraphParam->GROLireSommet(uiBoucle);
@@ -83,14 +86,14 @@ void CArbreBoruvka::ABKBoruvka() {
 * ****************************************************
 * Entrée : rien
 * Nécessite : Rien
-* Sortie : Un PGrapheOriente l'arbre sans arcs reflexif
-* Entraîne : Un PGrapheOriente l'arbre sans arcs reflexif
+* Sortie : Un PGraph l'arbre sans arcs reflexif
+* Entraîne : Un PGraph l'arbre sans arcs reflexif
 * ****************************************************/
 void CArbreBoruvka::ABKArbreNonReflexif() {
 	unsigned int uiCompteur = 1; 
 	unsigned int uiCompteurFixe = 0;
 	auto iter = pGROABKGraphParam->GROLireSommet(0); // On met un iterateur sur le premier sommet de la list
-	while (iter != pGROABKGraphParam->GROLireSommet(pGROABKGraphParam->GROLireTailleListSommet())) { // tant que le sommet n'est pas le dernier sommet de la list
+	while (iter != pGROABKGraphParam->GROLireSommet(pGROABKGraphParam->GROLireTailleListSommet()-1)) { // tant que le sommet n'est pas le dernier sommet de la list
 		while (uiCompteurFixe < iter->SOMTaileListArcEntrant()) { //tant qu'on est pas à la fin du sommet du ses sommets entrants
 			if (iter->SOMLireNom() == iter->SOMLireListSomEntrant()[uiCompteurFixe]){// il faut supprimer -> arc reflexible
 				pGROABKGraphParam->GROSupprimerArc(iter->SOMLireNom(), iter->SOMLireNom());

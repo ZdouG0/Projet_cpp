@@ -65,7 +65,23 @@ int main() {
     delete SORSortie;
     */
 
-    CArbreBoruvka Test;
+    PGraph<CArcPondere, PSommet<CArcPondere>>* GROParam = new PGraph<CArcPondere,PSommet<CArcPondere>>();
+
+    GROParam->GROCreerSommet("a");
+    GROParam->GROCreerSommet("b");
+    GROParam->GROCreerSommet("c");
+    GROParam->GROCreerSommet("d");
+    GROParam->GROCreerSommet("e");
+    GROParam->GROCreerSommet("f");
+
+    GROParam->GROCreerArc("a", "c");
+    GROParam->GROCreerArc("a", "c");
+
+
+
+
+
+    CArbreBoruvka Test(GROParam);
     Test.ABKArbreNonReflexif();
 
     return 0;

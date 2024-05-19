@@ -3,7 +3,7 @@
 #ifndef __CBoruvka__
 #define __CBoruvka__					
 
-#include "PGrapheOriente.h"
+#include "PGraph.h"
 #include "CArc.h"
 #include "CArcPondere.h"
 using namespace std;
@@ -42,7 +42,7 @@ class CArbreBoruvka
 	//attributs
 
 	private :
-		PGrapheOriente<CArcPondere,PSommet<CArcPondere>>* pGROABKGraphParam;
+		PGraph<CArcPondere,PSommet<CArcPondere>>* pGROABKGraphParam;
 	//Constructeur/ Destructeurs
 	public :
 		/*****************************************************
@@ -53,7 +53,23 @@ class CArbreBoruvka
 		* Sortie : Rien
 		* Entraîne : Un objet de la classe CArbreBoruvka est construit
 		* ****************************************************/
-		inline CArbreBoruvka() { pGROABKGraphParam = new PGrapheOriente<CArcPondere, PSommet<CArcPondere>>(); };
+		inline CArbreBoruvka() { pGROABKGraphParam = new PGraph<CArcPondere, PSommet<CArcPondere>>(); };
+
+
+		/*****************************************************
+		* CArbreBoruvka
+		* ****************************************************
+		* Entrée : Un pointeur sur un arbre orient
+		* Nécessite : Rien
+		* Sortie : Rien
+		* Entraîne : Un objet de la classe CArbreBoruvka est construit
+		* ****************************************************/
+		inline CArbreBoruvka(PGraph<CArcPondere, PSommet<CArcPondere>>* pGROParam){pGROABKGraphParam = pGROParam;}
+
+
+
+
+
 
 		/*****************************************************
 		* CArbreBoruvka
@@ -83,7 +99,7 @@ class CArbreBoruvka
 		* ****************************************************
 		* Entrée : rien
 		* Nécessite : Rien
-		* Sortie : Un PGrapheOriente l'arbe couvrant minimal
+		* Sortie : Un PGraph l'arbe couvrant minimal
 		* Entraîne : creation de l'arbre couvrant minimal a partir
 		* de l'algorithme Boruvka
 		* ****************************************************/
@@ -96,8 +112,8 @@ class CArbreBoruvka
 		* ****************************************************
 		* Entrée : rien
 		* Nécessite : Rien
-		* Sortie : Un PGrapheOriente l'arbre sans arcs reflexif
-		* Entraîne : Un PGrapheOriente l'arbre sans arcs reflexif
+		* Sortie : Un PGraph l'arbre sans arcs reflexif
+		* Entraîne : Un PGraph l'arbre sans arcs reflexif
 		* ****************************************************/
 		void ABKArbreNonReflexif();
 
@@ -106,7 +122,7 @@ class CArbreBoruvka
 		* ****************************************************
 		* Entrée : rien
 		* Nécessite : Rien
-		* Sortie : Un PGrapheOriente l'arbe couvrant minimal
+		* Sortie : Un PGraph l'arbe couvrant minimal
 		* Entraîne : creation de l'arbre couvrant minimal a partir
 		* de l'algorithme Boruvka
 		* ****************************************************/

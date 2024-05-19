@@ -116,7 +116,7 @@ public:
 	* Il y a un arc de plus dans la liste des arc si les sommets sont bien dans la liste
 	* De plus les deux sommets sont maintenant lié par un arc
 	* ****************************************************/
-	 void GROCreerArc(string sParamDepart, string sParamArrive) {
+	 void GROCreerArc(string sParamDepart, string sParamArrive, unsigned int uiPoids = 0) {
 		//Je vais appeler ces deux fonctions pour etre sur que les sommet de depart et d'arrive existent
 		//Dans cette fonction je lève une CException si le sommet n'est pas dans le tableau des sommets
 		size_t stPosD = GROTrouverSommetPosition(sParamDepart); size_t stPosA = GROTrouverSommetPosition(sParamArrive); size_t stCompteur = 0;
@@ -125,21 +125,34 @@ public:
 		///Depart -----> Arrive ///////////// Dans depart jai donc un arc sortant allant vers arrive et dans arrive un arc entrant allant dans depart
 
 		//ajouter liste des arcs
-		T* ARCParam = new T(sParamDepart, sParamArrive);  // verifier quelle constructeur appele ici avce template
-		pARCGROListArc.push_back(ARCParam);
+		T* ARCParam = nullptr;
+		if constexpr (is_same<T, CArcPondere>::value) {
+			// Si T est CArcPondere, appelez le constructeur avec trois paramètres
+			 T* ARCParam = new T(sParamDepart, sParamArrive, uiPoids);
+			 pARCGROListArc.push_back(ARCParam);
+
+		}
+		else {
+			// Sinon, appelez le constructeur avec deux paramètres
+			T* ARCParam = new T(sParamDepart, sParamArrive);
+			pARCGROListArc.push_back(ARCParam);
+
+		}
 		// ajouter dans les sommets
 		S* sommetDepart = nullptr;
 		S* sommetArrive = nullptr;
 		for (auto iter = pSOMGROListSom.begin(); iter != pSOMGROListSom.end(); ++iter, ++stCompteur) {
 			if (stCompteur == stPosD) {
 				sommetDepart = *iter;
+				sommetDepart->SOMAjoutArcSortant(ARCParam);
+
 			}
 			if (stCompteur == stPosA) {
 				sommetArrive = *iter;
+				sommetArrive->SOMAjoutArcEntrant(ARCParam);
+
 			}
 		}
-		sommetDepart->SOMAjoutArcSortant(ARCParam);
-		sommetArrive->SOMAjoutArcEntrant(ARCParam);
 	 }
 
 
