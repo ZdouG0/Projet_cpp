@@ -116,7 +116,7 @@ public:
 	* Il y a un arc de plus dans la liste des arc si les sommets sont bien dans la liste
 	* De plus les deux sommets sont maintenant lié par un arc
 	* ****************************************************/
-	 void GROCreerArc(string sParamDepart, string sParamArrive, unsigned int uiPoids = 0) {
+	void GROCreerArc(string sParamDepart, string sParamArrive, unsigned int uiPoids = 0) {
 		//Je vais appeler ces deux fonctions pour etre sur que les sommet de depart et d'arrive existent
 		//Dans cette fonction je lève une CException si le sommet n'est pas dans le tableau des sommets
 		size_t stPosD = GROTrouverSommetPosition(sParamDepart); size_t stPosA = GROTrouverSommetPosition(sParamArrive); size_t stCompteur = 0;
@@ -128,7 +128,7 @@ public:
 		T* ARCParam = nullptr;
 		if constexpr (is_same<T, CArcPondere>::value) {
 			// Si T est CArcPondere, appelez le constructeur avec trois paramètres
-			 ARCParam = new T(sParamDepart, sParamArrive, uiPoids);
+			ARCParam = new T(sParamDepart, sParamArrive, uiPoids);
 
 		}
 		else {
@@ -153,7 +153,7 @@ public:
 
 			}
 		}
-	 }
+	}
 
 
 
@@ -163,8 +163,8 @@ public:
 	* ****************************************************
 	* Entrée : Aucune
 	* Nécessite : Aucune
-	* Sortie : size_t 
-	* Entraîne : Renvoie le nombre de sommet 
+	* Sortie : size_t
+	* Entraîne : Renvoie le nombre de sommet
 	* ****************************************************/
 	inline size_t GROLireTailleListSommet() { return pSOMGROListSom.size(); }
 
@@ -253,7 +253,7 @@ public:
 	* Sortie : Aucune
 	* Entraîne : Un sommet isolé qui ne pointent vers personne et avec personne qui pointent sur lui
 	* ****************************************************/
-	 void GROSupprimerArcs(S& SOMParam) {
+	void GROSupprimerArcs(S& SOMParam) {
 		unsigned int  stBoucle;
 
 		for (stBoucle = 0; stBoucle < SOMParam.SOMTaileListArcEntrant(); stBoucle++) {
@@ -265,7 +265,7 @@ public:
 			T* ARCParam = SOMParam.SOMLireElemListArcSortant(stBoucle);
 			GROSupprimerArc(ARCParam->ARCLireDepart(), ARCParam->ARCLireArrive());
 		}
-	 }
+	}
 
 
 
@@ -284,86 +284,86 @@ public:
 	* Sortie : Aucune
 	* Entraîne : Il y a un sommet de plus dans la liste des sommets si le sommet est bien dans la liste
 	* ****************************************************/
-	 void GROCreerSommet(string chParam) {
-		 S* SOMParam = new S();
-		 SOMParam->SOMModifierNom(chParam);
-		 pSOMGROListSom.push_back(SOMParam);
-	 }
+	void GROCreerSommet(string chParam) {
+		S* SOMParam = new S();
+		SOMParam->SOMModifierNom(chParam);
+		pSOMGROListSom.push_back(SOMParam);
+	}
 
 
 
-	 /*****************************************************
-	 * GROModifierSommet
-	 * ****************************************************
-	 * Entrée : une chaine de caractere
-	 * Nécessite : Rien
-	 * Sortie : Aucune
-	 * Entraîne : Il y a un sommet qui a changé de nom
-	 * ****************************************************/
-	 void GROModifierSommet(string chParam, string chNvNom) {
-		 size_t posSOM;
-		 auto iter = pSOMGROListSom.begin();
-		 posSOM = GROTrouverSommetPosition(chParam);
-		 advance(iter, posSOM);
+	/*****************************************************
+	* GROModifierSommet
+	* ****************************************************
+	* Entrée : une chaine de caractere
+	* Nécessite : Rien
+	* Sortie : Aucune
+	* Entraîne : Il y a un sommet qui a changé de nom
+	* ****************************************************/
+	void GROModifierSommet(string chParam, string chNvNom) {
+		size_t posSOM;
+		auto iter = pSOMGROListSom.begin();
+		posSOM = GROTrouverSommetPosition(chParam);
+		advance(iter, posSOM);
 
-		 // Modifier le nom du sommet
-		 (*iter)->SOMModifierNom(chNvNom);
+		// Modifier le nom du sommet
+		(*iter)->SOMModifierNom(chNvNom);
 
-		 // Parcourir tous les sommets du graphe
-		 for (auto it = pSOMGROListSom.begin(); it != pSOMGROListSom.end(); ++it) {
-			 S* sommet = *it;
+		// Parcourir tous les sommets du graphe
+		for (auto it = pSOMGROListSom.begin(); it != pSOMGROListSom.end(); ++it) {
+			S* sommet = *it;
 
-			 // Mettre à jour les arcs sortants
-			 for (size_t i = 0; i < sommet->SOMTaileListArcSortant(); ++i) {
-				 T* arc = sommet->SOMLireElemListArcSortant(i);
-				 if (arc->ARCLireDepart() == chParam) {
-					 arc->ARCModifierSommetDepart((*it)->SOMLireNom());
-				 }
-			 }
+			// Mettre à jour les arcs sortants
+			for (size_t i = 0; i < sommet->SOMTaileListArcSortant(); ++i) {
+				T* arc = sommet->SOMLireElemListArcSortant(i);
+				if (arc->ARCLireDepart() == chParam) {
+					arc->ARCModifierSommetDepart((*it)->SOMLireNom());
+				}
+			}
 
-			 // Mettre à jour les arcs entrants
-			 for (size_t i = 0; i < sommet->SOMTaileListArcEntrant(); ++i) {
-				 T* arc = sommet->SOMLireElemListArcEntrant(i);
-				 if (arc->ARCLireArrive() == chParam) {
-					 arc->ARCModifierSommetArrive((*it)->SOMLireNom());
-				 }
-			 }
-		 }
-	 }
-
-
+			// Mettre à jour les arcs entrants
+			for (size_t i = 0; i < sommet->SOMTaileListArcEntrant(); ++i) {
+				T* arc = sommet->SOMLireElemListArcEntrant(i);
+				if (arc->ARCLireArrive() == chParam) {
+					arc->ARCModifierSommetArrive((*it)->SOMLireNom());
+				}
+			}
+		}
+	}
 
 
-	 /*****************************************************
-	 * GROTrouverSommet
-	 * ****************************************************
-	 * Entrée : une chaine de caractere (nom du sommet à trouver)
-	 * Nécessite : Rien
-	 * Sortie : size_t
-	 * Entraîne : (la position du sommet avec le nom chParam est retournée) OU (Exception Element_inconnu)
-	 * ****************************************************/
-	 size_t GROTrouverSommetPosition(string chParam) {
-		 bool bEstDansLaListe = false; size_t stboucle = 0;
-		 auto iter = pSOMGROListSom.begin();
-		 while (stboucle < pSOMGROListSom.size() && bEstDansLaListe == false) {
-			 if ((*iter)->SOMLireNom() == chParam) {
-				 bEstDansLaListe = true;
-			 }
-			 else {
-				 iter++;
-				 stboucle++;
-			 }
-		 }
-		 if (bEstDansLaListe == false) {
-			 CException EXCErreur;
-			 EXCErreur.EXCModifierValeur(Element_inconnu);
-			 throw(EXCErreur);
-		 }
-		 return stboucle;
-	 }
 
 
-	
+	/*****************************************************
+	* GROTrouverSommet
+	* ****************************************************
+	* Entrée : une chaine de caractere (nom du sommet à trouver)
+	* Nécessite : Rien
+	* Sortie : size_t
+	* Entraîne : (la position du sommet avec le nom chParam est retournée) OU (Exception Element_inconnu)
+	* ****************************************************/
+	size_t GROTrouverSommetPosition(string chParam) {
+		bool bEstDansLaListe = false; size_t stboucle = 0;
+		auto iter = pSOMGROListSom.begin();
+		while (stboucle < pSOMGROListSom.size() && bEstDansLaListe == false) {
+			if ((*iter)->SOMLireNom() == chParam) {
+				bEstDansLaListe = true;
+			}
+			else {
+				iter++;
+				stboucle++;
+			}
+		}
+		if (bEstDansLaListe == false) {
+			CException EXCErreur;
+			EXCErreur.EXCModifierValeur(Element_inconnu);
+			throw(EXCErreur);
+		}
+		return stboucle;
+	}
+
+
+
 
 
 	/*****************************************************
@@ -411,7 +411,7 @@ public:
 	* Entraîne : retourne vrai si le sommet est dans le Graphe Faux sinon
 	* ****************************************************/
 	bool GROSommetPresent(string chParam) {
-		for (S* pSOMTemp : pSOMGROListSom){
+		for (S* pSOMTemp : pSOMGROListSom) {
 			if (pSOMTemp->SOMLireNom() == chParam) {
 				return true;
 			}
@@ -515,68 +515,6 @@ public:
 	inline size_t GRONombreArc() const { return pARCGROListArc.size(); };
 
 
-
-	/*****************************************************
-	* GROArbreNonReflexif
-	* ****************************************************
-	* Entrée : rien
-	* Nécessite : Rien
-	* Sortie : Un PGraph l'arbre sans arcs reflexif
-	* Entraîne : Un PGraph l'arbre sans arcs reflexif
-	* ****************************************************/
-	void GROArbreNonReflexif() {
-		unsigned int uiCompteurIter = 0;
-		unsigned int uiCompteurIter2 = 2;
-		auto iter = GROLireArc(uiCompteurIter);
-		auto iter2 = GROLireArc(uiCompteurIter2);
-		while (uiCompteurIter <  GROLireTailleListArc() - 2) {
-			if (iter->ARCLireArrive() == iter->ARCLireDepart()) { // ArcRefelxible oblige de mettre iter et iter2 au cas ou premier (iter) ou dernier (iter2)
-
-				string sParam1 = iter->ARCLireDepart();
-				uiCompteurIter2 += 1;
-				iter2 = GROLireArc(uiCompteurIter2);
-				GROSupprimerArc(sParam1, sParam1);
-			}
-			else if (iter->ARCLireDepart() == iter2->ARCLireDepart()) {
-				if (iter->ARCLireArrive() == iter2->ARCLireArrive()) { // il faut supprimer
-					string sParam1 = iter->ARCLireDepart(); string sParam2 = iter->ARCLireArrive();
-					try {
-						 GROSupprimerArc(sParam1, sParam2); // si jmais 3 pareil, pas d'augmentation , je suppr tout d'un coup
-						//defaut je vais mm suppr le dernier que je rajt a la main ici
-					}
-					catch (CException) {
-						uiCompteurIter2++;
-						iter2 =  GROLireArc(uiCompteurIter2);
-						 GROCreerArc(iter->ARCLireDepart(), iter->ARCLireArrive()); //ici
-					}
-				}
-				else { //ils sont differents
-					if (uiCompteurIter2 <  GROLireTailleListSommet() - 1) {
-						uiCompteurIter2++;
-						iter2 =  GROLireArc(uiCompteurIter2);
-					}
-					else {
-						uiCompteurIter++; //car cgraph
-						uiCompteurIter2 = uiCompteurIter + 1;
-						iter =  GROLireArc(uiCompteurIter);
-						iter2 =  GROLireArc(uiCompteurIter2);
-					}
-				}
-			}
-			else { //ils sont differents
-				if (uiCompteurIter2 <  GROLireTailleListSommet() - 1) {
-					uiCompteurIter2++;
-					iter2 =  GROLireArc(uiCompteurIter2);
-				}
-				else {
-					uiCompteurIter++; //car cgraph
-					uiCompteurIter2 = uiCompteurIter + 1;
-					iter =  GROLireArc(uiCompteurIter);
-					iter2 =  GROLireArc(uiCompteurIter2);
-				}
-			}
-		}
-	}
 
 };
 #endif
